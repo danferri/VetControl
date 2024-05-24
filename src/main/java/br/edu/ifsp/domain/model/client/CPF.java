@@ -1,6 +1,6 @@
 package br.edu.ifsp.domain.model.client;
 
-public class CPF {
+public final class CPF {
     private final String numero;
     private final Boolean valido;
 
