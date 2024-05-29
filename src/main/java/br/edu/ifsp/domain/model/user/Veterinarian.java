@@ -49,6 +49,14 @@ public class Veterinarian implements User {
         this.contact = contact;
     }
 
+    public CRMV getCrmv() {
+        return crmv;
+    }
+
+    public void setCrmv(CRMV crmv) {
+        this.crmv = crmv;
+    }
+
     @Override
     public boolean authenticateUser() {
         return false;
