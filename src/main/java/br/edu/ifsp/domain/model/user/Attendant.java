@@ -6,4 +6,14 @@ public class Attendant implements User {
     public Attendant(String login) {
         this.login = login;
     }
+
+    @Override
+    public boolean authenticateUser() {
+        return false;
+    }
+
+    @Override
+    public boolean accessLevel() {
+        return false;
+    }
 }

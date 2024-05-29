@@ -3,10 +3,12 @@ package br.edu.ifsp.domain.model.client;
 public class Client {
     private String name;
     private String address;
+    private CPF cpf;
 
-    public Client(String name, String address) {
+    public Client(String name, String address, CPF cpf) {
         this.name = name;
         this.address = address;
+        this.cpf = cpf;
     }
 
     public String getName() {
@@ -25,5 +27,11 @@ public class Client {
         this.address = address;
     }
 
+    public CPF getCpf() {
+        return cpf;
+    }
 
+    public void setCpf(CPF cpf) {
+        this.cpf = cpf;
+    }
 }

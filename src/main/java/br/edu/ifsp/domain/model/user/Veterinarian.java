@@ -1,6 +1,6 @@
 package br.edu.ifsp.domain.model.user;
 
-public class Veterinarian {
+public class Veterinarian implements User {
     private String login;
     private String name;
     private String address;
@@ -13,5 +13,47 @@ public class Veterinarian {
         this.address = address;
         this.specialty = specialty;
         this.contact = contact;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    @Override
+    public boolean authenticateUser() {
+        return false;
+    }
+
+    @Override
+    public boolean accessLevel() {
+        return false;
     }
 }

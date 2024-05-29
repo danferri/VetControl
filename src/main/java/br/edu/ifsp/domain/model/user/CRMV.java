@@ -41,9 +41,6 @@ public final class CRMV {
 
     @Override
     public String toString() {
-        return "CRMV{" +
-                "number='" + number + '\'' +
-                ", valid=" + valid +
-                '}';
+        return STR."CRMV{number='\{number}\{'\''}, valid=\{valid}\{'}'}";
     }
 }
