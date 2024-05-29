@@ -27,7 +27,7 @@ public final class CPF {
                 soma += (cpfLimpo.charAt(i) - '0') * (10 + j - i);
             }
             int digitoVerificador = (soma * 10 % 11) % 10;
-            if (cpfLimpo.charAt(9 + j) != digitoVerificador + '0') {
+            if (cpfLimpo.charAt(9 +  j) != digitoVerificador + '0') {
                 return false;
             }
         }

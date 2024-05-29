@@ -56,4 +56,14 @@ public class Veterinarian implements User {
     public boolean accessLevel() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Veterinarian{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", specialty='" + specialty + '\'' +
+                ", contact='" + contact + '\'' +
+                '}';
+    }
 }
