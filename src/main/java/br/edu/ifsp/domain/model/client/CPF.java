@@ -1,33 +1,33 @@
 package br.edu.ifsp.domain.model.client;
 
 public final class CPF {
-    private final String numero;
-    private final Boolean valido;
+    private final String number;
+    private final Boolean valid;
 
-    public CPF(String numero) {
-        this.numero = numero;
-        this.valido = validarCPF();
+    public CPF(String number) {
+        this.number = number;
+        this.valid = validateCPF();
     }
 
     public String getNumero() {
-        return numero;
+        return number;
     }
 
-    public Boolean isValido() {
-        return valido;
+    public Boolean isValid() {
+        return valid;
     }
 
-    private Boolean validarCPF() {
-        String cpfLimpo = numero.replaceAll("[^0-9]", "");
-        if (cpfLimpo.length() != 11 || cpfLimpo.matches(cpfLimpo.charAt(0) + "{11}")) return false;
+    private Boolean validateCPF() {
+        String cpfClean = number.replaceAll("[^0-9]", "");
+        if (cpfClean.length() != 11 || cpfClean.matches(cpfClean.charAt(0) + "{11}")) return false;
 
         for (int j = 0; j < 2; j++) {
             int soma = 0;
             for (int i = 0; i < 9 + j; i++) {
-                soma += (cpfLimpo.charAt(i) - '0') * (10 + j - i);
+                soma += (cpfClean.charAt(i) - '0') * (10 + j - i);
             }
             int digitoVerificador = (soma * 10 % 11) % 10;
-            if (cpfLimpo.charAt(9 +  j) != digitoVerificador + '0') {
+            if (cpfClean.charAt(9 +  j) != digitoVerificador + '0') {
                 return false;
             }
         }
@@ -39,16 +39,16 @@ public final class CPF {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CPF cpf = (CPF) o;
-        return numero.equals(cpf.numero);
+        return number.equals(cpf.number);
     }
 
     @Override
     public int hashCode() {
-        return numero.hashCode();
+        return number.hashCode();
     }
 
     @Override
     public String toString() {
-        return this.numero;
+        return this.number;
     }
 }
