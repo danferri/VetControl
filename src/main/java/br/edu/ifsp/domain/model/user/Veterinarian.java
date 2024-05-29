@@ -6,13 +6,15 @@ public class Veterinarian implements User {
     private String address;
     private String specialty;
     private String contact;
+    private CRMV crmv;
 
-    public Veterinarian(String login, String name, String address, String specialty, String contact) {
+    public Veterinarian(String login, String name, String address, String specialty, String contact, CRMV crmv) {
         this.login = login;
         this.name = name;
         this.address = address;
         this.specialty = specialty;
         this.contact = contact;
+        this.crmv = crmv;
     }
 
     public String getName() {
