@@ -27,9 +27,9 @@ public class VeterinarianAddRequestValidator extends Validator<Veterinarian> {
             notification.addError("Veterinarian contact is null or empty");
         }
 
-        /*if(nullOrEmpty(veterinarian.getCrmv()) {
+        if(nullOrEmpty(veterinarian.getCrmv())) {
             notification.addError("Veterinarian CRMV is null or empty");
-        }*/
+        }
 
         return notification;
     }
