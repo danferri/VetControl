@@ -1,10 +1,14 @@
 package br.edu.ifsp.domain.usecases.veterinarian;
 
+//CDU002
+
 import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.utils.EntityAlreadyExistsException;
 import br.edu.ifsp.domain.usecases.utils.Notification;
 import br.edu.ifsp.domain.usecases.utils.Validator;
+
+
 
 public class AddVeterinarianUseCase {
 
