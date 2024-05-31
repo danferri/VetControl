@@ -3,10 +3,12 @@ package br.edu.ifsp.domain.model.appointment;
 public class Payment {
     private int id;
     private String paymentMethod;
+    private  PaymentStatus paymentStatus;
 
-    public Payment(int id, String paymentMethod) {
+    public Payment(int id, String paymentMethod, PaymentStatus paymentStatus) {
         this.id = id;
         this.paymentMethod = paymentMethod;
+        this.paymentStatus = paymentStatus;
     }
 
     public int getId() {
