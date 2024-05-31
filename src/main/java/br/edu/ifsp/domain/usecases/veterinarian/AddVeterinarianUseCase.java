@@ -27,7 +27,6 @@ public class AddVeterinarianUseCase {
             throw new EntityAlreadyExistsException("This veterinarian already exists");
         }
         return veterinarianDAO.create(veterinarian);
-
     }
 
 

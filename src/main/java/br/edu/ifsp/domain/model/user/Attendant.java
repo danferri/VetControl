@@ -1,5 +1,10 @@
 package br.edu.ifsp.domain.model.user;
 
+import br.edu.ifsp.domain.model.client.CPF;
+import br.edu.ifsp.domain.model.client.Client;
+import br.edu.ifsp.domain.usecases.utils.Notification;
+import br.edu.ifsp.domain.usecases.utils.Validator;
+
 public class Attendant implements User {
     private String login;
 
@@ -16,4 +21,5 @@ public class Attendant implements User {
     public boolean accessLevel() {
         return false;
     }
+
 }
