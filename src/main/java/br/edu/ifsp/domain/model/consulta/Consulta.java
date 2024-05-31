@@ -33,4 +33,12 @@ public class Consulta {
                 '}';
     }
 
+    public StatusConsulta getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusConsulta status) {
+        this.status = status;
+    }
+
 }

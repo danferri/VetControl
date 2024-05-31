@@ -45,7 +45,25 @@ public class Main {
         System.out.println("veterinario:" + veterinario);
         System.out.println("animal: "+animal.toString());
         System.out.println("cliente: " + cliente.toString());
-    }
+
+        System.out.println("/////////////////////////////////////////////////////////////////");
+
+        consultaService.cancelarConsulta(1);
+
+        System.out.println("Consulta após modificação: " + consulta.getStatus());
+
+        consultaService.agendarConsulta(LocalDateTime.now(), LocalDateTime.now().plusHours(1), "Consulta Para Verificação de Pobrema", veterinario, animal);
+
+        Consulta consulta2 = consultaService.buscarConsultaPorId(3);
+
+        System.out.println("Consulta2: "+ consulta2);
+
+        System.out.println("/////////////////////////////////////////////////////////////////");
+
+      /*  consultaService.marcarConsultaComoRealizada(3);
+
+        System.out.println("Consulta2 após modificação: " + consulta2.getStatus());
+    */}
 
 
     }
