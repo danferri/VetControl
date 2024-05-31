@@ -29,7 +29,7 @@ import java.time.LocalDateTime;
              throw new IllegalArgumentException("Consulta não encontrada ou já cancelada.");
          }
      }
-/*
+
      public void marcarConsultaComoRealizada(int id) {
          Consulta consulta = consultaRepository.findById(id);
          if (consulta != null && consulta.getStatus() == StatusConsulta.AGENDADA) {
@@ -38,5 +38,5 @@ import java.time.LocalDateTime;
          } else {
              throw new IllegalArgumentException("Consulta não encontrada ou não pode ser marcada como realizada.");
          }
-     }*/
+     }
 }

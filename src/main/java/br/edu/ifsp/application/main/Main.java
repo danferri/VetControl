@@ -60,10 +60,10 @@ public class Main {
 
         System.out.println("/////////////////////////////////////////////////////////////////");
 
-      /*  consultaService.marcarConsultaComoRealizada(3);
+       consultaService.marcarConsultaComoRealizada(3);
 
         System.out.println("Consulta2 após modificação: " + consulta2.getStatus());
-    */}
+    }
 
 
     }
