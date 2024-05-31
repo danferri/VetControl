@@ -5,7 +5,7 @@ import br.edu.ifsp.domain.model.user.Veterinarian;
 
 import java.time.LocalDateTime;
 
-public class ConsultaService {
+ public  class ConsultaService {
     private ConsultaRepository consultaRepository;
 
     public ConsultaService(ConsultaRepository consultaRepository) {
