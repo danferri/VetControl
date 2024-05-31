@@ -22,5 +22,15 @@ public class Consulta {
 
 
     }
+    public String toString() {
+        return "Consult{" +
+                "data'" + data + '\'' +
+                ", hora='" + hora + '\'' +
+                ", Veterinario='" + veterinario + '\'' +
+                ", Pet='" + animal + '\'' +
+                "Status='"+status+ '\''+
+                "Histórico='"+ historico+ '\''+
+                '}';
+    }
 
 }

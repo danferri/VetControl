@@ -11,4 +11,15 @@ public class Client {
         this.cpf = cpf;
     }
 
+    public CPF getCpf (){
+        return this.cpf;
+    }
+    public String toString() {
+        return "Cliente{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", cpf='" + cpf + '\'' +
+                '}';
+    }
+
 }

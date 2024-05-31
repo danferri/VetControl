@@ -17,45 +17,23 @@ public class Veterinarian implements User {
         this.crmv = crmv;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getContact() {
+        return contact;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getSpecialty() {
         return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
     }
 
     public CRMV getCrmv() {
         return crmv;
     }
 
-    public void setCrmv(CRMV crmv) {
-        this.crmv = crmv;
-    }
+
 
     @Override
     public boolean authenticateUser() {
