@@ -11,27 +11,4 @@ public class Client {
         this.cpf = cpf;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public CPF getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(CPF cpf) {
-        this.cpf = cpf;
-    }
 }
