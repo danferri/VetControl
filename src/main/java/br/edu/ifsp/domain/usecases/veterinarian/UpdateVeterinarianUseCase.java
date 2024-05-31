@@ -1,5 +1,7 @@
 package br.edu.ifsp.domain.usecases.veterinarian;
 
+//CDU003
+
 import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.utils.EntityNotFoundException;
