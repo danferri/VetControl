@@ -10,14 +10,14 @@ public class Veterinarian {
     private String contact;
     private VeterinarianStatus status;
 
-    public Veterinarian(String id, String name, String address, String specialty, String phone, CRMV crmv, VeterinarianStatus Status, String contact) {
+    public Veterinarian(String id, String name, String address, String specialty, String phone, CRMV crmv, String contact) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.specialty = specialty;
         this.phone = phone;
         this.crmv = crmv;
-        this.status = Status;
+        this.status = VeterinarianStatus.ACTIVE;
         this.contact = contact;
     }
 

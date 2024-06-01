@@ -12,7 +12,7 @@ public class ClientServices {
         this.clienteRepository = clienteRepository;
     }
 
-    public void insert(String nome, String endereco, String cpf) {
+    public void insert(String nome, String endereco, CPF cpf) {
         AddClientUseCase addClientUseCase = new AddClientUseCase(clienteRepository);
         addClientUseCase.cadastrarCliente(nome, endereco,cpf);
     }
