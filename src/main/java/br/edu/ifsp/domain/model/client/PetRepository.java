@@ -6,4 +6,5 @@ public interface PetRepository {
     void save(Pet animal);
     Pet findById(int id);
     List<Pet> findAll();
+    void update(Pet pet);
 }
