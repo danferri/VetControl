@@ -27,4 +27,9 @@ public class ClientPersistence implements ClientRepository {
     public List<Client> findAll() {
         return new ArrayList<>(clients);
     }
+
+    @Override
+    public void update(Client client) {
+
+    }
 }

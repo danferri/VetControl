@@ -2,6 +2,7 @@ package br.edu.ifsp.domain.model.client;
 
 import br.edu.ifsp.domain.usecases.client.AddClientUseCase;
 import br.edu.ifsp.domain.usecases.client.FindClientUseCase;
+import br.edu.ifsp.domain.usecases.client.UpdateClientUseCase;
 
 public class ClientServices {
 
@@ -19,5 +20,10 @@ public class ClientServices {
     public Client FindOne(String cpf) {
         FindClientUseCase findOne = new FindClientUseCase(clienteRepository);
         return  findOne.FindClientByCPF(cpf);
+    }
+
+    public void update(String cpf, String novoNome, String novoEndereco) {
+        UpdateClientUseCase updateClientUseCase = new UpdateClientUseCase(clienteRepository);
+        updateClientUseCase.updateClient(cpf, novoNome, novoEndereco);
     }
 }

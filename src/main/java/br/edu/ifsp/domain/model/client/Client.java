@@ -11,9 +11,18 @@ public class Client {
         this.cpf = cpf;
     }
 
-    public CPF getCpf (){
+    public CPF getCpf() {
         return this.cpf;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String toString() {
         return "Cliente{" +
                 "name='" + name + '\'' +
@@ -21,5 +30,4 @@ public class Client {
                 ", cpf='" + cpf + '\'' +
                 '}';
     }
-
 }

@@ -6,4 +6,5 @@ public interface ClientRepository {
     void save(Client cliente);
     Client findByCPF(CPF cpf);
     List<Client> findAll();
+    void update(Client client);
 }

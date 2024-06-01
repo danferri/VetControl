@@ -1,33 +1,25 @@
 package br.edu.ifsp.domain.usecases.veterinarian;
 
-//CDU003
-
-import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.Veterinarian;
-import br.edu.ifsp.domain.usecases.utils.EntityNotFoundException;
-import br.edu.ifsp.domain.usecases.utils.Notification;
-import br.edu.ifsp.domain.usecases.utils.Validator;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 
 public class UpdateVeterinarianUseCase {
-    private VeterinarianDAO veterinarianDAO;
+    private VeterinarianRepository veterinarianRepository;
 
-    public UpdateVeterinarianUseCase(VeterinarianDAO veterinarianDAO) {
-        this.veterinarianDAO = veterinarianDAO;
+    public UpdateVeterinarianUseCase(VeterinarianRepository veterinarianRepository) {
+        this.veterinarianRepository = veterinarianRepository;
     }
 
-    public boolean update(Veterinarian veterinarian) {
-        Validator<Veterinarian> validator = new VeterinarianAddRequestValidator();
-        Notification notification = validator.validate(veterinarian);
-
-        if (notification.hasErrors()) {
-            throw new IllegalArgumentException(notification.errorMessage());
+    public void alterarVeterinario(String crmv, String newName, String newAddress, String newSpecialty, String newPhone) {
+        Veterinarian veterinarian = veterinarianRepository.findByCrmv(crmv);
+        if (veterinarian != null) {
+            if (newName != null && !newName.isEmpty()) veterinarian.setName(newName);
+            if (newAddress != null && !newAddress.isEmpty()) veterinarian.setAddress(newAddress);
+            if (newSpecialty != null && !newSpecialty.isEmpty()) veterinarian.setSpecialty(newSpecialty);
+            if (newPhone != null && !newPhone.isEmpty()) veterinarian.setPhone(newPhone);
+            veterinarianRepository.update(veterinarian);
+        } else {
+            throw new IllegalArgumentException("Veterinário não encontrado com o CRMV fornecido.");
         }
-
-        CRMV crmv = veterinarian.getCrmv();
-        if (veterinarianDAO.findOne(crmv).isEmpty()) {
-            throw new EntityNotFoundException("Veterinarian not found.");
-        }
-        return veterinarianDAO.update(veterinarian);
-
     }
 }
