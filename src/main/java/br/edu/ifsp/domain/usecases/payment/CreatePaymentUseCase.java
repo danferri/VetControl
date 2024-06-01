@@ -2,7 +2,7 @@ package br.edu.ifsp.domain.usecases.payment;
 
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
-import br.edu.ifsp.domain.model.payment.PaymentStatus;
+
 
 public class CreatePaymentUseCase {
     private PaymentRepository paymentRepository;
@@ -11,8 +11,8 @@ public class CreatePaymentUseCase {
         this.paymentRepository = paymentRepository;
     }
 
-    public void cadastrarPagamento(int id, String method, PaymentStatus status, double amount) {
-        Payment payment = new Payment(id, method, status, amount);
+    public void cadastrarPagamento(int id, String method,  double amount) {
+        Payment payment = new Payment(id, method, amount);
         paymentRepository.save(payment);
     }
 }

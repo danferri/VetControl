@@ -19,12 +19,17 @@ public class AppointmentService {
 
     public void Insert(Integer id , LocalDate data, LocalTime hora, String historico, Veterinarian veterinario, Pet pet, Payment payment, double value) {
         AddAppointmentUseCase addApointment = new AddAppointmentUseCase(appointmentRepository);
-        Appointment appointment = addApointment.cadastrarConsulta(id, data, hora, historico, veterinario, pet,value);
+        Appointment appointment = addApointment.cadastrarConsulta(id, data, hora, historico, veterinario, pet,value, payment);
     }
 
     public Appointment findOne(int id) {
         FindAppointmentUseCase findAppointment = new FindAppointmentUseCase(appointmentRepository);
         return findAppointment.visualizarConsulta(id);
+    }
+
+    public void updateAppointment(int id, LocalDate newDate, LocalTime newHour, String newDescription) {
+        UpdateAppointmentUseCase updateAppointmentUseCase = new UpdateAppointmentUseCase(appointmentRepository);
+        updateAppointmentUseCase.alterarConsulta(id, newDate, newHour, newDescription);
     }
 
     public void cancel(int id) {

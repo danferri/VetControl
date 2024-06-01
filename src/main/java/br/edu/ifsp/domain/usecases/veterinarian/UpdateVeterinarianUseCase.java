@@ -1,5 +1,6 @@
 package br.edu.ifsp.domain.usecases.veterinarian;
 
+import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 
@@ -10,7 +11,7 @@ public class UpdateVeterinarianUseCase {
         this.veterinarianRepository = veterinarianRepository;
     }
 
-    public void alterarVeterinario(String crmv, String newName, String newAddress, String newSpecialty, String newPhone) {
+    public void alterarVeterinario(CRMV crmv, String newName, String newAddress, String newSpecialty, String newPhone) {
         Veterinarian veterinarian = veterinarianRepository.findByCrmv(crmv);
         if (veterinarian != null) {
             if (newName != null && !newName.isEmpty()) veterinarian.setName(newName);

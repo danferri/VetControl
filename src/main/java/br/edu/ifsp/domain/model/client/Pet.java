@@ -53,6 +53,10 @@ public class Pet {
         this.status = status;
     }
 
+    public PetStatus getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
@@ -60,7 +64,7 @@ public class Pet {
                 ", name='" + name + '\'' +
                 ", breed='" + breed + '\'' +
                 ", species='" + species + '\'' +
-                ", owner=" + owner +
+                ", owner=" + owner.getName() +
                 ", status=" + status +
                 '}';
     }

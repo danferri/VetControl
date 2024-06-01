@@ -42,5 +42,18 @@ public class AppointmentPersistence implements AppointmentRepository {
                 .filter(appointment -> appointment.getPet().equals(pet))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void update(Appointment updatedAppointment) {
+        Appointment existingAppointment = findById(updatedAppointment.getId());
+        if (existingAppointment != null) {
+            existingAppointment.setDate(updatedAppointment.getDate());
+            existingAppointment.setHour(updatedAppointment.getHour());
+            existingAppointment.setDescription(updatedAppointment.getDescription());
+            existingAppointment.setVeterinarian(updatedAppointment.getVeterinarian());
+            existingAppointment.setStatus(updatedAppointment.getStatus());
+            existingAppointment.setCost(updatedAppointment.getCost());
+        }
+    }
 }
 

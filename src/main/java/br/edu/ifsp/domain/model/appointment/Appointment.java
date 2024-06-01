@@ -1,6 +1,7 @@
 package br.edu.ifsp.domain.model.appointment;
 
 import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 
 import java.time.LocalDate;
@@ -15,8 +16,9 @@ public class Appointment {
     private Pet pet;
     private AppointmentStatus status;
     private double cost;
+    private Payment payment;
 
-    public Appointment(int id, LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost) {
+    public Appointment(int id, LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost, Payment payment) {
         this.id = id;
         this.date = date;
         this.hour = hour;
@@ -25,6 +27,7 @@ public class Appointment {
         this.pet = pet;
         this.status = AppointmentStatus.SCHEDULED;
         this.cost = cost;
+        this.payment = payment;
     }
 
     public int getId() {
@@ -89,7 +92,12 @@ public class Appointment {
                 ", veterinarian=" + veterinarian +
                 ", pet=" + pet +
                 ", status=" + status +
+                "payment= "+ payment+
                 ", cost=" + cost +
                 '}';
+    }
+
+    public void setVeterinarian(Veterinarian veterinarian) {
+        this.veterinarian = veterinarian;
     }
 }

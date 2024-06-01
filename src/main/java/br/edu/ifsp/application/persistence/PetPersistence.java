@@ -9,6 +9,7 @@ import java.util.List;
 public class PetPersistence implements PetRepository {
     private List<Pet> animais = new ArrayList<>();
     private int currentId = 1;
+
     @Override
     public void save(Pet animal) {
         animais.add(animal);
@@ -16,11 +17,21 @@ public class PetPersistence implements PetRepository {
 
     @Override
     public Pet findById(int id) {
-        return animais.get(id-1);
+        return animais.get(id - 1);
     }
 
     @Override
     public List<Pet> findAll() {
         return new ArrayList<>(animais);
+    }
+
+    @Override
+    public void update(Pet pet) {
+        Pet existingPet = findById(pet.getId());
+        if (existingPet != null) {
+            existingPet.setName(pet.getName());
+            existingPet.setBreed(pet.getBreed());
+            existingPet.setSpecies(pet.getSpecies());
+        }
     }
 }

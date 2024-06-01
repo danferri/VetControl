@@ -1,5 +1,6 @@
 package br.edu.ifsp.domain.usecases.client;
 
+import br.edu.ifsp.domain.model.client.CPF;
 import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.ClientRepository;
 
@@ -10,7 +11,7 @@ public class UpdateClientUseCase {
         this.clientRepository = clientRepository;
     }
 
-    public void updateClient(String cpf, String novoNome, String novoEndereco) {
+    public void updateClient(CPF cpf, String novoNome, String novoEndereco) {
        FindClientUseCase findClient = new FindClientUseCase(clientRepository);
         Client client = findClient.FindClientByCPF(cpf);
         if (client != null) {

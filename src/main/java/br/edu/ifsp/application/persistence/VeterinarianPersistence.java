@@ -1,5 +1,6 @@
 package br.edu.ifsp.domain.model.persistence;
 
+import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 
@@ -15,9 +16,9 @@ public class VeterinarianPersistence implements VeterinarianRepository {
     }
 
     @Override
-    public Veterinarian findByCrmv(String crmv) {
+    public Veterinarian findByCrmv(CRMV crmv) {
         for (Veterinarian veterinarian : veterinarians) {
-            if (veterinarian.getCrmv().getNumber().equals(crmv)) {
+            if (veterinarian.getCrmv().equals(crmv)) {
                 return veterinarian;
             }
         }
@@ -26,7 +27,7 @@ public class VeterinarianPersistence implements VeterinarianRepository {
 
     @Override
     public void update(Veterinarian veterinarian) {
-        Veterinarian existingVet = findByCrmv(veterinarian.getCrmv().getNumber());
+        Veterinarian existingVet = findByCrmv(veterinarian.getCrmv());
         if (existingVet != null) {
             existingVet.setName(veterinarian.getName());
             existingVet.setAddress(veterinarian.getAddress());

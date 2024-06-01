@@ -9,9 +9,9 @@ public class PaymentServices {
         this.paymentRepository = paymentRepository;
     }
 
-    public void addPayment(int id, String method, PaymentStatus status, double amount) {
+    public void addPayment(int id, String method, double amount) {
         CreatePaymentUseCase addPaymentUseCase = new CreatePaymentUseCase(paymentRepository);
-        addPaymentUseCase.cadastrarPagamento(id, method, status, amount);
+        addPaymentUseCase.cadastrarPagamento(id, method,  amount);
     }
 
     public Payment findPayment(int id) {

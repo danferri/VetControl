@@ -17,12 +17,12 @@ public class ClientServices {
         addClientUseCase.cadastrarCliente(nome, endereco,cpf);
     }
 
-    public Client FindOne(String cpf) {
+    public Client FindOne(CPF cpf) {
         FindClientUseCase findOne = new FindClientUseCase(clienteRepository);
         return  findOne.FindClientByCPF(cpf);
     }
 
-    public void update(String cpf, String novoNome, String novoEndereco) {
+    public void update(CPF cpf, String novoNome, String novoEndereco) {
         UpdateClientUseCase updateClientUseCase = new UpdateClientUseCase(clienteRepository);
         updateClientUseCase.updateClient(cpf, novoNome, novoEndereco);
     }

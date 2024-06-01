@@ -8,10 +8,10 @@ public class Payment {
     private PaymentStatus status;
     private double amount;
 
-    public Payment(int id, String method, PaymentStatus status, double amount) {
+    public Payment(int id, String method, double amount) {
         this.id = id;
         this.method = method;
-        this.status = status;
+        this.status = PaymentStatus.PENDENTE;
         this.amount = amount;
     }
 

@@ -1,5 +1,5 @@
 package br.edu.ifsp.domain.model.payment;
-import br.edu.ifsp.domain.model.appointment.Payment;
+import br.edu.ifsp.domain.model.payment.Payment;
 
 public interface PaymentRepository {
     void save(Payment payment);

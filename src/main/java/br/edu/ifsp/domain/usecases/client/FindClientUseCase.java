@@ -13,8 +13,8 @@ public class FindClientUseCase {
         this.clientRepository = clientRepository;
     }
 
-    public Client FindClientByCPF(String cpf) {
-        return clientRepository.findByCPF(new CPF(cpf));
+    public Client FindClientByCPF(CPF cpf) {
+        return clientRepository.findByCPF(cpf);
     }
 
 }

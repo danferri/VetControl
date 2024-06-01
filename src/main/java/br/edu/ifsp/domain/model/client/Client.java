@@ -44,13 +44,12 @@ public class Client {
         this.pets.add(pet);
     }
 
-    @Override
     public String toString() {
         return "Client{" +
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", cpf=" + cpf +
-                ", pets=" + pets +
+                ", pets=" + pets.size() +
                 '}';
     }
 }
