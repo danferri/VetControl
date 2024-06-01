@@ -1,5 +1,7 @@
 package br.edu.ifsp.domain.model.client;
 
+import br.edu.ifsp.domain.usecases.client.AddClientUseCase;
+
 public class ClientServices {
 
     private ClientRepository clienteRepository;
@@ -8,9 +10,9 @@ public class ClientServices {
         this.clienteRepository = clienteRepository;
     }
 
-    public void cadastrarCliente(String nome, String endereco, String cpf) {
-        Client cliente = ClientFactory.createClient(nome, endereco, cpf);
-        clienteRepository.save(cliente);
+    public void insert(String nome, String endereco, String cpf) {
+        AddClientUseCase addClientUseCase = new AddClientUseCase(clienteRepository);
+        addClientUseCase.cadastrarCliente(nome, endereco,cpf);
     }
 
     public Client buscarClientePorCPF(String cpf) {

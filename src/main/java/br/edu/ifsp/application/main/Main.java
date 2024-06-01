@@ -36,7 +36,7 @@ public class Main {
         AppointmentService appointmentService = new AppointmentService(appointmentRepository);
 
         // Cadastrando um novo cliente
-        clienteService.cadastrarCliente("João Silva", "Rua A, 123", "123.456.789-00");
+        clienteService.insert("João Silva", "Rua A, 123", "123.456.789-00");
         Client cliente = clienteService.buscarClientePorCPF("123.456.789-00");
 
         // Cadastrando um novo animal
