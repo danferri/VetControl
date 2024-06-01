@@ -1,60 +1,71 @@
 package br.edu.ifsp.domain.model.appointment;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.user.Veterinarian;
+
+import java.time.LocalDateTime;
 
 public class Appointment {
-    private int id;
-    private LocalDate date;
-    private LocalTime time;
-    private int value;
+    private LocalDateTime date;
+    private LocalDateTime time;
+    private String history;
+    private Veterinarian veterinarian;
+    private Pet pet;
+    private AppointmentStatus status;
+    private Payment payment;
+    private double value;
 
-    public Appointment(int id, LocalDate date, LocalTime time, int value) {
-        this.id = id;
+    public Appointment(LocalDateTime date, LocalDateTime time, String history, Veterinarian veterinarian, Pet pet, AppointmentStatus status, Payment payment, double value) {
         this.date = date;
         this.time = time;
-        this.value = value;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
+        this.history = history;
+        this.veterinarian = veterinarian;
+        this.pet = pet;
+        this.status = status;
+        this.payment = payment;
         this.value = value;
     }
 
     @Override
     public String toString() {
         return "Appointment{" +
-                "id=" + id +
-                ", date=" + date +
+                "date=" + date +
                 ", time=" + time +
+                ", history='" + history + '\'' +
+                ", veterinarian=" + veterinarian +
+                ", pet=" + pet +
+                ", status=" + status +
+                ", payment=" + payment +
                 ", value=" + value +
                 '}';
+    }
+
+    public AppointmentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AppointmentStatus status) {
+        this.status = status;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public Veterinarian getVeterinarian(
+
+    ) {return veterinarian;
     }
 }

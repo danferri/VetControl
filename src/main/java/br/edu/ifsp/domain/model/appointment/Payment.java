@@ -27,5 +27,10 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-
+    public String toString() {
+        return " \n Id=" + id +'\n'+
+                ", Method='" + paymentMethod + '\n' +
+                ", Status=" + paymentStatus +
+                '}';
+    }
 }
