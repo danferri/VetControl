@@ -2,6 +2,7 @@ package br.edu.ifsp.application.persistence;
 
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
+import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 
 import java.util.ArrayList;
@@ -34,4 +35,12 @@ public class AppointmentPersistence implements AppointmentRepository {
                 .filter(appointment -> appointment.getVeterinarian().equals(veterinarian))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Appointment> findByPet(Pet pet) {
+        return appointments.stream()
+                .filter(appointment -> appointment.getPet().equals(pet))
+                .collect(Collectors.toList());
+    }
 }
+

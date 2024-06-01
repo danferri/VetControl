@@ -2,43 +2,65 @@ package br.edu.ifsp.domain.model.appointment;
 
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.user.Veterinarian;
-import br.edu.ifsp.domain.model.payment.Payment;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Appointment {
-    private LocalDateTime date;
-    private LocalDateTime time;
-    private String history;
+    private int id;
+    private LocalDate date;
+    private LocalTime hour;
+    private String description;
     private Veterinarian veterinarian;
     private Pet pet;
     private AppointmentStatus status;
-    private Payment payment;
-    private double value;
+    private double cost;
 
-    public Appointment(LocalDateTime date, LocalDateTime time, String history, Veterinarian veterinarian, Pet pet, AppointmentStatus status,Payment payment, double value) {
+    public Appointment(int id, LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost) {
+        this.id = id;
         this.date = date;
-        this.time = time;
-        this.history = history;
+        this.hour = hour;
+        this.description = description;
         this.veterinarian = veterinarian;
         this.pet = pet;
-        this.status = status;
-        this.payment = payment;
-        this.value = value;
+        this.status = AppointmentStatus.SCHEDULED;
+        this.cost = cost;
     }
 
-    @Override
-    public String toString() {
-        return "Appointment{" +
-                "date=" + date +
-                ", time=" + time +
-                ", history='" + history + '\'' +
-                ", veterinarian=" + veterinarian +
-                ", pet=" + pet +
-                ", status=" + status +
-                ", payment=" + payment +
-                ", value=" + value +
-                '}';
+    public int getId() {
+        return id;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getHour() {
+        return hour;
+    }
+
+    public void setHour(LocalTime hour) {
+        this.hour = hour;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Veterinarian getVeterinarian() {
+        return veterinarian;
+    }
+
+    public Pet getPet() {
+        return pet;
     }
 
     public AppointmentStatus getStatus() {
@@ -49,24 +71,25 @@ public class Appointment {
         this.status = status;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public double getCost() {
+        return cost;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
 
-    public double getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
-    }
-
-    public Veterinarian getVeterinarian(
-
-    ) {return veterinarian;
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id=" + id +
+                ", date=" + date +
+                ", hour=" + hour +
+                ", description='" + description + '\'' +
+                ", veterinarian=" + veterinarian +
+                ", pet=" + pet +
+                ", status=" + status +
+                ", cost=" + cost +
+                '}';
     }
 }

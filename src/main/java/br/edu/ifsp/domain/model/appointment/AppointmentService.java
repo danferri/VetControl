@@ -4,9 +4,10 @@ import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.appointment.*;
-import br.edu.ifsp.domain.usecases.payment.ProcessPaymentUseCase;
+import br.edu.ifsp.domain.usecases.pet.FindAppointmentPetUseCase;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class AppointmentService {
@@ -16,19 +17,19 @@ public class AppointmentService {
         this.appointmentRepository = appointmentRepository;
     }
 
-    public void Insert(LocalDateTime data, LocalDateTime hora, String historico, Veterinarian veterinario, Pet pet, Payment payment, double value) {
-        AddAppointmenteUseCase addApointment = new AddAppointmenteUseCase(appointmentRepository);
-        Appointment appointment = addApointment.AddAppointment(data, hora, historico, veterinario, pet, AppointmentStatus.SCHEDULED, payment, value);
+    public void Insert(Integer id , LocalDate data, LocalTime hora, String historico, Veterinarian veterinario, Pet pet, Payment payment, double value) {
+        AddAppointmentUseCase addApointment = new AddAppointmentUseCase(appointmentRepository);
+        Appointment appointment = addApointment.cadastrarConsulta(id, data, hora, historico, veterinario, pet,value);
     }
 
     public Appointment findOne(int id) {
         FindAppointmentUseCase findAppointment = new FindAppointmentUseCase(appointmentRepository);
-        return findAppointment.SearchAppointmentById(id);
+        return findAppointment.visualizarConsulta(id);
     }
 
     public void cancel(int id) {
         CancelAppointmentUseCase cancelAppointment = new CancelAppointmentUseCase(appointmentRepository);
-        cancelAppointment.CancelAppointment(id);
+        cancelAppointment.cancelarConsulta(id);
     }
 
     public void Perform(int id) {
@@ -37,7 +38,12 @@ public class AppointmentService {
     }
 
     public List<Appointment> viewAppointments(Veterinarian veterinarian) {
-        FindAppointmentUseCase findAppointment = new FindAppointmentUseCase(appointmentRepository);
-        return findAppointment.searchAppointmentsByVeterinarian(veterinarian);
+       FindVeterinariamAppointmentUseCase findVetAppoint = new FindVeterinariamAppointmentUseCase(appointmentRepository);
+        return findVetAppoint.searchAppointmentsByVeterinarian(veterinarian);
+    }
+
+    public List<Appointment> listAppointmentsByPet(Pet pet) {
+        FindAppointmentPetUseCase listAppointmentsByPetUseCase = new FindAppointmentPetUseCase(appointmentRepository);
+        return listAppointmentsByPetUseCase.listarConsultasPorPet(pet);
     }
 }

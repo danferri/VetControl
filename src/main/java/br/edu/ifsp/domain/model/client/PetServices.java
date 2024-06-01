@@ -4,9 +4,11 @@ import br.edu.ifsp.domain.usecases.pet.*;
 
 public class PetServices {
     private PetRepository petRepository;
+    private ClientRepository clientRepository;
 
-    public PetServices(PetRepository petRepository) {
+    public PetServices(PetRepository petRepository, ClientRepository clientRepository) {
         this.petRepository = petRepository;
+        this.clientRepository = clientRepository;
     }
 
     public void addPet(int id, String name, String breed, String species, Client owner) {
@@ -27,5 +29,10 @@ public class PetServices {
     public void deactivatePet(int id) {
         DeactivatePetUseCase deactivatePetUseCase = new DeactivatePetUseCase(petRepository);
         deactivatePetUseCase.inativarPet(id);
+    }
+
+    public void AddPetToCLient(Pet pet, CPF cpf){
+     RegisterPetToClientUseCase petToCliente = new RegisterPetToClientUseCase(petRepository, clientRepository);
+     petToCliente.cadastrarPet(cpf, pet);
     }
 }

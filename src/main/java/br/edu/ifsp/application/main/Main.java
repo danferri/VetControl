@@ -1,79 +1,45 @@
-// Package
 package br.edu.ifsp.application.main;
-
-
-//Imports
-import java.time.LocalDateTime;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.domain.model.appointment.*;
-import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.client.*;
+import br.edu.ifsp.domain.model.user.*;
+import br.edu.ifsp.domain.model.user.CPF;
 
-import br.edu.ifsp.domain.model.payment.PaymentStatus;
-import br.edu.ifsp.domain.model.user.CRMV;
-import br.edu.ifsp.domain.model.user.Veterinarian;
-import br.edu.ifsp.domain.model.user.VeterinarianStatus;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        CRMV crmv = new CRMV("16257");
-        Veterinarian veterinarian = new Veterinarian("Oie", "Lucas", "Benjamin Constant", "Grdes Animais", "991354610", crmv, VeterinarianStatus.ACTIVE, "16 99246-5721");
-
-
-        ClientRepository clienteRepository = new ClientPersistence();
-        PetRepository animalRepository = new PetPersistence();
-        AppointmentRepository appointmentRepository = new AppointmentPersistence();
-
-        // Inicializando os serviços
-        ClientServices clienteService = new ClientServices(clienteRepository);
-        PetService animalService = new PetService(animalRepository);
+        // Inicializando repositórios e serviços
+        ClientRepository clientRepository = new ClientPersistence(); // Supondo a existência dessa classe
+        PetRepository petRepository = new PetPersistence(); // Supondo a existência dessa classe
+        AppointmentRepository appointmentRepository = new AppointmentPersistence(); // Supondo a existência dessa classe
+        VeterinarianRepository veterinarianRepository = new Veterinarian
+        VeterinarianServices veterinarianServices = new VeterinarianServices()
+        ClientServices clientServices = new ClientServices(clientRepository);
+        PetServices petServices = new PetServices(petRepository, clientRepository);
         AppointmentService appointmentService = new AppointmentService(appointmentRepository);
 
-        // Cadastrando um novo cliente
-        clienteService.insert("João Silva", "Rua A, 123", "123.456.789-00");
-        Client cliente = clienteService.FindOne("123.456.789-00");
+        // Criação do Veterinário
+        CRMV crmv = new CRMV("16257");
 
-        // Cadastrando um novo animal
-        animalService.cadastrarAnimal("Rex", "Labrador", "Cachorro", cliente);
-        Pet animal = animalService.buscarAnimalPorId(1);
+        CPF cpf = new CPF("123.456.789-00");
+        clientServices.addClient("João Silva", "Rua A, 123", cpf);
+        Client client = clientServices.findClient(cpf.getNumber());
+        System.out.println("Cliente cadastrado: " + client);
 
-        // Agendando uma nova consulta
-        CRMV crmv1 = new CRMV("1237");
-        Veterinarian veterinario = new Veterinarian("veterinario1", "Dr. José", "Rua B, 456", "", "16991354610", crmv1, VeterinarianStatus.ACTIVE, "16 99135-4610");
-        Payment payment = new Payment(1, "Cartão", PaymentStatus.PENDENTE, 200.00);
-        appointmentService.Insert(LocalDateTime.now(), LocalDateTime.now().plusHours(1), "Consulta qualquer", veterinario, animal, payment, 100.00);
+        // Criação do Pet
+        petServices.addPet(1, "Rex", "Labrador", "Cachorro", cpf.getNumber());
+        Pet pet = petServices.findPet(1);
+        System.out.println("Pet cadastrado: " + pet);
 
-        // Buscando uma consulta agendada
-        Appointment appointment = appointmentService.findOne(1);
-        System.out.println("Consulta agendada:");
-        System.out.println(appointment);
-
-        // Cancelando uma consulta
-        appointmentService.cancel(1);
-        Appointment cancelledAppointment = appointmentService.findOne(1);
-        System.out.println("Consulta após cancelamento:");
-        System.out.println(cancelledAppointment);
-
-        // Realizando uma consulta
-        // Primeiro é necessário agendar novamente para realizar
-        appointmentService.Insert(LocalDateTime.now(), LocalDateTime.now().plusHours(1), "Consulta qualquer", veterinario, animal, payment, 100.00);
-       // appointmentService.Perform(2);
-       // Appointment performedAppointment = appointmentService.findOne(2);
-       // System.out.println("Consulta realizada:");
-        //System.out.println(performedAppointment);
-
-        // Processando um pagamento
-        appointmentService.ProcessPayment(2, new Payment(2, "Cartão", PaymentStatus.CONCLUIDO,100.00));
-        Appointment paidAppointment = appointmentService.findOne(2);
-        System.out.println("Consulta após pagamento:");
-        System.out.println(paidAppointment);
-
-        // Visualizando consultas realizadas por um veterinário
-        System.out.println("Consultas realizadas pelo Dr. José:");
-        appointmentService.viewAppointments(veterinario).forEach(System.out::println);
+        // Criação da Consulta
+        appointmentService.addAppointment(1, LocalDate.now(), LocalTime.of(10, 0), "Consulta de rotina", veterinarian, pet, 100.0);
+        Appointment appointment = appointmentService.findAppointment(1);
+        System.out.println("Consulta cadastrada: " + appointment);
     }
 }
