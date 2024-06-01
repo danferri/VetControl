@@ -1,6 +1,6 @@
 package br.edu.ifsp.domain.usecases.payment;
 
-import br.edu.ifsp.domain.model.appointment.Payment;
+import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import br.edu.ifsp.domain.model.payment.PaymentStatus;
 
