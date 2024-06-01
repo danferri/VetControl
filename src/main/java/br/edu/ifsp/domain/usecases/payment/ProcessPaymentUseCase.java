@@ -2,7 +2,6 @@ package br.edu.ifsp.domain.usecases.payment;
 
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
-import br.edu.ifsp.domain.model.appointment.Payment;
 
 
 public class ProcessPaymentUseCase {

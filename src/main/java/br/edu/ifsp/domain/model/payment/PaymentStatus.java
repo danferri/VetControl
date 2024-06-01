@@ -1,4 +1,4 @@
-package br.edu.ifsp.domain.model.appointment;
+package br.edu.ifsp.domain.model.payment;
 
 public enum PaymentStatus {
     PENDENTE,
