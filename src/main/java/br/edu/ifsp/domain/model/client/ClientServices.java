@@ -1,6 +1,7 @@
 package br.edu.ifsp.domain.model.client;
 
 import br.edu.ifsp.domain.usecases.client.AddClientUseCase;
+import br.edu.ifsp.domain.usecases.client.FindClientUseCase;
 
 public class ClientServices {
 
@@ -15,7 +16,8 @@ public class ClientServices {
         addClientUseCase.cadastrarCliente(nome, endereco,cpf);
     }
 
-    public Client buscarClientePorCPF(String cpf) {
-        return clienteRepository.findByCPF(new CPF(cpf));
+    public Client FindOne(String cpf) {
+        FindClientUseCase findOne = new FindClientUseCase(clienteRepository);
+        return  findOne.FindClientByCPF(cpf);
     }
 }

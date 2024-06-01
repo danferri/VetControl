@@ -37,7 +37,7 @@ public class Main {
 
         // Cadastrando um novo cliente
         clienteService.insert("João Silva", "Rua A, 123", "123.456.789-00");
-        Client cliente = clienteService.buscarClientePorCPF("123.456.789-00");
+        Client cliente = clienteService.FindOne("123.456.789-00");
 
         // Cadastrando um novo animal
         animalService.cadastrarAnimal("Rex", "Labrador", "Cachorro", cliente);
