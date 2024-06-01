@@ -2,6 +2,7 @@ package br.edu.ifsp.domain.usecases.appointment;
 
 import br.edu.ifsp.domain.model.appointment.*;
 import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 
 import java.time.LocalDateTime;

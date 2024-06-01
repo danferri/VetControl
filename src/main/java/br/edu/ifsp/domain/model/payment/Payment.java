@@ -1,4 +1,4 @@
-package br.edu.ifsp.domain.model.appointment;
+package br.edu.ifsp.domain.model.payment;
 
 import br.edu.ifsp.domain.model.payment.PaymentStatus;
 

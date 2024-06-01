@@ -9,6 +9,7 @@ import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.domain.model.appointment.*;
+import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.client.*;
 
 import br.edu.ifsp.domain.model.payment.PaymentStatus;
@@ -43,7 +44,7 @@ public class Main {
         // Agendando uma nova consulta
         CRMV crmv1 = new CRMV("1237");
         Veterinarian veterinario = new Veterinarian("veterinario1", "Dr. José", "Rua B, 456", "", "16991354610", crmv1, VeterinarianStatus.ACTIVE, "16 99135-4610");
-        Payment payment = new Payment(1, "Cartão", PaymentStatus.PENDENTE);
+        Payment payment = new Payment(1, "Cartão", PaymentStatus.PENDENTE, 200.00);
         appointmentService.Insert(LocalDateTime.now(), LocalDateTime.now().plusHours(1), "Consulta qualquer", veterinario, animal, payment, 100.00);
 
         // Buscando uma consulta agendada
@@ -66,7 +67,7 @@ public class Main {
         //System.out.println(performedAppointment);
 
         // Processando um pagamento
-        appointmentService.ProcessPayment(2, new Payment(2, "Cartão", PaymentStatus.CONCLUIDO));
+        appointmentService.ProcessPayment(2, new Payment(2, "Cartão", PaymentStatus.CONCLUIDO,100.00));
         Appointment paidAppointment = appointmentService.findOne(2);
         System.out.println("Consulta após pagamento:");
         System.out.println(paidAppointment);

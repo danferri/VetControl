@@ -2,6 +2,7 @@ package br.edu.ifsp.domain.model.appointment;
 
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.model.payment.Payment;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +16,7 @@ public class Appointment {
     private Payment payment;
     private double value;
 
-    public Appointment(LocalDateTime date, LocalDateTime time, String history, Veterinarian veterinarian, Pet pet, AppointmentStatus status, Payment payment, double value) {
+    public Appointment(LocalDateTime date, LocalDateTime time, String history, Veterinarian veterinarian, Pet pet, AppointmentStatus status,Payment payment, double value) {
         this.date = date;
         this.time = time;
         this.history = history;

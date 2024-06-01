@@ -2,7 +2,7 @@ package br.edu.ifsp.domain.usecases.payment;
 
 //CDU022
 
-import br.edu.ifsp.domain.model.appointment.Payment;
+import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
 
 public class FindPaymentUseCase {

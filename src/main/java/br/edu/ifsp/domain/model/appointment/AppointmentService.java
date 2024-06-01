@@ -1,6 +1,7 @@
 package br.edu.ifsp.domain.model.appointment;
 
 import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.appointment.*;
 import br.edu.ifsp.domain.usecases.payment.ProcessPaymentUseCase;
@@ -33,11 +34,6 @@ public class AppointmentService {
     public void Perform(int id) {
         PerformAppointmentUseCase perform = new PerformAppointmentUseCase(appointmentRepository);
         perform.performAppointment(id);
-    }
-
-    public void ProcessPayment(int id, Payment payment) {
-        ProcessPaymentUseCase pay = new ProcessPaymentUseCase(appointmentRepository);
-        pay.ProcessPayment(id, payment);
     }
 
     public List<Appointment> viewAppointments(Veterinarian veterinarian) {
