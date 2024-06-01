@@ -1,4 +1,4 @@
-package br.edu.ifsp.domain.model.persistence;
+package br.edu.ifsp.application.persistence;
 
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.client.PetRepository;
