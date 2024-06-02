@@ -1,20 +1,28 @@
 package br.edu.ifsp.domain.model.user;
 
-public class Veterinarian implements User {
-    private String login;
+public class Veterinarian {
+    private String id;
     private String name;
     private String address;
     private String specialty;
-    private String contact;
+    private String phone;
     private CRMV crmv;
+    private String contact;
+    private VeterinarianStatus status;
 
-    public Veterinarian(String login, String name, String address, String specialty, String contact, CRMV crmv) {
-        this.login = login;
+    public Veterinarian(String id, String name, String address, String specialty, String phone, CRMV crmv, String contact) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.specialty = specialty;
-        this.contact = contact;
+        this.phone = phone;
         this.crmv = crmv;
+        this.status = VeterinarianStatus.ACTIVE;
+        this.contact = contact;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -41,39 +49,36 @@ public class Veterinarian implements User {
         this.specialty = specialty;
     }
 
-    public String getContact() {
-        return contact;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public CRMV getCrmv() {
         return crmv;
     }
 
-    public void setCrmv(CRMV crmv) {
-        this.crmv = crmv;
-    }
-
-    @Override
-    public boolean authenticateUser() {
-        return false;
-    }
-
-    @Override
-    public boolean accessLevel() {
-        return false;
-    }
+ public void setStatus(VeterinarianStatus status){
+        this.status = status;
+ }
 
     @Override
     public String toString() {
         return "Veterinarian{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", specialty='" + specialty + '\'' +
-                ", contact='" + contact + '\'' +
+                ", phone='" + phone + '\'' +
+                ", crmv=" + crmv +
+                ", status =" + status +
                 '}';
+    }
+
+    public String getContact() {
+        return contact;
     }
 }

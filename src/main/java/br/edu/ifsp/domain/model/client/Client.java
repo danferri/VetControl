@@ -1,14 +1,19 @@
 package br.edu.ifsp.domain.model.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Client {
     private String name;
     private String address;
     private CPF cpf;
+    private List<Pet> pets;
 
     public Client(String name, String address, CPF cpf) {
         this.name = name;
         this.address = address;
         this.cpf = cpf;
+        this.pets = new ArrayList<>();
     }
 
     public String getName() {
@@ -31,7 +36,20 @@ public class Client {
         return cpf;
     }
 
-    public void setCpf(CPF cpf) {
-        this.cpf = cpf;
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void addPet(Pet pet) {
+        this.pets.add(pet);
+    }
+
+    public String toString() {
+        return "Client{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", cpf=" + cpf +
+                ", pets=" + pets.size() +
+                '}';
     }
 }
