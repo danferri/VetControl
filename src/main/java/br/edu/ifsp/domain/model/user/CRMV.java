@@ -1,36 +1,31 @@
 package br.edu.ifsp.domain.model.user;
 
 public final class CRMV {
-    private final String number;
-    private final boolean valid;
+    private String crmv;
 
-    public CRMV(String number) {
-        this.number = number;
-        this.valid = validateCRMV();
+    public CRMV(String crmv) {
+        this.crmv = crmv;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
-    public boolean isValid() {
-        return valid;
-    }
-
-    private boolean validateCRMV() {
-
-        if (number == null || number.isEmpty()) {
+    public static boolean validCRMV(String crmv) {
+        if (crmv != null && crmv.matches("SP-\\d+")) {
+            System.out.println("CRMV válido.");
+            return true;
+        } else {
+            System.out.println("CRMV inválido.");
             return false;
         }
-        String cleanedNumber = number.replaceAll("[^0-9]", "");
-        return cleanedNumber.length() == 6 && cleanedNumber.startsWith("123");
     }
 
-    @Override
-    public String toString() {
-        return "CRMV{" +
-                "number='" + number + '\'' +
-                ", valid=" + valid +
-                '}';
+    public void showCRMV() {
+        System.out.println("CRMV: " + this.crmv);
+    }
+
+    public String getCrmv() {
+        return crmv;
+    }
+
+    public void setCrmv(String crmv) {
+        this.crmv = crmv;
     }
 }
