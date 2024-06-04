@@ -17,7 +17,7 @@ public abstract class Validator<T> {
     }
 
     public static boolean nullOrEmpty(CRMV crmv) {
-        return crmv == null || !crmv.isValid(crmv);
+        return crmv == null || !crmv.isValid();
     }
 
     public static boolean nullOrEmpty(CPF cpf) {

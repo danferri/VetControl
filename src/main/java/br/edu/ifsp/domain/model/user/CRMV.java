@@ -10,7 +10,7 @@ public final class CRMV {
     }
 
     public static boolean validateCRM(String number) {
-        if (number != null && number.matches("SP-\\d+")) {
+        if (number != null && number.matches("[A-Z]{2}-\\d+")) {
             System.out.println("Valid CRM.");
             return true;
         } else {

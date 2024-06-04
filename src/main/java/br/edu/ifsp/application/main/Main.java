@@ -15,14 +15,13 @@ import br.edu.ifsp.domain.model.user.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         // Inicializando repositórios e serviços
-        ClientRepository clientRepository = new ClientPersistence(); // Supondo a existência dessa classe
-        PetRepository petRepository = new PetPersistence(); // Supondo a existência dessa classe
-        AppointmentRepository appointmentRepository = new AppointmentPersistence(); // Supondo a existência dessa classe
+        ClientRepository clientRepository = new ClientPersistence();
+        PetRepository petRepository = new PetPersistence();
+        AppointmentRepository appointmentRepository = new AppointmentPersistence();
         VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
         PaymentRepository paymentRepository = new PaymentPersistence();
 
@@ -33,7 +32,7 @@ public class Main {
         PaymentServices paymentServices = new PaymentServices(paymentRepository);
 
         // Criação do Veterinário
-        CRMV crmv = new CRMV("16257");
+        CRMV crmv = new CRMV("SP-16257");
        veterinarianServices.addVeterinarian( "Dr. João", "Rua A, 123", "Clínica Geral", "123456789", crmv,"16991354610" );
         Veterinarian veterinarian = veterinarianServices.findVeterinarian(crmv);
 
@@ -76,9 +75,9 @@ public class Main {
 
 
         System.out.println("Cliente cadastrado: " + client);
-        //criando Pagamento
 
 
+        //Criando Pagamento
 
         paymentServices.addPayment(1, "Cartao", 1000.00);
         Payment payment = paymentServices.findPayment(1);
@@ -91,13 +90,15 @@ public class Main {
         Payment processedPayment = paymentServices.findPayment(1);
         System.out.println("Payment Method: "+ processedPayment.getMethod() + "\n"+ "PayMent Amount: "+ processedPayment.getAmount()+ "Payment Status: "+processedPayment.getStatus());
         */
+
+
         // Criação da Consulta
         appointmentService.Insert(1, LocalDate.now(), LocalTime.of(10, 0), "Consulta de rotina", veterinarian, pet, payment, 100.0);
         Appointment appointment = appointmentService.findOne(1);
         System.out.println("Consulta cadastrada: " + appointment+ "\n");
 
 
-        //appointmentService.cancel(1);
+        //AppointmentService.cancel(1);
         appointmentService.Perform(1);
         paymentServices.processPayment(1);
 
