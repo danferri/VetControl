@@ -1,37 +1,50 @@
 package br.edu.ifsp.domain.model.user;
 
 public final class CRMV {
-    private String crmv;
+    private final String number;
+    private final boolean valid;
 
-    public CRMV(String crmv) {
-        this.crmv = crmv;
+    public CRMV(String number) {
+        this.number = number;
+        this.valid = validateCRM(this.number);
     }
 
-    private boolean validCRMV(CRMV crmv) {
-        if (crmv != null && crmv.crmv.matches("SP-\\d+")) {
-            System.out.println("CRMV válido.");
+    public static boolean validateCRM(String number) {
+        if (number != null && number.matches("SP-\\d+")) {
+            System.out.println("Valid CRM.");
             return true;
         } else {
-            System.out.println("CRMV inválido.");
+            System.out.println("Invalid CRM.");
             return false;
         }
     }
 
-    public boolean isValid(CRMV crmv){
-        return validCRMV(crmv);
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        CRMV other = (CRMV) obj;
+        return this.number.equals(other.number) && this.valid == other.valid;
     }
 
-
-
-    public void showCRMV() {
-        System.out.println("CRMV: " + this.crmv);
+    @Override
+    public String toString() {
+        return "CRM{" +
+                "number='" + number + '\'' +
+                ", valid=" + valid +
+                '}';
     }
 
-    public String getCrmv() {
-        return crmv;
+    public String getNumber() {
+        return number;
     }
 
-    public void setCrmv(String crmv) {
-        this.crmv = crmv;
+    public boolean isValid() {
+        return valid;
     }
 }
+
