@@ -10,8 +10,7 @@ public class Veterinarian {
     private String contact;
     private VeterinarianStatus status;
 
-    public Veterinarian(String id, String name, String address, String specialty, String phone, CRMV crmv, String contact) {
-        this.id = id;
+    public Veterinarian( String name, String address, String specialty, String phone, CRMV crmv, String contact) {
         this.name = name;
         this.address = address;
         this.specialty = specialty;
@@ -21,9 +20,7 @@ public class Veterinarian {
         this.contact = contact;
     }
 
-    public String getId() {
-        return id;
-    }
+
 
     public String getName() {
         return name;
@@ -68,7 +65,6 @@ public class Veterinarian {
     @Override
     public String toString() {
         return "Veterinarian{" +
-                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", specialty='" + specialty + '\'' +

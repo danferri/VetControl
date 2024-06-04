@@ -7,8 +7,8 @@ public final class CRMV {
         this.crmv = crmv;
     }
 
-    public static boolean validCRMV(String crmv) {
-        if (crmv != null && crmv.matches("SP-\\d+")) {
+    private boolean validCRMV(CRMV crmv) {
+        if (crmv != null && crmv.crmv.matches("SP-\\d+")) {
             System.out.println("CRMV válido.");
             return true;
         } else {
@@ -16,6 +16,12 @@ public final class CRMV {
             return false;
         }
     }
+
+    public boolean isValid(CRMV crmv){
+        return validCRMV(crmv);
+    }
+
+
 
     public void showCRMV() {
         System.out.println("CRMV: " + this.crmv);

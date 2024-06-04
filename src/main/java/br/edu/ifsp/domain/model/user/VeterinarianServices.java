@@ -9,9 +9,9 @@ public class VeterinarianServices {
         this.veterinarianRepository = veterinarianRepository;
     }
 
-    public void addVeterinarian(String id, String name, String address, String specialty, String phone, CRMV crmv, String contact) {
+    public void addVeterinarian( String name, String address, String specialty, String phone, CRMV crmv, String contact) {
         AddVeterinarianUseCase addVeterinarianUseCase = new AddVeterinarianUseCase(veterinarianRepository);
-        addVeterinarianUseCase.cadastrarVeterinario(id, name, address, specialty, phone, crmv,  contact);
+        addVeterinarianUseCase.cadastrarVeterinario( name, address, specialty, phone, crmv,  contact);
     }
 
     public void updateVeterinarian(CRMV crmv, String newName, String newAddress, String newSpecialty, String newPhone) {
