@@ -43,7 +43,7 @@ public final class CRMV {
         return number;
     }
 
-    public boolean isValid() {
+    public boolean isValid(CRMV crmv) {
         return valid;
     }
 }
