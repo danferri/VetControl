@@ -78,4 +78,8 @@ public class Veterinarian {
     public String getContact() {
         return contact;
     }
+
+    public VeterinarianStatus InformVeterinarinaSatus() {
+        return status;
+    }
 }

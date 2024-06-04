@@ -19,7 +19,7 @@ public class AppointmentService {
 
     public void Insert(Integer id , LocalDate data, LocalTime hora, String historico, Veterinarian veterinario, Pet pet, Payment payment, double value) {
         AddAppointmentUseCase addApointment = new AddAppointmentUseCase(appointmentRepository);
-        Appointment appointment = addApointment.cadastrarConsulta(id, data, hora, historico, veterinario, pet,value, payment);
+        addApointment.cadastrarConsulta(id, data, hora, historico, veterinario, pet,value, payment);
     }
 
     public Appointment findOne(int id) {
