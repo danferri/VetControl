@@ -10,7 +10,10 @@ public class Veterinarian {
     private String contact;
     private VeterinarianStatus status;
 
-    public Veterinarian( String name, String address, String specialty, String phone, CRMV crmv, String contact) {
+    public Veterinarian(String name, String address, String specialty, String phone, CRMV crmv, String contact) {
+        if (crmv == null || !crmv.isValid()) {
+            throw new IllegalArgumentException("CRMV inválido.");
+        }
         this.name = name;
         this.address = address;
         this.specialty = specialty;
@@ -19,8 +22,6 @@ public class Veterinarian {
         this.status = VeterinarianStatus.ACTIVE;
         this.contact = contact;
     }
-
-
 
     public String getName() {
         return name;
@@ -58,9 +59,9 @@ public class Veterinarian {
         return crmv;
     }
 
- public void setStatus(VeterinarianStatus status){
+    public void setStatus(VeterinarianStatus status) {
         this.status = status;
- }
+    }
 
     @Override
     public String toString() {
@@ -70,7 +71,7 @@ public class Veterinarian {
                 ", specialty='" + specialty + '\'' +
                 ", phone='" + phone + '\'' +
                 ", crmv=" + crmv +
-                ", status =" + status +
+                ", status=" + status +
                 '}';
     }
 
