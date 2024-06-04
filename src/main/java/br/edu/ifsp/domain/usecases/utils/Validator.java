@@ -1,5 +1,6 @@
 package br.edu.ifsp.domain.usecases.utils;
 
+import br.edu.ifsp.domain.model.client.CPF;
 import br.edu.ifsp.domain.model.user.CRMV;
 
 import java.util.Collection;
@@ -16,5 +17,10 @@ public abstract class Validator<T> {
     }
 
     public static boolean nullOrEmpty(CRMV crmv) {
-        return crmv == null || !crmv.isValid(crmv);   }
+        return crmv == null || !crmv.isValid(crmv);
+    }
+
+    public static boolean nullOrEmpty(CPF cpf) {
+        return cpf == null || !cpf.isValid(cpf);
+    }
 }

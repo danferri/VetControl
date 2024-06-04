@@ -1,23 +1,23 @@
 package br.edu.ifsp.domain.model.client;
 
 public final class CPF {
-    private String number;
-    private Boolean valid;
+    private final String number;
+    private final boolean valid;
 
     public CPF(String num) {
         num = num.replaceAll("[^0-9]", "");
-        this.setNumber(num);
-        this.valid = validCPF(this.number);
+        this.number = num;
+        this.valid = validateCPF(this.number);
     }
 
-    public static boolean validCPF(String cpf) {
-        if (cpf.length() != 11){
+    public static boolean validateCPF(String cpf) {
+        if (cpf.length() != 11) {
             System.out.println("CPF deve conter 11 dígitos.");
             return false;
         }
 
         if (cpf.matches(cpf.charAt(0) + "{11}")) {
-            System.out.println("CPF com unico digito repetido.");
+            System.out.println("CPF com único dígito repetido.");
             return false;
         }
 
@@ -36,25 +36,28 @@ public final class CPF {
         return dig1 == Integer.parseInt(cpf.charAt(9) + "") && dig2 == Integer.parseInt(cpf.charAt(10) + "");
     }
 
-    public void showCPF() {
-        System.out.println("CPF: " + this.number);
-        System.out.print("Verificação: ");
-        if(valid) System.out.println("Válido"); else System.out.println("Inválido");
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CPF other = (CPF) obj;
+        return number.equals(other.number) && valid == other.valid;
+    }
+
+    @Override
+    public String toString() {
+        return "CPF{" +
+                "number='" + number + '\'' +
+                ", valid=" + valid +
+                '}';
     }
 
     public String getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public Boolean getValid() {
+    public boolean isValid(CPF cpf) {
         return valid;
     }
-
-    public void setValid(Boolean valid) {
-        this.valid = valid;
-    }
 }
+
