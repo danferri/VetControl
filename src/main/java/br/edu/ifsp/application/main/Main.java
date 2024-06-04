@@ -33,7 +33,7 @@ public class Main {
         PaymentServices paymentServices = new PaymentServices(paymentRepository);
 
         // Criação do Veterinário
-        CRMV crmv = new CRMV("16257");
+        CRMV crmv = new CRMV("SP-16257");
        veterinarianServices.addVeterinarian( "Dr. João", "Rua A, 123", "Clínica Geral", "123456789", crmv,"16991354610" );
         Veterinarian veterinarian = veterinarianServices.findVeterinarian(crmv);
 
