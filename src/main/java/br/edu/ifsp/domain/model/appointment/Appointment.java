@@ -1,11 +1,10 @@
 package br.edu.ifsp.domain.model.appointment;
 
-import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.Pet;
-import br.edu.ifsp.domain.model.client.PetStatus;
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.model.user.VeterinarianStatus;
+import br.edu.ifsp.domain.model.client.PetStatus;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,27 +16,25 @@ public class Appointment {
     private String description;
     private Veterinarian veterinarian;
     private Pet pet;
-    private Client client;
     private AppointmentStatus status;
     private double cost;
     private Payment payment;
 
-    public Appointment(int id, LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, Client client, double cost, Payment payment) {
-        validateEntities(veterinarian, pet, client);
+    public Appointment(int id, LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost, Payment payment) {
+        validateEntities(veterinarian, pet);
         this.id = id;
         this.date = date;
         this.hour = hour;
         this.description = description;
         this.veterinarian = veterinarian;
         this.pet = pet;
-        this.client = client;
         this.status = AppointmentStatus.SCHEDULED;
         this.cost = cost;
         this.payment = payment;
     }
 
-    private void validateEntities(Veterinarian veterinarian, Pet pet, Client client) {
-        if (veterinarian.InformVeterinarinaSatus() != VeterinarianStatus.ACTIVE) {
+    private void validateEntities(Veterinarian veterinarian, Pet pet) {
+        if (veterinarian.InformVeterinarianStatus()!= VeterinarianStatus.ACTIVE) {
             throw new IllegalArgumentException("Veterinarian is not active.");
         }
         if (pet.InformPetStautus() != PetStatus.ACTIVE) {
@@ -81,10 +78,6 @@ public class Appointment {
         return pet;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
     public AppointmentStatus getStatus() {
         return status;
     }
@@ -110,7 +103,6 @@ public class Appointment {
                 ", description='" + description + '\'' +
                 ", veterinarian=" + veterinarian +
                 ", pet=" + pet +
-                ", client=" + client +
                 ", status=" + status +
                 ", payment=" + payment +
                 ", cost=" + cost +
@@ -118,13 +110,9 @@ public class Appointment {
     }
 
     public void setVeterinarian(Veterinarian veterinarian) {
-        validateVeterinarian(veterinarian);
-        this.veterinarian = veterinarian;
-    }
-
-    private void validateVeterinarian(Veterinarian veterinarian) {
-        if (veterinarian.InformVeterinarinaSatus() != VeterinarianStatus.ACTIVE) {
+        if (veterinarian.InformVeterinarianStatus() != VeterinarianStatus.ACTIVE) {
             throw new IllegalArgumentException("Veterinarian is not active.");
         }
+        this.veterinarian = veterinarian;
     }
 }

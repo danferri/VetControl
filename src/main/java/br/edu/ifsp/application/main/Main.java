@@ -1,15 +1,11 @@
 package br.edu.ifsp.application.main;
 
-import br.edu.ifsp.application.persistence.AppointmentPersistence;
-import br.edu.ifsp.application.persistence.ClientPersistence;
-import br.edu.ifsp.application.persistence.PaymentPersistence;
-import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.*;
 import br.edu.ifsp.domain.model.appointment.*;
 import br.edu.ifsp.domain.model.client.*;
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import br.edu.ifsp.domain.model.payment.PaymentServices;
-import br.edu.ifsp.domain.model.persistence.VeterinarianPersistence;
 import br.edu.ifsp.domain.model.user.*;
 
 
@@ -113,7 +109,14 @@ public class Main {
 
         System.out.println("Consultas do PET: " + appointmentService.listAppointmentsByPet(pet));
 
-        Veterinarian veterinarian1 = new Veterinarian("Dan", "Rua da rua", "Zoista", "16 9999999-8888", null, "vet@vet.vet");
+        CRMV crmv1 = new CRMV( "MT-12368");
+       veterinarianServices.addVeterinarian  ("Dan", "Rua da rua", "Zoista", "16 9999999-8888", crmv1, "vet@vet.vet");
+       Veterinarian veterinarian1 = veterinarianServices.findVeterinarian(crmv1);
         System.out.println(veterinarian1);
+
+        appointmentService.Insert(1, LocalDate.now(), LocalTime.of(10, 0), "Consulta de rotina", veterinarian1, pet, payment, 100.0);
+
+
+
     }
 }

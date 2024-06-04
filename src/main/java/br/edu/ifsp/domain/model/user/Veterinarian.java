@@ -1,5 +1,10 @@
 package br.edu.ifsp.domain.model.user;
 
+import br.edu.ifsp.application.persistence.VeterinarianPersistence;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Veterinarian {
     private String id;
     private String name;
@@ -9,10 +14,14 @@ public class Veterinarian {
     private CRMV crmv;
     private String contact;
     private VeterinarianStatus status;
+    private static List<Veterinarian> registeredVeterinarians = new ArrayList<>();
 
     public Veterinarian(String name, String address, String specialty, String phone, CRMV crmv, String contact) {
-        if (crmv == null || !crmv.isValid()) {
+        if (crmv == null || !crmv.isValid(crmv)) {
             throw new IllegalArgumentException("CRMV inválido.");
+        }
+        if (isCrmvAlreadyRegistered(crmv)!= null ) {
+            throw new IllegalArgumentException("CRMV já cadastrado em outro veterinário.");
         }
         this.name = name;
         this.address = address;
@@ -21,6 +30,13 @@ public class Veterinarian {
         this.crmv = crmv;
         this.status = VeterinarianStatus.ACTIVE;
         this.contact = contact;
+        registeredVeterinarians.add(this);
+    }
+
+    private Veterinarian isCrmvAlreadyRegistered(CRMV crmv) {
+        VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
+        VeterinarianServices vetservice = new VeterinarianServices(veterinarianRepository);
+        return vetservice.findVeterinarian(crmv);
     }
 
     public String getName() {
@@ -79,7 +95,8 @@ public class Veterinarian {
         return contact;
     }
 
-    public VeterinarianStatus InformVeterinarinaSatus() {
+    public VeterinarianStatus InformVeterinarianStatus() {
         return status;
     }
+
 }
