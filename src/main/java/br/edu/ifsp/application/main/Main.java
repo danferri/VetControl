@@ -112,10 +112,7 @@ public class Main {
 
         System.out.println("Consultas do PET: " + appointmentService.listAppointmentsByPet(pet));
 
+        Veterinarian veterinarian1 = new Veterinarian("Dan", "Rua da rua", "Zoista", "16 9999999-8888", null, "vet@vet.vet");
+        System.out.println(veterinarian1);
     }
-
-
-
-
-
 }
