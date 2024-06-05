@@ -157,12 +157,11 @@ public class AttendantServices {
         ArrayList<Appointment> appointments = new ArrayList<Appointment>();
         appointments.add(findOneAppointment(id));
         ExportAppointmentReportUseCase exportAppointmentReportUseCase = new ExportAppointmentReportUseCase();
-        exportAppointmentReportUseCase.exportReportPDF(appointments, "C:\\Users\\ggatt\\OneDrive\\Área de Trabalho\\ADS - IFSP\\5 Semestre\\DOO - Lucas");
+        exportAppointmentReportUseCase.exportReportPDF(appointments, "");
     }
 
     public List<Appointment> generateApointmentReport(Veterinarian veterinarian, Pet pet, LocalDate startDate, LocalDate endDate){
-        AppointmentPersistence appointmentRepositoryTest = new AppointmentPersistence();
-        GenerateAppointmentReportUseCase generateAppointmentReportUseCase = new GenerateAppointmentReportUseCase(appointmentRepositoryTest);
+        GenerateAppointmentReportUseCase generateAppointmentReportUseCase = new GenerateAppointmentReportUseCase(appointmentRepository);
         return generateAppointmentReportUseCase.GenerateAppointment(veterinarian, pet, startDate, endDate);
     }
 

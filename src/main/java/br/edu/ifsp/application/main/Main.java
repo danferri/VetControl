@@ -141,11 +141,13 @@ public class Main {
             System.out.println("Exibição do Relatório");
             attendantServices.printApointment(1);
 
+
             System.out.println("Exportando o relatório em PDF");
             attendantServices.exportReport(1);
 
-            System.out.println("Gerando relatório de consulta");
-            System.out.println(attendantServices.generateApointmentReport(vetUser, pet, LocalDate.now(),
+
+            System.out.println();
+            System.out.println(attendantServices.generateApointmentReport(vetUser, pet, LocalDate.now().minusDays(1),
                     LocalDate.now().plusDays(1)));
 
             // Mudança para estados inválidos
