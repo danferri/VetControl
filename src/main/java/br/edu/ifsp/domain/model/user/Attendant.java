@@ -14,12 +14,12 @@ public class Attendant implements User {
 
     @Override
     public boolean authenticateUser() {
-        return false;
+        return login.equals("masterCredentials");
     }
 
     @Override
     public boolean accessLevel() {
-        return false;
+        return true;
     }
 
 }

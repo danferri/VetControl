@@ -14,6 +14,7 @@ import java.time.LocalTime;
 
 public class Main {
     public static void main(String[] args) {
+
         // Inicializando repositórios e serviços
         ClientRepository clientRepository = new ClientPersistence();
         PetRepository petRepository = new PetPersistence();
@@ -21,102 +22,192 @@ public class Main {
         VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
         PaymentRepository paymentRepository = new PaymentPersistence();
 
-        VeterinarianServices veterinarianServices = new VeterinarianServices(veterinarianRepository);
-        ClientServices clientServices = new ClientServices(clientRepository);
-        PetServices petServices = new PetServices(petRepository, clientRepository);
-        AppointmentService appointmentService = new AppointmentService(appointmentRepository);
+        AttendantServices attendantServices = new AttendantServices(veterinarianRepository,
+                clientRepository, petRepository, appointmentRepository, paymentRepository);
+
+        VeterinarianServices veterinarianServices = new VeterinarianServices(petRepository, appointmentRepository,
+                veterinarianRepository);
+
         PaymentServices paymentServices = new PaymentServices(paymentRepository);
 
-        // Criação do Veterinário
-        CRMV crmv = new CRMV("SP-16257");
-       veterinarianServices.addVeterinarian( "Dr. João", "Rua A, 123", "Clínica Geral", "123456789", crmv,"16991354610" );
-        Veterinarian veterinarian = veterinarianServices.findVeterinarian(crmv);
-
-      /*
-
-        Teste UseCasesVeterinario
-      System.out.println("Veterinário criado: " + veterinarian);
-
-       veterinarianServices.updateVeterinarian(crmv, "Cleison", "", "", "5555");
-
-        System.out.println("Veterinário editado : " + veterinarian);
-
-        veterinarianServices.deactivateVeterinarian(crmv);
-
-        System.out.println("Veterinário Status : " + veterinarian);
-*/
-
-        CPF cpf = new CPF("43788984848" );
-        clientServices.insert("João Silva", "Rua A, 123", cpf);
-        Client client = clientServices.FindOne(cpf);
+        // Usuário interagindo com o sistema
+        Attendant admUser;
+        Veterinarian vetUser;
 
 
-        // Criação do Pet
-        petServices.addPet(1, "Rex", "Labrador", "Cachorro", client);
-        Pet pet = petServices.findPet(1);
+        // Criação do Atendente
+        String credencialAtendente = "masterCredentials";
+        admUser = new Attendant(credencialAtendente);
 
-       /*
-            Testes do PET
-       petServices.updatePet(1, "", "", "Girafa");
-        System.out.println("Pet cadastrado: " + pet);
+        // Validação do usuário para acesso aos métodos de Atendente
+        if (admUser.accessLevel() && admUser.authenticateUser()){
+            System.out.println("Atendente logado");
 
-        petServices.AddPetToCLient(pet, cpf);
+            // Criação do Veterinário
+            CRMV crmv = new CRMV("SP-16257");
+            attendantServices.addVeterinarian( "Dr. João", "Rua A, 123",
+                    "Clínica Geral", "123456789", crmv,"16991354610" );
+            vetUser = attendantServices.findVeterinarian(crmv);
 
-        System.out.println("Status do PET: "+ pet.getStatus());
+            //Teste UseCasesVeterinario
+            System.out.println("\n" + "Teste dos Métodos de Veterinário" + "\n");
+            System.out.println("Veterinário criado: " + vetUser);
 
-        petServices.deactivatePet(1);
+            attendantServices.updateVeterinarian(crmv, "Cleison", "",
+                    "", "5555");
 
-        System.out.println("Status do PET desativado? : "+ pet.getStatus());
-*/
+            System.out.println("Veterinário editado : " + vetUser);
 
+            // Criação do Cliente
+            CPF cpf = new CPF("43788984848" );
+            attendantServices.addClient("João Silva", "Rua A, 123", cpf);
+            Client client = attendantServices.findOneClient(cpf);
 
-        System.out.println("Cliente cadastrado: " + client);
+            // Teste UseCasesCliente
+            System.out.println("\n" + "Teste dos Métodos de Cliente" + "\n");
+            System.out.println("Cliente criado: " + client);
 
+            attendantServices.updateClient(cpf, "João da Silva Macedo Carvalho", "");
 
-        //Criando Pagamento
+            System.out.println("Cliente editado : " + client);
 
-        paymentServices.addPayment(1, "Cartao", 1000.00);
-        Payment payment = paymentServices.findPayment(1);
+            // Criação do Pet
+            attendantServices.addPet(1, "Rex", "Labrador", "Cachorro", client);
+            Pet pet = attendantServices.findPet(1);
 
-        /*
-            TESTES DE PAYMENT USE CASE
-        System.out.println("Payment Method: "+ payment.getMethod() + "\n"+ "PayMent Amount: "+ payment.getAmount()+ "Payment Status: "+payment.getStatus());
-        paymentServices.processPayment(1);
+            // Teste UseCasesPet
+            System.out.println("\n" + "Teste dos Métodos de Pet" + "\n");
+            System.out.println("Pet cadastrado: " + pet);
 
-        Payment processedPayment = paymentServices.findPayment(1);
-        System.out.println("Payment Method: "+ processedPayment.getMethod() + "\n"+ "PayMent Amount: "+ processedPayment.getAmount()+ "Payment Status: "+processedPayment.getStatus());
-        */
+            attendantServices.updatePet(1, "", "", "Girafa");
 
+            System.out.println("Pet editado: " + pet);
 
-        // Criação da Consulta
-        appointmentService.Insert(1, LocalDate.now(), LocalTime.of(10, 0), "Consulta de rotina", veterinarian, pet, payment, 100.0);
-        Appointment appointment = appointmentService.findOne(1);
-        System.out.println("Consulta cadastrada: " + appointment+ "\n");
+            System.out.println("Dono antes do adição do pet: " + client.getPets());
 
+            attendantServices.addPetToCLient(pet, cpf);
 
-        //AppointmentService.cancel(1);
-        appointmentService.Perform(1);
-        paymentServices.processPayment(1);
+            System.out.println("Dono depois da adição do pet: " + client.getPets());
 
-        appointmentService.updateAppointment(1, null,null, "Consulta de ferramentas");
-        Appointment Updatedappointment = appointmentService.findOne(1);
-        System.out.println("Consulta Update: " + Updatedappointment+ "\n");
+            System.out.println("Status do PET: "+ pet.informPetStautus());
 
-        System.out.println("Consultas do VET: "+ appointmentService.viewAppointments(veterinarian));
-        System.out.println("\n");
-        System.out.println("//////////////////////////////////////////////////////////////////////////");
-        System.out.println("\n");
+            // Criação do Pagamento
+            paymentServices.addPayment(1, "Cartao", 1000.00);
+            Payment payment = attendantServices.findPayment(1);
 
-        System.out.println("Consultas do PET: " + appointmentService.listAppointmentsByPet(pet));
+            // Teste UseCasesPagamento
+            System.out.println("\n" + "Teste dos Métodos de Pagamento" + "\n");
+            System.out.println("Método de Pagamento: "+ payment.getMethod() + "\n"+ "Valor: "
+                    + payment.getAmount()+ "\n" + "Status do Pagamento: "+payment.getStatus());
 
+            // Criação da Consulta
+            Veterinarian vet = vetUser;
+            attendantServices.addAppointment(1, LocalDate.now(), LocalTime.of(10, 0),
+                    "Consulta de rotina", vet, pet, payment, 100.0);
+            Appointment appointment = attendantServices.findOneAppointment(1);
+
+            // Teste UseCasesConsulta
+            System.out.println("\n" + "Teste dos Métodos de Consulta" + "\n");
+            System.out.println("Consulta cadastrada: " + appointment+ "\n");
+
+            attendantServices.updateAppointment(1, null, null,
+                    "Consulta de ferramentas");
+
+            System.out.println("Consulta editada: " + appointment + "\n");
+
+            System.out.println("Listando consultas por determinado Veterinário:");
+            for(Appointment appointmentListItem : attendantServices.viewAppointments(vet)){
+                System.out.println(appointmentListItem);
+            }
+
+            System.out.println("\n");
+
+            System.out.println("Listando consultas por determinado Pet");
+            for(Appointment appointmentListItem : attendantServices.listAppointmentsByPet(pet)){
+                System.out.println(appointmentListItem);
+            }
+
+            System.out.println("\n");
+
+            attendantServices.cancelAppointment(1);
+
+            System.out.println("Buscando consulta cancelada: ");
+            System.out.println("Id: " + appointment.getId() + "\n" + "Data: " + appointment.getDate() + "\n"
+                    + "Status: " + appointment.getStatus());
+
+            // Teste de Relatórios
+            System.out.println("\nTeste de Relatórios\n");
+
+            System.out.println("Exibição do Relatório");
+            attendantServices.printApointment(1);
+
+            System.out.println("Exportando o relatório em PDF");
+            attendantServices.exportReport(1);
+
+            System.out.println("Gerando relatório de consulta");
+            System.out.println(attendantServices.generateApointmentReport(vetUser, pet, LocalDate.now(),
+                    LocalDate.now().plusDays(1)));
+
+            // Mudança para estados inválidos
+            System.out.println("\nMudança de estado dos objetos para inválidos:");
+            attendantServices.deactivateVeterinarian(crmv);
+
+            System.out.println("\nNome Veterinário: " + vetUser.getName() + "Veterinário Status : " + vetUser.informVeterinarianStatus());
+
+            attendantServices.deactivatePet(1);
+
+            System.out.println("\n" + "Status do PET desativado : "+ pet.informPetStautus());
+
+            attendantServices.processPayment(1);
+
+            System.out.println("\n" + "Pagamento efetivado: " + "\n");
+
+            System.out.println("Payment Method: "+ payment.getMethod() + "\n"+ "PayMent Amount: "
+                    + payment.getAmount()+ "\n" +
+                    "" +
+                    "Payment Status: "+payment.getStatus());
+        }
+
+        // Criação do Veterinário para teste de Fluxo
         CRMV crmv1 = new CRMV( "MT-12368");
-       veterinarianServices.addVeterinarian  ("Dan", "Rua da rua", "Zoista", "16 9999999-8888", crmv1, "vet@vet.vet");
-       Veterinarian veterinarian1 = veterinarianServices.findVeterinarian(crmv1);
-        System.out.println(veterinarian1);
+        //CRMV crmv1 = new CRMV("SP-16257");
+        attendantServices.addVeterinarian  ("Dan", "Rua da rua", "Zoista", "16 9999999-8888", crmv1, "vet@vet.vet");
+        vetUser = attendantServices.findVeterinarian(crmv1);
 
-        appointmentService.Insert(1, LocalDate.now(), LocalTime.of(10, 0), "Consulta de rotina", veterinarian1, pet, payment, 100.0);
+        System.out.println("\n================================================================================\n");
 
 
+        // Validação do Usuário para acesso aos métodos de Veterinário
+        if (!vetUser.accessLevel() && vetUser.authenticateUser()) {
+            System.out.println("Veterinário logado");
+
+            // Criação de Classes para teste de fluxo Veterinário
+            System.out.println("\nCriação de Classes para teste de fluxo Veterinário");
+
+            CPF cpf = new CPF("56344906006" );
+            attendantServices.addClient("Maria Cláudia", "Rua B, 456", cpf);
+            Client clientTest = attendantServices.findOneClient(cpf);
+
+            attendantServices.addPet(2, "Gigante", "Pincher", "Cachorro", clientTest);
+            Pet petTest = attendantServices.findPet(2);
+
+            attendantServices.addPetToCLient(petTest, cpf);
+
+            paymentServices.addPayment(2, "Dinheiro", 3500.00);
+            Payment paymentTest = attendantServices.findPayment(2);
+
+            System.out.println(clientTest.getPets());
+
+            attendantServices.addAppointment(2, LocalDate.now(), LocalTime.of(10, 0),
+                    "Consulta de rotina", vetUser, petTest, paymentTest, 100.0);
+
+            veterinarianServices.perform(2);
+
+            System.out.println("Status da consulta finalizada por médico: "
+                    + attendantServices.findOneAppointment(2).getStatus());
+        }
+
+        else System.out.println("Login Inválido!");
 
     }
 }

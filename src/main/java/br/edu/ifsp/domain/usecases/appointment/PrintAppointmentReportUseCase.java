@@ -7,7 +7,7 @@ import br.edu.ifsp.domain.model.appointment.Appointment;
 import java.util.List;
 
 public class PrintAppointmentReportUseCase {
-    public static void printAppointments(List<Appointment> appointments) {
+    public void printAppointments(List<Appointment> appointments) {
         if (appointments == null || appointments.isEmpty()) {
             System.out.println("Nenhuma consulta encontrada com os dados fornecidos");
         } else {

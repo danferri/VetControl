@@ -53,7 +53,7 @@ public class Pet {
         this.status = status;
     }
 
-    public PetStatus InformPetStautus() {
+    public PetStatus informPetStautus() {
         return status;
     }
 
