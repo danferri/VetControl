@@ -94,6 +94,10 @@ public class Appointment {
         this.cost = cost;
     }
 
+    public Payment getPayment() {
+        return payment;
+    }
+
     @Override
     public String toString() {
         return "Appointment{" +
