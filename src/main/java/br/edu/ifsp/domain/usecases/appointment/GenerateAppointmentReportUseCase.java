@@ -4,6 +4,7 @@ package br.edu.ifsp.domain.usecases.appointment;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.domain.model.appointment.Appointment;
+import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 
@@ -12,18 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateAppointmentReportUseCase {
-    private AppointmentPersistence appointmentPersistence;
+    private AppointmentRepository appointmentRepository;
 
-    public GenerateAppointmentReportUseCase(AppointmentPersistence appointmentPersistence) {
-        this.appointmentPersistence = appointmentPersistence;
+    public GenerateAppointmentReportUseCase(AppointmentRepository appointmentRepository) {
+        this.appointmentRepository = appointmentRepository;
     }
 
     public List<Appointment> GenerateAppointment (Veterinarian veterinarian, Pet pet, LocalDate startDate, LocalDate endDate){
         List<Appointment> appointmentReport = new ArrayList<> ();
         if (veterinarian != null){
-            List<Appointment> vetList = appointmentPersistence.findByVeterinarian(veterinarian);
+            List<Appointment> vetList = appointmentRepository.findByVeterinarian(veterinarian);
             if (pet != null){
-                List<Appointment> petList = appointmentPersistence.findByPet(pet);
+                List<Appointment> petList = appointmentRepository.findByPet(pet);
                 for (Appointment appointment : vetList){
                     if (petList.contains(appointment)){
                         if (appointment.getDate().isAfter(startDate) && appointment.getDate().isBefore(endDate)){
@@ -39,14 +40,14 @@ public class GenerateAppointmentReportUseCase {
                 }
             }
         } else if (pet != null){
-            List<Appointment> petList = appointmentPersistence.findByPet(pet);
+            List<Appointment> petList = appointmentRepository.findByPet(pet);
             for (Appointment appointment : petList){
                 if (appointment.getDate().isAfter(startDate) && appointment.getDate().isBefore(endDate)){
                     appointmentReport.add(appointment);
                 }
             }
         } else {
-            List<Appointment> allAppointments = appointmentPersistence.findAll();
+            List<Appointment> allAppointments = appointmentRepository.findAll();
             for (Appointment appointment : allAppointments){
                 if (appointment.getDate().isAfter(startDate) && appointment.getDate().isBefore(endDate)){
                     appointmentReport.add(appointment);
