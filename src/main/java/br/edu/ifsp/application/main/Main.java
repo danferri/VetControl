@@ -132,7 +132,21 @@ public class Main {
             attendantServices.cancelAppointment(1);
 
             System.out.println("Buscando consulta cancelada: ");
-            System.out.println("Id: " + appointment.getId() + "\n" + "Data: " + appointment.getDate() + "\n" + "Status: " + appointment.getStatus());
+            System.out.println("Id: " + appointment.getId() + "\n" + "Data: " + appointment.getDate() + "\n"
+                    + "Status: " + appointment.getStatus());
+
+            // Teste de Relatórios
+            System.out.println("\nTeste de Relatórios\n");
+
+            System.out.println("Exibição do Relatório");
+            attendantServices.printApointment(1);
+
+            System.out.println("Exportando o relatório em PDF");
+            attendantServices.exportReport(1);
+
+            System.out.println("Gerando relatório de consulta");
+            System.out.println(attendantServices.generateApointmentReport(vetUser, pet, LocalDate.now(),
+                    LocalDate.now().plusDays(1)));
 
             // Mudança para estados inválidos
             System.out.println("\nMudança de estado dos objetos para inválidos:");

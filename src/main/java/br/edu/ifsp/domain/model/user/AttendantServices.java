@@ -1,5 +1,7 @@
 package br.edu.ifsp.domain.model.user;
 
+import br.edu.ifsp.App;
+import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.*;
@@ -16,6 +18,7 @@ import br.edu.ifsp.domain.usecases.veterinarian.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AttendantServices {
@@ -141,4 +144,27 @@ public class AttendantServices {
         FindPaymentUseCase findPaymentUseCase = new FindPaymentUseCase(paymentRepository);
         return  findPaymentUseCase.visualizarPagamento(id);
     }
+
+    // Gerencia Relatórios
+    public void printApointment(int id){
+        List<Appointment> appointments = new ArrayList<Appointment>();
+        appointments.add(findOneAppointment(id));
+        PrintAppointmentReportUseCase printAppointmentReportUseCase = new PrintAppointmentReportUseCase();
+        printAppointmentReportUseCase.printAppointments(appointments);
+    }
+
+    public void exportReport(int id){
+        ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+        appointments.add(findOneAppointment(id));
+        ExportAppointmentReportUseCase exportAppointmentReportUseCase = new ExportAppointmentReportUseCase();
+        exportAppointmentReportUseCase.exportReportPDF(appointments, "C:\\Users\\ggatt\\OneDrive\\Área de Trabalho\\ADS - IFSP\\5 Semestre\\DOO - Lucas");
+    }
+
+    public List<Appointment> generateApointmentReport(Veterinarian veterinarian, Pet pet, LocalDate startDate, LocalDate endDate){
+        AppointmentPersistence appointmentRepositoryTest = new AppointmentPersistence();
+        GenerateAppointmentReportUseCase generateAppointmentReportUseCase = new GenerateAppointmentReportUseCase(appointmentRepositoryTest);
+        return generateAppointmentReportUseCase.GenerateAppointment(veterinarian, pet, startDate, endDate);
+    }
+
+
 }
