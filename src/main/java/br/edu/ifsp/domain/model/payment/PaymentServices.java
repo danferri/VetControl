@@ -13,14 +13,4 @@ public class PaymentServices {
         CreatePaymentUseCase addPaymentUseCase = new CreatePaymentUseCase(paymentRepository);
         addPaymentUseCase.cadastrarPagamento(id, method,  amount);
     }
-
-    public Payment findPayment(int id) {
-        FindPaymentUseCase findPaymentUseCase = new FindPaymentUseCase(paymentRepository);
-      return  findPaymentUseCase.visualizarPagamento(id);
-    }
-
-    public void processPayment(int id) {
-        ProcessPaymentUseCase processPaymentUseCase = new ProcessPaymentUseCase(paymentRepository);
-        processPaymentUseCase.processarPagamento(id);
-    }
 }

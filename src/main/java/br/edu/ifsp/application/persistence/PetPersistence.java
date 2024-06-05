@@ -17,7 +17,12 @@ public class PetPersistence implements PetRepository {
 
     @Override
     public Pet findById(int id) {
-        return animais.get(id - 1);
+        for (Pet pet : animais) {
+            if (pet.getId() == id) {
+                return pet;
+            }
+        }
+        return null;
     }
 
     @Override

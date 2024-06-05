@@ -20,7 +20,8 @@ public class Appointment {
     private double cost;
     private Payment payment;
 
-    public Appointment(int id, LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost, Payment payment) {
+    public Appointment(int id, LocalDate date, LocalTime hour, String description,
+                       Veterinarian veterinarian, Pet pet, double cost, Payment payment) {
         validateEntities(veterinarian, pet);
         this.id = id;
         this.date = date;
@@ -34,10 +35,10 @@ public class Appointment {
     }
 
     private void validateEntities(Veterinarian veterinarian, Pet pet) {
-        if (veterinarian.InformVeterinarianStatus()!= VeterinarianStatus.ACTIVE) {
+        if (veterinarian.informVeterinarianStatus()!= VeterinarianStatus.ACTIVE) {
             throw new IllegalArgumentException("Veterinarian is not active.");
         }
-        if (pet.InformPetStautus() != PetStatus.ACTIVE) {
+        if (pet.informPetStautus() != PetStatus.ACTIVE) {
             throw new IllegalArgumentException("Pet is not active.");
         }
     }
@@ -110,7 +111,7 @@ public class Appointment {
     }
 
     public void setVeterinarian(Veterinarian veterinarian) {
-        if (veterinarian.InformVeterinarianStatus() != VeterinarianStatus.ACTIVE) {
+        if (veterinarian.informVeterinarianStatus() != VeterinarianStatus.ACTIVE) {
             throw new IllegalArgumentException("Veterinarian is not active.");
         }
         this.veterinarian = veterinarian;

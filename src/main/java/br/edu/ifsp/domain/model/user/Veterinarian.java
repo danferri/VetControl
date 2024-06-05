@@ -1,11 +1,18 @@
 package br.edu.ifsp.domain.model.user;
 
+import br.edu.ifsp.application.persistence.AppointmentPersistence;
+import br.edu.ifsp.application.persistence.ClientPersistence;
+import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
+import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
+import br.edu.ifsp.domain.model.client.ClientRepository;
+import br.edu.ifsp.domain.model.client.PetRepository;
+import br.edu.ifsp.domain.model.payment.PaymentRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Veterinarian {
+public class Veterinarian implements User {
     private String id;
     private String name;
     private String address;
@@ -35,8 +42,12 @@ public class Veterinarian {
 
     private Veterinarian isCrmvAlreadyRegistered(CRMV crmv) {
         VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
-        VeterinarianServices vetservice = new VeterinarianServices(veterinarianRepository);
-        return vetservice.findVeterinarian(crmv);
+        PetRepository petRepository  = new PetPersistence();
+        AppointmentRepository appointmentRepository = new AppointmentPersistence();
+
+        VeterinarianServices vetServices = new VeterinarianServices(petRepository, appointmentRepository,
+                veterinarianRepository);
+        return vetServices.findVeterinarian(crmv);
     }
 
     public String getName() {
@@ -95,8 +106,20 @@ public class Veterinarian {
         return contact;
     }
 
-    public VeterinarianStatus InformVeterinarianStatus() {
+    public VeterinarianStatus informVeterinarianStatus() {
         return status;
     }
 
+    @Override
+    public boolean authenticateUser() {
+        if (registeredVeterinarians.contains(this)){
+            return true;
+        };
+        return false;
+    }
+
+    @Override
+    public boolean accessLevel() {
+        return false;
+    }
 }
