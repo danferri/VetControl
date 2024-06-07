@@ -1,7 +1,5 @@
 package br.edu.ifsp.domain.model.user;
 
-import br.edu.ifsp.App;
-import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.*;
