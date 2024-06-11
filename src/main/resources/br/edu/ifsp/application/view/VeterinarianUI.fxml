@@ -7,22 +7,22 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.VeterinarianUIController">
    <children>
       <Label layoutX="58.0" layoutY="64.0" text="Nome:" textAlignment="CENTER" AnchorPane.topAnchor="64.0" />
-      <TextField fx:id="txtName" layoutX="109.0" layoutY="60.0" prefHeight="25.0" prefWidth="470.0" promptText="Daniel Ferri" />
+      <TextField fx:id="txtName" layoutX="109.0" layoutY="60.0" prefHeight="25.0" prefWidth="470.0" promptText="digite o nome do veterinário" />
       <Label layoutX="263.0" layoutY="14.0" text="Veterinário">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Label layoutX="48.0" layoutY="98.0" text="Endereço: " />
-      <TextField fx:id="txtAddress" layoutX="109.0" layoutY="94.0" prefHeight="25.0" prefWidth="470.0" />
+      <TextField fx:id="txtAddress" layoutX="109.0" layoutY="94.0" prefHeight="25.0" prefWidth="470.0" promptText="digite o endereço" />
       <Label layoutX="25.0" layoutY="134.0" text="Especialidade:" />
-      <TextField fx:id="txtSpecialty" layoutX="109.0" layoutY="130.0" prefHeight="25.0" prefWidth="261.0" />
+      <TextField fx:id="txtSpecialty" layoutX="109.0" layoutY="130.0" prefHeight="25.0" prefWidth="261.0" promptText="digite a especialidade" />
       <Label layoutX="393.0" layoutY="134.0" text="CRMV:" />
-      <TextField fx:id="txtCRMV" layoutX="435.0" layoutY="130.0" prefHeight="25.0" prefWidth="143.0" />
+      <TextField fx:id="txtCRMV" layoutX="435.0" layoutY="130.0" prefHeight="25.0" prefWidth="143.0" promptText="digite o CRMV" />
       <Label layoutX="53.0" layoutY="172.0" text="Contato:" />
       <Label layoutX="381.0" layoutY="172.0" text="Telefone:" />
-      <TextField fx:id="txtContact" layoutX="109.0" layoutY="168.0" prefHeight="25.0" prefWidth="261.0" />
-      <TextField fx:id="txtPhone" layoutX="435.0" layoutY="168.0" prefHeight="25.0" prefWidth="143.0" />
+      <TextField fx:id="txtContact" layoutX="109.0" layoutY="168.0" prefHeight="25.0" prefWidth="261.0" promptText="digite o e-mail" />
+      <TextField fx:id="txtPhone" layoutX="435.0" layoutY="168.0" prefHeight="25.0" prefWidth="143.0" promptText="digite o telefone" />
       <Button layoutX="502.0" layoutY="348.0" mnemonicParsing="false" onAction="#saveOrUpdate" prefHeight="25.0" prefWidth="67.0" text="Salvar" />
       <Button layoutX="422.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToPreviousScene" text="Cadastrar" />
    </children>

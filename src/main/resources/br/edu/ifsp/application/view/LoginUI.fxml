@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.LoginUI">
+    <children>
+        <Text layoutX="77.0" layoutY="82.0" text="VetControl - Sistema de Gestão Veterinária">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Text>
+        <Label layoutX="144.0" layoutY="147.0" text="Usuário:" />
+        <TextField fx:id="usernameField" layoutX="209.0" layoutY="143.0" prefHeight="25.0" prefWidth="182.0" promptText="Digite seu usuário" />
+        <Label layoutX="152.0" layoutY="192.0" text="Senha:" />
+        <PasswordField fx:id="passwordField" layoutX="209.0" layoutY="188.0" prefHeight="25.0" prefWidth="182.0" promptText="Digite sua senha" />
+        <Button layoutX="276.0" layoutY="256.0" maxWidth="Infinity" onAction="#Login" text="Entrar" />
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+</AnchorPane>

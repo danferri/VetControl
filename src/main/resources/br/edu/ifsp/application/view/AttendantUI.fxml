@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AttendantUI">
+    <children>
+        <Text layoutX="164.0" layoutY="51.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Tela Principal - Atendente" />
+        <Button layoutX="45.0" layoutY="132.0" maxWidth="Infinity" onAction="#ManageVeterinarians" text="Gerenciar Veterinários" />
+        <Button layoutX="402.0" layoutY="200.0" maxWidth="Infinity" onAction="#ManageClients" text="Gerenciar Clientes" />
+        <Button layoutX="56.0" layoutY="200.0" maxWidth="Infinity" onAction="#ManageAnimals" text="Gerenciar Animais" />
+        <Button layoutX="397.0" layoutY="132.0" maxWidth="Infinity" onAction="#ManageAppointments" text="Gerenciar Consultas" />
+        <Button layoutX="236.0" layoutY="200.0" maxWidth="Infinity" onAction="#GenerateReports" text="Emitir Relatórios" />
+        <Button layoutX="218.0" layoutY="132.0" maxWidth="Infinity" onAction="#ManagePayments" text="Gerenciar Pagamentos" />
+        <Button layoutX="269.0" layoutY="317.0" maxWidth="Infinity" onAction="#Logout" text="Sair" />
+    </children>
+
+
+
+
+</AnchorPane>
