@@ -2,7 +2,7 @@ package br.edu.ifsp.application.controller;
 
 import javafx.event.ActionEvent;
 
-public class AttendantUI {
+public class AttendantUIController {
 
     public void ManageVeterinarians(ActionEvent actionEvent) {
     }
