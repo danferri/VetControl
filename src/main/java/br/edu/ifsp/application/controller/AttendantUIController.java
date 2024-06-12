@@ -1,8 +1,10 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.view.AttendantView;
 import javafx.event.ActionEvent;
 
 public class AttendantUIController {
+    private AttendantView attendantView;
 
     public void ManageVeterinarians(ActionEvent actionEvent) {
     }
@@ -23,5 +25,9 @@ public class AttendantUIController {
     }
 
     public void Logout(ActionEvent actionEvent) {
+    }
+
+    public void init(AttendantView attendantView) {
+        this.attendantView =    attendantView;
     }
 }
