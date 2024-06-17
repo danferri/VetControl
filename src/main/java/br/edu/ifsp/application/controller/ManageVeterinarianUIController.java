@@ -53,4 +53,9 @@ public class ManageVeterinarianUIController {
 
         tableVeterinarian.refresh();
     }
+
+    @FXML
+    public void close() {
+        manageVeterinarianView.close();
+    }
 }

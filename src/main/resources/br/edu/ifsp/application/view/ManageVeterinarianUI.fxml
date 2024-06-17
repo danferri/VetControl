@@ -16,6 +16,6 @@
       <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addVeterinarianButton" prefHeight="25.0" prefWidth="128.0" text="Cadastrar Vet." />
       <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Editar Vet." />
       <Button layoutX="14.0" layoutY="143.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Inativar Vet." />
-      <Button layoutX="14.0" layoutY="481.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
+      <Button fx:id="voltar" layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
    </children>
 </AnchorPane>

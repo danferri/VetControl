@@ -28,7 +28,7 @@ public class ManageVeterinarianView {
             controller.init(this, veterinarianPersistence);
 
             Scene scene = new Scene(root);
-            stage.setTitle("Cadastro de Veterinário");
+            stage.setTitle("Gerenciamento de Veterinário");
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
