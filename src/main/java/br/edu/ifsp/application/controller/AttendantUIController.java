@@ -1,24 +1,21 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AttendantView;
 import br.edu.ifsp.application.view.ClientView;
-import br.edu.ifsp.application.view.VeterinarianView;
+import br.edu.ifsp.application.view.AddVeterinarianView;
+import br.edu.ifsp.application.view.ManageVeterinarianView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.layout.Pane;
-
-import java.net.URL;
 
 public class AttendantUIController {
     private AttendantView attendantView;
-
+    private VeterinarianPersistence veterinarianPersistence = new VeterinarianPersistence();
 
     @FXML
     public void ManageVeterinarians(ActionEvent actionEvent) {
-        VeterinarianView veterinarianView = new VeterinarianView();
-        veterinarianView.showAnWait();
+        ManageVeterinarianView manageVeterinarianView = new ManageVeterinarianView(veterinarianPersistence);
+        manageVeterinarianView.showAndWait();
     }
 
     @FXML

@@ -1,7 +1,7 @@
 package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
-import br.edu.ifsp.application.view.VeterinarianView;
+import br.edu.ifsp.application.view.AddVeterinarianView;
 
 import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.usecases.veterinarian.AddVeterinarianUseCase;
@@ -11,8 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 
-public class VeterinarianUIController {
-
+public class AddVeterinarianUIController {
     @FXML private TextField txtName;
     @FXML private TextField txtAddress;
     @FXML private TextField txtSpecialty;
@@ -20,20 +19,15 @@ public class VeterinarianUIController {
     @FXML private TextField txtContact;
     @FXML private TextField txtPhone;
 
-    private VeterinarianView veterinarianView;
+    private AddVeterinarianView addVeterinarianView;
     private AddVeterinarianUseCase addVeterinarianUseCase;
 
-    public VeterinarianUIController() {
-        this.addVeterinarianUseCase = new AddVeterinarianUseCase(new VeterinarianPersistence());
+    public void init(AddVeterinarianView addVeterinarianView, VeterinarianPersistence veterinarianPersistence) {
+        this.addVeterinarianView = addVeterinarianView;
+        this.addVeterinarianUseCase = new AddVeterinarianUseCase(veterinarianPersistence);
     }
-
-    public void init(VeterinarianView veterinarianView) {
-        this.veterinarianView = veterinarianView;
-    }
-
 
     public void saveOrUpdate(ActionEvent actionEvent) {
-
         String name = txtName.getText();
         String address = txtAddress.getText();
         String specialty = txtSpecialty.getText();
@@ -46,9 +40,9 @@ public class VeterinarianUIController {
         try {
             boolean retorno = addVeterinarianUseCase.cadastrarVeterinario(name, address, specialty, phone, crmv, contact);
             if (retorno) {
-                if (veterinarianView != null) {
+                if (addVeterinarianView != null) {
                     alertSuccessCadastro();
-                    veterinarianView.close();
+                    addVeterinarianView.close();
                 }
             } else {
                 alertFailCadastro();
@@ -86,8 +80,8 @@ public class VeterinarianUIController {
     }
 
     public void backToPreviousScene(ActionEvent actionEvent) {
-        if (veterinarianView != null) {
-            veterinarianView.close();
+        if (addVeterinarianView != null) {
+            addVeterinarianView.close();
         }
     }
 }
