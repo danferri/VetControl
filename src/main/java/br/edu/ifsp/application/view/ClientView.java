@@ -15,7 +15,7 @@ public class ClientView {
         this.stage = new Stage();
     }
 
-    public void showAnWait() {
+    public void showAndWait() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifsp/application/view/ClientUI.fxml"));
             Parent root = loader.load();

@@ -4,13 +4,13 @@ import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddVeterinarianView;
 import br.edu.ifsp.application.view.ManageVeterinarianView;
 import br.edu.ifsp.domain.model.user.Veterinarian;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ManageVeterinarianUIController {
     public static ObservableList<Veterinarian> veterinarians;
@@ -24,7 +24,7 @@ public class ManageVeterinarianUIController {
         this.manageVeterinarianView = manageVeterinarianView;
         this.veterinarianPersistence = veterinarianPersistence;
 
-        setupCollumns();
+        setupColumns();
         insertData();
         loadData();
     }
@@ -32,13 +32,13 @@ public class ManageVeterinarianUIController {
     @FXML
     private void addVeterinarianButton(ActionEvent actionEvent) {
         AddVeterinarianView addVeterinarianView = new AddVeterinarianView(veterinarianPersistence);
-        addVeterinarianView.showAnWait();
+        addVeterinarianView.showAndWait();
 
         loadData();
     }
 
-    private void setupCollumns() {
-        colNome.setCellValueFactory(new PropertyValueFactory<>("name"));
+    private void setupColumns() {
+        colNome.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
     }
 
     private void insertData() {

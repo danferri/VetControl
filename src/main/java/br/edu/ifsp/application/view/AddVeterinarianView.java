@@ -18,7 +18,7 @@ public class AddVeterinarianView {
         this.veterinarianPersistence = veterinarianPersistence;
     }
 
-    public void showAnWait() {
+    public void showAndWait() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifsp/application/view/AddVeterinarianUI.fxml"));
             Parent root = loader.load();

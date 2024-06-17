@@ -1,5 +1,6 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AttendantView;
 import br.edu.ifsp.application.view.ClientView;
@@ -11,6 +12,7 @@ import javafx.fxml.FXML;
 public class AttendantUIController {
     private AttendantView attendantView;
     private VeterinarianPersistence veterinarianPersistence = new VeterinarianPersistence();
+    private ClientPersistence clientPersistence = new ClientPersistence();
 
     @FXML
     public void ManageVeterinarians(ActionEvent actionEvent) {
@@ -21,7 +23,7 @@ public class AttendantUIController {
     @FXML
     public void ManageClients(ActionEvent actionEvent) {
         ClientView clientView = new ClientView();
-        clientView.showAnWait();
+        clientView.showAndWait();
     }
 
     public void ManageAnimals(ActionEvent actionEvent) {
