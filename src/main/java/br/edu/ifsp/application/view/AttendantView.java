@@ -19,7 +19,7 @@ public class AttendantView {
             FXMLLoader loader = new FXMLLoader( App.class.getResource( "AttendantUI.fxml" ) );
             sceneGraph = loader.load();
 
-            stage.setTitle( "Login" );
+            stage.setTitle( "Tela Principal" );
             stage.setScene( new Scene( sceneGraph  ) );
             stage.setMaxWidth( 1080 );
             stage.setMaxHeight( 720 );

@@ -4,19 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AttendantUIController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AttendantUIController">
     <children>
-        <Text layoutX="164.0" layoutY="51.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Tela Principal - Atendente" />
-        <Button layoutX="45.0" layoutY="132.0" maxWidth="Infinity" onAction="#ManageVeterinarians" text="Gerenciar Veterinários" />
-        <Button layoutX="402.0" layoutY="200.0" maxWidth="Infinity" onAction="#ManageClients" text="Gerenciar Clientes" />
-        <Button layoutX="56.0" layoutY="200.0" maxWidth="Infinity" onAction="#ManageAnimals" text="Gerenciar Animais" />
-        <Button layoutX="397.0" layoutY="132.0" maxWidth="Infinity" onAction="#ManageAppointments" text="Gerenciar Consultas" />
-        <Button layoutX="236.0" layoutY="200.0" maxWidth="Infinity" onAction="#GenerateReports" text="Emitir Relatórios" />
-        <Button layoutX="218.0" layoutY="132.0" maxWidth="Infinity" onAction="#ManagePayments" text="Gerenciar Pagamentos" />
-        <Button layoutX="269.0" layoutY="317.0" maxWidth="Infinity" onAction="#Logout" text="Sair" />
+        <Text layoutX="253.0" layoutY="40.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Tela Principal - Atendente" />
+          <Button layoutX="205.0" layoutY="109.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageClients" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Clientes" />
+          <Button layoutX="360.0" layoutY="109.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageAppointments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Consultas" />
+          <Button layoutX="205.0" layoutY="160.0" maxWidth="Infinity" minHeight="40.0" onAction="#GenerateReports" prefHeight="40.0" prefWidth="140.0" text="Emitir Relatórios" />
+          <Button layoutX="360.0" layoutY="160.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManagePayments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Pagamentos" />
+          <Button layoutX="342.0" layoutY="508.0" maxWidth="Infinity" minHeight="40.0" onAction="#Logout" prefHeight="40.0" prefWidth="88.0" text="Sair" />
+          <Button layoutX="42.0" layoutY="109.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageVeterinarians" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Veterinários" />
+          <Button layoutX="43.0" layoutY="160.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageAnimals" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Animais" />
     </children>
-
-
-
-
 </AnchorPane>
