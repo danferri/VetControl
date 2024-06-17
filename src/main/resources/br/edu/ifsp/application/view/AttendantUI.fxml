@@ -8,9 +8,9 @@
     <children>
         <Text layoutX="253.0" layoutY="40.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Tela Principal - Atendente" />
           <Button layoutX="205.0" layoutY="109.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageClients" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Clientes" />
-          <Button layoutX="360.0" layoutY="109.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageAppointments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Consultas" />
+          <Button layoutX="367.0" layoutY="109.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageAppointments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Consultas" />
           <Button layoutX="205.0" layoutY="160.0" maxWidth="Infinity" minHeight="40.0" onAction="#GenerateReports" prefHeight="40.0" prefWidth="140.0" text="Emitir Relatórios" />
-          <Button layoutX="360.0" layoutY="160.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManagePayments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Pagamentos" />
+          <Button layoutX="367.0" layoutY="160.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManagePayments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Pagamentos" />
           <Button layoutX="342.0" layoutY="508.0" maxWidth="Infinity" minHeight="40.0" onAction="#Logout" prefHeight="40.0" prefWidth="88.0" text="Sair" />
           <Button layoutX="42.0" layoutY="109.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageVeterinarians" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Veterinários" />
           <Button layoutX="43.0" layoutY="160.0" maxWidth="Infinity" minHeight="40.0" onAction="#ManageAnimals" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Animais" />

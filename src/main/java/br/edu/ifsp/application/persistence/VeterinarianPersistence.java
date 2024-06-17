@@ -11,8 +11,9 @@ public class VeterinarianPersistence implements VeterinarianRepository {
     private List<Veterinarian> veterinarians = new ArrayList<>();
 
     @Override
-    public void save(Veterinarian veterinarian) {
+    public boolean save(Veterinarian veterinarian) {
         veterinarians.add(veterinarian);
+        return true;
     }
 
     @Override

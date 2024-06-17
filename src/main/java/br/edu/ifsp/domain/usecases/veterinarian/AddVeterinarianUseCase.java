@@ -12,8 +12,8 @@ public class AddVeterinarianUseCase {
         this.veterinarianRepository = veterinarianRepository;
     }
 
-    public void cadastrarVeterinario( String name, String address, String specialty, String phone, CRMV crmv, String contact) {
+    public boolean cadastrarVeterinario( String name, String address, String specialty, String phone, CRMV crmv, String contact) {
         Veterinarian veterinarian = new Veterinarian( name, address, specialty, phone, crmv, contact);
-        veterinarianRepository.save(veterinarian);
+        return veterinarianRepository.save(veterinarian);
     }
 }
