@@ -1,8 +1,10 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.view.ClientView;
 import javafx.event.ActionEvent;
 
 public class ClientUIController {
+    private ClientView clientView;
 
     public void addPet(ActionEvent actionEvent) {
     }
@@ -11,5 +13,9 @@ public class ClientUIController {
     }
 
     public void cancel(ActionEvent actionEvent) {
+    }
+
+    public void init(ClientView clientView){
+        this.clientView = clientView;
     }
 }

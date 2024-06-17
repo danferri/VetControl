@@ -1,6 +1,7 @@
 package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.view.AttendantView;
+import br.edu.ifsp.application.view.ClientView;
 import br.edu.ifsp.application.view.VeterinarianView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,12 +18,13 @@ public class AttendantUIController {
     @FXML
     public void ManageVeterinarians(ActionEvent actionEvent) {
         VeterinarianView veterinarianView = new VeterinarianView();
-        veterinarianView.show();
+        veterinarianView.showAnWait();
     }
 
     @FXML
     public void ManageClients(ActionEvent actionEvent) {
-
+        ClientView clientView = new ClientView();
+        clientView.showAnWait();
     }
 
     public void ManageAnimals(ActionEvent actionEvent) {
