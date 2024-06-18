@@ -4,6 +4,7 @@ import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddVeterinarianView;
 import br.edu.ifsp.application.view.ManageVeterinarianView;
 import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.usecases.veterinarian.DeactivateVeterinarianUseCase;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +20,11 @@ public class ManageVeterinarianUIController {
 
     @FXML TableView<Veterinarian> tableVeterinarian;
     @FXML TableColumn<Veterinarian, String> colNome;
+    @FXML TableColumn<Veterinarian, String> colAddress;
+    @FXML TableColumn<Veterinarian, String> colSpecialty;
+    @FXML TableColumn<Veterinarian, String> colCRMV;
+    @FXML TableColumn<Veterinarian, String> colContact;
+    @FXML TableColumn<Veterinarian, String> colPhone;
 
     public void init(ManageVeterinarianView manageVeterinarianView, VeterinarianPersistence veterinarianPersistence) {
         this.manageVeterinarianView = manageVeterinarianView;
@@ -39,6 +45,11 @@ public class ManageVeterinarianUIController {
 
     private void setupColumns() {
         colNome.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
+        colAddress.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAddress()));
+        colSpecialty.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getSpecialty()));
+        colCRMV.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getCrmv().toString()));
+        colContact.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getContact()));
+        colPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
     }
 
     private void insertData() {
@@ -57,5 +68,10 @@ public class ManageVeterinarianUIController {
     @FXML
     public void close() {
         manageVeterinarianView.close();
+    }
+
+    public void deactive(ActionEvent actionEvent) {
+        DeactivateVeterinarianUseCase deactivateVeterinarianUseCase = new DeactivateVeterinarianUseCase(veterinarianPersistence);
+        //deactivateVeterinarianUseCase.inativarVeterinario();
     }
 }

@@ -3,19 +3,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="520.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManageVeterinarianUIController">
+<AnchorPane prefHeight="520.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManageVeterinarianUIController">
    <children>
-      <TableView fx:id="tableVeterinarian" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="406.0">
+      <TableView fx:id="tableVeterinarian" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="525.0">
         <columns>
-          <TableColumn fx:id="colNome" prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="colNome" prefWidth="108.0" text="Nome" />
+          <TableColumn fx:id="colAddress" prefWidth="74.0" text="Endereço" />
+          <TableColumn fx:id="colSpecialty" prefWidth="93.0" text="Especialidade" />
+          <TableColumn fx:id="colCRMV" prefWidth="55.0" text="CRMV" />
+          <TableColumn fx:id="colContact" prefWidth="116.0" text="Contato" />
+          <TableColumn fx:id="colPhone" prefWidth="63.0" text="Telefone" />
         </columns>
       </TableView>
-      <Button layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Button" />
+      <Button fx:id="btnLocalizar" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
       <TextField layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
       <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addVeterinarianButton" prefHeight="25.0" prefWidth="128.0" text="Cadastrar Vet." />
       <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Editar Vet." />
-      <Button layoutX="14.0" layoutY="143.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Inativar Vet." />
+      <Button fx:id="btnInativar" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#deactive" prefHeight="25.0" prefWidth="128.0" text="Inativar Vet." />
       <Button fx:id="voltar" layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
    </children>
 </AnchorPane>
