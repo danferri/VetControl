@@ -12,6 +12,9 @@ public class AddPetUIController {
     @FXML private TextField txtName;
     @FXML private TextField txtBreed;
     @FXML private TextField txtId;
+    //@FXML private TextField txtSpecies;
+    //@FXML private TextField txtOwner;
+    //@FXML private TextField txtStatus;
 
     private AddPetView addPetView;
     private AddPetUseCase addPetUseCase;
@@ -19,15 +22,19 @@ public class AddPetUIController {
     public void init(AddPetView addPetView, PetPersistence petPersistence) {
         this.addPetView = addPetView;
         this.addPetUseCase = new AddPetUseCase(petPersistence);
+
     }
 
     public void saveOrUpdate(ActionEvent actionEvent) {
         String name = txtName.getText();
         String breed = txtBreed.getText();
         int id = Integer.parseInt(txtId.getId());
+        //String species = txtSpecies.getText();
+        //String owner = txtOwner.getText().toString();
+        //String status = txtStatus.getText().toString();
 
         try {
-            boolean retorno = addPetUseCase.cadastrarPet(id, name, breed, species);
+            boolean retorno = addPetUseCase.cadastrarPet(id, name, breed);//, species, owner, status);
             if (retorno) {
                 if (addPetView != null) {
                     alertSuccessCadastro();
