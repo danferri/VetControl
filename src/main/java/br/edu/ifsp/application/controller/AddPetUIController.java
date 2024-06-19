@@ -11,8 +11,8 @@ import javafx.scene.control.TextField;
 public class AddPetUIController {
     @FXML private TextField txtName;
     @FXML private TextField txtBreed;
-    @FXML private TextField txtId;
-    //@FXML private TextField txtSpecies;
+    //@FXML private TextField txtId;
+    @FXML private TextField txtSpecies;
     //@FXML private TextField txtOwner;
     //@FXML private TextField txtStatus;
 
@@ -28,13 +28,13 @@ public class AddPetUIController {
     public void saveOrUpdate(ActionEvent actionEvent) {
         String name = txtName.getText();
         String breed = txtBreed.getText();
-        int id = Integer.parseInt(txtId.getId());
-        //String species = txtSpecies.getText();
-        //String owner = txtOwner.getText().toString();
-        //String status = txtStatus.getText().toString();
+        //int id = Integer.parseInt(txtId.getId());
+        String species = txtSpecies.getText();
+        //String owner = txtOwner.getText().getOwner().toString();
+        //String status = txtStatus.getText().getStatus().toString();
 
         try {
-            boolean retorno = addPetUseCase.cadastrarPet(id, name, breed);//, species, owner, status);
+            boolean retorno = addPetUseCase.cadastrarPet(name, breed, species);
             if (retorno) {
                 if (addPetView != null) {
                     alertSuccessCadastro();
@@ -61,7 +61,7 @@ public class AddPetUIController {
         Alert alert = new Alert( Alert.AlertType.ERROR );
         alert.setTitle( "Erro no Cadastro" );
         alert.setHeaderText( "Erro" );
-        alert.setContentText( "Erro :(" );
+        alert.setContentText( "Erro no cadastro :(" );
 
         alert.showAndWait();
     }

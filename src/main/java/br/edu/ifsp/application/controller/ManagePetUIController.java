@@ -1,5 +1,6 @@
 package br.edu.ifsp.application.controller;
 import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.view.AddPetView;
 import br.edu.ifsp.application.view.ManagePetView;
 import br.edu.ifsp.domain.model.client.Pet;
 import javafx.collections.FXCollections;
@@ -17,8 +18,10 @@ public class ManagePetUIController {
     private ManagePetView managePetView;
 
     @FXML TableView<Pet> tablePet;
+    //@FXML TableColumn<Pet, String> colId;
     @FXML TableColumn<Pet, String> colName;
     @FXML TableColumn<Pet, String> colBreed;
+    @FXML TableColumn<Pet, String> colSpecies;
 
     public void init(ManagePetView managePetView, PetPersistence petPersistence) {
         this.managePetView = managePetView;
@@ -31,15 +34,17 @@ public class ManagePetUIController {
 
     @FXML
     private void addPetButton(ActionEvent actionEvent) {
-        //AddPetView addPetView = new AddPetView(petPersistence);
-        //addPetView.showAndWait();
+        AddPetView addPetView = new AddPetView(petPersistence);
+        addPetView.showAndWait();
 
         loadData();
     }
 
     private void setupColumns() {
+        //colId.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.valueOf(data.getValue().getId())));
         colName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
         colBreed.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBreed()));
+        colSpecies.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getSpecies()));
     }
 
     private void insertData() {

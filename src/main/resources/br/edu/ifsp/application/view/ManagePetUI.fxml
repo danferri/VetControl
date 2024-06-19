@@ -7,10 +7,10 @@
     <children>
         <TableView fx:id="tablePet" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="525.0">
             <columns>
-                <TableColumn fx:id="colId" prefWidth="93.0" text="ID" />
+                <!--<TableColumn fx:id="colId" prefWidth="128.0" text="ID" />-->
                 <TableColumn fx:id="colName" prefWidth="128.0" text="Nome" />
                 <TableColumn fx:id="colBreed" prefWidth="127.0" text="Raça" />
-
+                <TableColumn fx:id="colSpecies" prefWidth="93.0" text="Espécie" />
 
             </columns>
         </TableView>

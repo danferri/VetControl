@@ -4,17 +4,30 @@ public class Pet {
     private int id;
     private String name;
     private String breed;
-    //private String species;
-    //private Client owner;
-    //private PetStatus status;
+    private String species;
+    private Client owner;
+    private PetStatus status;
 
-    public Pet(int id, String name, String breed) {//, String species, Client owner,PetStatus status) {
+    public Pet(int id, String name, String breed, String species, Client owner,PetStatus status) {
         this.id = id;
         this.name = name;
         this.breed = breed;
-        //this.species = species;
-        //this.owner = owner;
-        //this.status = status;
+        this.species = species;
+        this.owner = owner;
+        this.status = status;
+    }
+
+    public Pet(String name, String breed, String species) {
+        this.name = name;
+        this.breed = breed;
+        this.species = species;
+    }
+
+    public Pet(int id, String name, String breed, String species) {
+        this.id = id;
+        this.name = name;
+        this.breed = breed;
+        this.species = species;
     }
 
     public int getId() {
@@ -37,7 +50,7 @@ public class Pet {
         this.breed = breed;
     }
 
-    /*public String getSpecies() {
+    public String getSpecies() {
         return species;
     }
 
@@ -55,7 +68,7 @@ public class Pet {
 
     public PetStatus informPetStautus() {
         return status;
-    } */
+    }
 
     @Override
     public String toString() {
@@ -65,4 +78,6 @@ public class Pet {
                 ", breed='" + breed +
                 '}';
     }
+
+
 }
