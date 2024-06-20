@@ -19,7 +19,7 @@
         </TableView>
         <Button fx:id="btnFind" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
         <TextField layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
-        <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addAppointmentButton" prefHeight="25.0" prefWidth="128.0" text="Cadastrar Consulta" />
+        <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addAppointmentButton" prefHeight="25.0" prefWidth="128.0" text="Agendar Consulta" />
         <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Editar Consulta" />
         <Button fx:id="btnCancel" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="25.0" prefWidth="128.0" text="Cancelar Consulta" />
         <Button fx:id="btnBack" layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />

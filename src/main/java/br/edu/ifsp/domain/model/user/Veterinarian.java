@@ -40,6 +40,10 @@ public class Veterinarian implements User {
         registeredVeterinarians.add(this);
     }
 
+    public Veterinarian(String name) {
+        this.name = name;
+    }
+
     private Veterinarian isCrmvAlreadyRegistered(CRMV crmv) {
         VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
         PetRepository petRepository  = new PetPersistence();

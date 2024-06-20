@@ -30,6 +30,10 @@ public class Pet {
         this.species = species;
     }
 
+    public Pet(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

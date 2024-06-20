@@ -27,7 +27,7 @@ public class ManageAppointmentView {
             controller.init(this, appointmentPersistence);
 
             Scene scene = new Scene(root);
-            stage.setTitle("Gerenciamento de Consultas");
+            stage.setTitle("Agendar Consulta");
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();

@@ -22,9 +22,9 @@ public class AddAppointmentUseCase {
         return appointment;
     }
 
-    public Appointment cadastrarConsulta(LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost) {
+    public boolean cadastrarConsulta(LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost) {
         Appointment appointment = new Appointment(date, hour, description, veterinarian, pet, cost);
-        appointmentRepository.save(appointment);
-        return appointment;
+        return appointmentRepository.save(appointment);
+
     }
 }

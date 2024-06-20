@@ -14,8 +14,9 @@ public class AppointmentPersistence implements AppointmentRepository {
     private int currentId = 1;
 
     @Override
-    public void save(Appointment appointment) {
+    public boolean save(Appointment appointment) {
         appointments.add(appointment);
+        return false;
     }
 
     @Override

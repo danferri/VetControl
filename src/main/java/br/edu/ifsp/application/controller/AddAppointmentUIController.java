@@ -2,7 +2,8 @@ package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.application.view.AddAppointmentView;
-import br.edu.ifsp.domain.model.appointment.Appointment;
+import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.appointment.AddAppointmentUseCase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,8 +20,8 @@ public class AddAppointmentUIController {
     @FXML private DatePicker dpDate;
     @FXML private TextField txtHour;
     @FXML private TextField txtDescription;
-    @FXML private ComboBox<String> cbVeterinarian;
-    @FXML private ComboBox<String> cbPet;
+    @FXML private TextField txtVeterinarian;
+    @FXML private TextField txtPet;
     @FXML private TextField txtCost;
 
     private AddAppointmentView addAppointmentView;
@@ -33,14 +34,18 @@ public class AddAppointmentUIController {
 
     public void saveOrUpdate(ActionEvent actionEvent) {
         LocalDate date = dpDate.getValue();
-        LocalTime hour = LocalTime.parse(txtHour.getText(), DateTimeFormatter.ofPattern("HH:mm"));
+        //LocalTime hour = LocalTime.parse(txtHour.getText(), DateTimeFormatter.ofPattern("HH:mm"));
+        String hour = txtHour.getText();
         String description = txtDescription.getText();
-        String veterinarian = cbVeterinarian.getValue();
-        String pet = cbPet.getValue();
+        String textVeterinarian = txtVeterinarian.getText();
+        String textPet = txtPet.getText();
         double cost = Double.parseDouble(txtCost.getText());
 
+        Pet pet = new Pet(textPet);
+        Veterinarian veterinarian = new Veterinarian(textVeterinarian);
+
         try {
-            boolean result = addAppointmentUseCase.cadastrarConsulta(date, hour, description, veterinarian, pet, cost);
+            boolean result = addAppointmentUseCase.cadastrarConsulta(date, LocalTime.parse(hour), description, veterinarian, pet, cost);
             if (result) {
                 alertSuccessCadastro();
                 addAppointmentView.close();
