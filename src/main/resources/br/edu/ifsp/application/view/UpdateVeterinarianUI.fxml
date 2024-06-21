@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="520.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.UpdateVeterinarianUIController">
     <children>
-        <Label layoutX="20" layoutY="20" text="Atualizar Veterinário" style="-fx-font-size: 18;">
+        <Label layoutX="20" layoutY="20" style="-fx-font-size: 18;" text="Atualizar Veterinário">
             <font>
                 <Font size="14.0" />
             </font>
@@ -18,7 +18,7 @@
         <Label layoutX="20" layoutY="140" text="Especialidade:" />
         <TextField fx:id="txtSpecialty" layoutX="120" layoutY="136" prefWidth="260" promptText="Digite a especialidade" />
         <Label layoutX="20" layoutY="180" text="CRMV:" />
-        <TextField fx:id="txtCRMV" layoutX="120" layoutY="176" prefWidth="260" promptText="Digite o CRMV" editable="false" /> <!-- CRMV não editável -->
+        <TextField fx:id="txtCRMV" disable="true" editable="false" layoutX="120" layoutY="176" prefWidth="260" promptText="Digite o CRMV" />
         <Label layoutX="20" layoutY="220" text="Contato:" />
         <TextField fx:id="txtContact" layoutX="120" layoutY="216" prefWidth="260" promptText="Digite o e-mail" />
         <Label layoutX="400" layoutY="220" text="Telefone:" />
@@ -27,4 +27,3 @@
         <Button layoutX="403" layoutY="480" mnemonicParsing="false" onAction="#backToPreviousScene" text="Voltar" />
     </children>
 </AnchorPane>
-

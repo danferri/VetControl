@@ -91,6 +91,7 @@ public class ManageVeterinarianUIController {
                 updateVeterinarianView = new UpdateVeterinarianView(new UpdateVeterinarianUseCase(veterinarianPersistence));
             }
             updateVeterinarianView.showAndWait(selectedVeterinarian);
+            loadData();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Seleção de Veterinário");
@@ -101,30 +102,6 @@ public class ManageVeterinarianUIController {
 
     }
 
-
-    /*private void showVeterinarian() {
-        Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();
-        if (selectedVeterinarian != null) {
-            Alert detailsAlert = new Alert(Alert.AlertType.INFORMATION);
-            detailsAlert.setTitle("Detalhes do Veterinário");
-            detailsAlert.setHeaderText("Informações do Veterinário");
-            String content = String.format("Nome: %s\nEndereço: %s\nEspecialidade: %s\nCRMV: %s\nContato: %s\nTelefone: %s",
-                    selectedVeterinarian.getName(),
-                    selectedVeterinarian.getAddress(),
-                    selectedVeterinarian.getSpecialty(),
-                    selectedVeterinarian.getCrmv(),
-                    selectedVeterinarian.getContact(),
-                    selectedVeterinarian.getPhone());
-            detailsAlert.setContentText(content);
-            detailsAlert.showAndWait();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Seleção de Veterinário");
-            alert.setHeaderText(null);
-            alert.setContentText("Por favor, selecione um veterinário para ver os detalhes.");
-            alert.showAndWait();
-        }
-    }*/
     @FXML
     public void ShowVeterinarian(ActionEvent actionEvent) {
         Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();

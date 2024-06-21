@@ -41,6 +41,7 @@ public class UpdateVeterinarianUIController {
         try {
             updateVeterinarianUseCase.alterarVeterinario(new CRMV(txtCRMV.getText()), txtName.getText(), txtAddress.getText(), txtSpecialty.getText(), txtPhone.getText());
             updateVeterinarianView.showSuccess();
+            updateVeterinarianView.close();
         } catch (IllegalArgumentException e) {
             updateVeterinarianView.showError(e.getMessage());
         }
