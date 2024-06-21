@@ -3,6 +3,8 @@ package br.edu.ifsp.application.view;
 import br.edu.ifsp.application.controller.AddVeterinarianUIController;
 import br.edu.ifsp.application.controller.ManageVeterinarianUIController;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
+import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.usecases.veterinarian.UpdateVeterinarianUseCase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +19,11 @@ public class ManageVeterinarianView {
     public ManageVeterinarianView(VeterinarianPersistence veterinarianPersistence) {
         this.stage = new Stage();
         this.veterinarianPersistence = veterinarianPersistence;
+    }
+
+    public void openEditVeterinarianView(Veterinarian veterinarian) {
+        UpdateVeterinarianView updateView = new UpdateVeterinarianView(new UpdateVeterinarianUseCase(veterinarianPersistence));
+        updateView.showAndWait(veterinarian);
     }
 
     public void showAndWait() {
