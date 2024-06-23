@@ -6,10 +6,8 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AttendantUIController">
     <children>
-        <!-- Título -->
         <Text layoutX="253.0" layoutY="40.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Tela Principal - Atendente" />
 
-        <!-- Menu lateral usando VBox -->
         <VBox layoutX="14.0" layoutY="131.0" prefWidth="180.0" spacing="10.0">
             <children>
                 <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManageVeterinarians" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Veterinários" />
@@ -23,9 +21,8 @@
             </children>
         </VBox>
 
-        <!-- Espaço reservado para outros conteúdos -->
         <Pane layoutX="206.0" layoutY="66.0" prefHeight="520.0" prefWidth="580.0">
-            <!-- Este Pane pode ser usado para carregar diferentes telas dentro da área principal -->
+
         </Pane>
     </children>
 </AnchorPane>

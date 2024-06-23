@@ -43,13 +43,8 @@ public class Payment {
         this.amount = amount;
     }
 
-    @Override
+
     public String toString() {
-        return "Payment{" +
-                "id=" + id +
-                ", method='" + method + '\'' +
-                ", status=" + status +
-                ", amount=" + amount +
-                '}';
+        return String.valueOf(id);
     }
 }

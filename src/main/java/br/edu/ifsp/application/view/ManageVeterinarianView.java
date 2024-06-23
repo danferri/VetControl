@@ -21,11 +21,6 @@ public class ManageVeterinarianView {
         this.veterinarianPersistence = veterinarianPersistence;
     }
 
-    public void openEditVeterinarianView(Veterinarian veterinarian) {
-        UpdateVeterinarianView updateView = new UpdateVeterinarianView(new UpdateVeterinarianUseCase(veterinarianPersistence));
-        updateView.showAndWait(veterinarian);
-    }
-
     public void showAndWait() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifsp/application/view/ManageVeterinarianUI.fxml"));

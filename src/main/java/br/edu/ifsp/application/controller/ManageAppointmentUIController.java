@@ -1,5 +1,7 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddAppointmentView;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import javafx.collections.FXCollections;
@@ -41,7 +43,10 @@ public class ManageAppointmentUIController {
 
     @FXML
     private void addAppointmentButton(ActionEvent actionEvent) {
-        AddAppointmentView addAppointmentView = new AddAppointmentView(appointmentPersistence);
+        VeterinarianPersistence veterinarianPersistence = new VeterinarianPersistence();
+        PetPersistence petPersistence = new PetPersistence();
+        AppointmentPersistence appointmentPersistence = new AppointmentPersistence();
+        AddAppointmentView addAppointmentView = new AddAppointmentView(appointmentPersistence, veterinarianPersistence, petPersistence);
         addAppointmentView.showAndWait();
 
         loadData();

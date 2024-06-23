@@ -1,9 +1,6 @@
 package br.edu.ifsp.application.controller;
 
-import br.edu.ifsp.application.persistence.AppointmentPersistence;
-import br.edu.ifsp.application.persistence.ClientPersistence;
-import br.edu.ifsp.application.persistence.PetPersistence;
-import br.edu.ifsp.application.persistence.VeterinarianPersistence;
+import br.edu.ifsp.application.persistence.*;
 import br.edu.ifsp.application.view.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +11,7 @@ public class AttendantUIController {
     private ClientPersistence clientPersistence = new ClientPersistence();
     private PetPersistence petPersistence = new PetPersistence();
     private AppointmentPersistence appointmentPersistence = new AppointmentPersistence();
+    private PaymentPersistence paymentPersistence = new PaymentPersistence();
 
     @FXML
     public void ManageVeterinarians(ActionEvent actionEvent) {
@@ -38,9 +36,12 @@ public class AttendantUIController {
     }
 
     public void GenerateReports(ActionEvent actionEvent) {
+        
     }
 
     public void ManagePayments(ActionEvent actionEvent) {
+        ManagePaymentView managePaymentView = new ManagePaymentView(paymentPersistence);
+        managePaymentView.showAndWait();
     }
 
     public void Logout(ActionEvent actionEvent) {

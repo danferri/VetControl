@@ -25,6 +25,11 @@ public class PaymentPersistence implements PaymentRepository {
     }
 
     @Override
+    public List<Payment> findAll() {
+        return new ArrayList<>(payments);
+    }
+
+    @Override
     public void update(Payment payment) {
         Payment existingPayment = findById(payment.getId());
         if (existingPayment != null) {
