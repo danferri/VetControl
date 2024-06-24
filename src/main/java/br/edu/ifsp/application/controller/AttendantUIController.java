@@ -2,12 +2,13 @@ package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.*;
 import br.edu.ifsp.application.view.*;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class AttendantUIController {
     private AttendantView attendantView;
-    private VeterinarianPersistence veterinarianPersistence = new VeterinarianPersistence();
+    private VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
     private ClientPersistence clientPersistence = new ClientPersistence();
     private PetPersistence petPersistence = new PetPersistence();
     private AppointmentPersistence appointmentPersistence = new AppointmentPersistence();
@@ -15,7 +16,7 @@ public class AttendantUIController {
 
     @FXML
     public void ManageVeterinarians(ActionEvent actionEvent) {
-        ManageVeterinarianView manageVeterinarianView = new ManageVeterinarianView(veterinarianPersistence);
+        ManageVeterinarianView manageVeterinarianView = new ManageVeterinarianView(veterinarianRepository);
         manageVeterinarianView.showAndWait();
     }
 

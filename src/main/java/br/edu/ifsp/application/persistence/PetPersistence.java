@@ -13,7 +13,7 @@ public class PetPersistence implements PetRepository {
     @Override
     public boolean save(Pet animal) {
         animais.add(animal);
-        return false;
+        return true;
     }
 
     @Override

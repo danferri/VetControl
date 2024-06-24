@@ -4,6 +4,7 @@ import br.edu.ifsp.application.controller.AddVeterinarianUIController;
 import br.edu.ifsp.application.controller.ManageVeterinarianUIController;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import br.edu.ifsp.domain.usecases.veterinarian.UpdateVeterinarianUseCase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,11 +15,11 @@ import javafx.stage.Stage;
 public class ManageVeterinarianView {
 
     private Stage stage;
-    private VeterinarianPersistence veterinarianPersistence;
+    private VeterinarianRepository veterinarianRepository;
 
-    public ManageVeterinarianView(VeterinarianPersistence veterinarianPersistence) {
+    public ManageVeterinarianView(VeterinarianRepository veterinarianRepository) {
         this.stage = new Stage();
-        this.veterinarianPersistence = veterinarianPersistence;
+        this.veterinarianRepository = veterinarianRepository;
     }
 
     public void showAndWait() {
@@ -27,7 +28,7 @@ public class ManageVeterinarianView {
             Parent root = loader.load();
 
             ManageVeterinarianUIController controller = loader.getController();
-            controller.init(this, veterinarianPersistence);
+            controller.init(this, veterinarianRepository);
 
             Scene scene = new Scene(root);
             stage.setTitle("Gerenciamento de Veterinário");

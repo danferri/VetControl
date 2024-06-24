@@ -4,6 +4,7 @@ import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddVeterinarianView;
 
 import br.edu.ifsp.domain.model.user.CRMV;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import br.edu.ifsp.domain.usecases.veterinarian.AddVeterinarianUseCase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,9 +23,9 @@ public class AddVeterinarianUIController {
     private AddVeterinarianView addVeterinarianView;
     private AddVeterinarianUseCase addVeterinarianUseCase;
 
-    public void init(AddVeterinarianView addVeterinarianView, VeterinarianPersistence veterinarianPersistence) {
+    public void init(AddVeterinarianView addVeterinarianView, VeterinarianRepository veterinarianRepository) {
         this.addVeterinarianView = addVeterinarianView;
-        this.addVeterinarianUseCase = new AddVeterinarianUseCase(veterinarianPersistence);
+        this.addVeterinarianUseCase = new AddVeterinarianUseCase(veterinarianRepository);
     }
 
     public void saveOrUpdate(ActionEvent actionEvent) {

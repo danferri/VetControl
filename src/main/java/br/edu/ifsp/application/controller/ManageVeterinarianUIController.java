@@ -5,6 +5,7 @@ import br.edu.ifsp.application.view.AddVeterinarianView;
 import br.edu.ifsp.application.view.ManageVeterinarianView;
 import br.edu.ifsp.application.view.UpdateVeterinarianView;
 import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import br.edu.ifsp.domain.usecases.veterinarian.DeactivateVeterinarianUseCase;
 import br.edu.ifsp.domain.usecases.veterinarian.UpdateVeterinarianUseCase;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -19,7 +20,7 @@ import javafx.scene.control.TableView;
 
 public class ManageVeterinarianUIController {
     public static ObservableList<Veterinarian> veterinarians;
-    private VeterinarianPersistence veterinarianPersistence;
+    private VeterinarianRepository veterinarianRepository;
     private ManageVeterinarianView manageVeterinarianView;
     private UpdateVeterinarianView updateVeterinarianView;
 
@@ -35,9 +36,9 @@ public class ManageVeterinarianUIController {
 
 
 
-    public void init(ManageVeterinarianView manageVeterinarianView, VeterinarianPersistence veterinarianPersistence) {
+    public void init(ManageVeterinarianView manageVeterinarianView, VeterinarianRepository veterinarianRepository) {
         this.manageVeterinarianView = manageVeterinarianView;
-        this.veterinarianPersistence = veterinarianPersistence;
+        this.veterinarianRepository = veterinarianRepository;
 
         setupColumns();
         insertData();
@@ -46,7 +47,7 @@ public class ManageVeterinarianUIController {
 
     @FXML
     private void addVeterinarianButton(ActionEvent actionEvent) {
-        AddVeterinarianView addVeterinarianView = new AddVeterinarianView(veterinarianPersistence);
+        AddVeterinarianView addVeterinarianView = new AddVeterinarianView(veterinarianRepository);
         addVeterinarianView.showAndWait();
 
         loadData();
@@ -69,7 +70,7 @@ public class ManageVeterinarianUIController {
 
     private void loadData() {
         veterinarians.clear();
-        veterinarians.addAll(this.veterinarianPersistence.findAll());
+        veterinarians.addAll(this.veterinarianRepository.findAll());
 
         tableVeterinarian.refresh();
     }
@@ -80,7 +81,7 @@ public class ManageVeterinarianUIController {
     }
 
     public void deactive(ActionEvent actionEvent) {
-        DeactivateVeterinarianUseCase deactivateVeterinarianUseCase = new DeactivateVeterinarianUseCase(veterinarianPersistence);
+        DeactivateVeterinarianUseCase deactivateVeterinarianUseCase = new DeactivateVeterinarianUseCase(veterinarianRepository);
         //deactivateVeterinarianUseCase.inativarVeterinario();
     }
 
@@ -88,7 +89,7 @@ public class ManageVeterinarianUIController {
         Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();
         if (selectedVeterinarian != null) {
             if (updateVeterinarianView == null) {
-                updateVeterinarianView = new UpdateVeterinarianView(new UpdateVeterinarianUseCase(veterinarianPersistence));
+                updateVeterinarianView = new UpdateVeterinarianView(new UpdateVeterinarianUseCase(veterinarianRepository));
             }
             updateVeterinarianView.showAndWait(selectedVeterinarian);
             loadData();
