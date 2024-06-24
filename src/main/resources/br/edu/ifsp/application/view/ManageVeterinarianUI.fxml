@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="520.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManageVeterinarianUIController">
+<AnchorPane prefHeight="520.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManageVeterinarianUIController">
    <children>
-      <TableView fx:id="tableVeterinarian" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="525.0">
+      <TableView fx:id="tableVeterinarian" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="575.0">
         <columns>
           <TableColumn fx:id="colNome" prefWidth="108.0" text="Nome" />
           <TableColumn fx:id="colAddress" prefWidth="74.0" text="Endereço" />
@@ -13,6 +13,7 @@
           <TableColumn fx:id="colCRMV" prefWidth="55.0" text="CRMV" />
           <TableColumn fx:id="colContact" prefWidth="116.0" text="Contato" />
           <TableColumn fx:id="colPhone" prefWidth="63.0" text="Telefone" />
+          <TableColumn fx:id="colStatus" prefWidth="63.0" text="Status" />
         </columns>
       </TableView>
       <Button fx:id="btnLocalizar" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />

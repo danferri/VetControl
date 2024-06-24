@@ -31,6 +31,7 @@ public class ManageVeterinarianUIController {
     @FXML TableColumn<Veterinarian, String> colCRMV;
     @FXML TableColumn<Veterinarian, String> colContact;
     @FXML TableColumn<Veterinarian, String> colPhone;
+    @FXML TableColumn<Veterinarian, String> colStatus;
 
     @FXML private Button btnEditar;
 
@@ -57,6 +58,7 @@ public class ManageVeterinarianUIController {
         colCRMV.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getCrmv().toString()));
         colContact.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getContact()));
         colPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
+        colStatus.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getStatusString()));
     }
 
     private void insertData() {
@@ -110,13 +112,14 @@ public class ManageVeterinarianUIController {
             Alert detailsAlert = new Alert(Alert.AlertType.INFORMATION);
             detailsAlert.setTitle("Detalhes do Veterinário");
             detailsAlert.setHeaderText("Informações do Veterinário");
-            String content = String.format("Nome: %s\nEndereço: %s\nEspecialidade: %s\nCRMV: %s\nContato: %s\nTelefone: %s",
+            String content = String.format("Nome: %s\nEndereço: %s\nEspecialidade: %s\nCRMV: %s\nContato: %s\nTelefone: %s\nStatus: %s",
                     selectedVeterinarian.getName(),
                     selectedVeterinarian.getAddress(),
                     selectedVeterinarian.getSpecialty(),
                     selectedVeterinarian.getCrmv(),
                     selectedVeterinarian.getContact(),
                     selectedVeterinarian.getPhone());
+                    //selectedVeterinarian.getStatusString();
             detailsAlert.setContentText(content);
             detailsAlert.showAndWait();
         } else {
