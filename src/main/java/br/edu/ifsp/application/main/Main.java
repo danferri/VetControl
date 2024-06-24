@@ -89,7 +89,7 @@ public class Main {
 
             System.out.println("Dono depois da adição do pet: " + client.getPets());
 
-            System.out.println("Status do PET: "+ pet.informPetStautus());
+            System.out.println("Status do PET: "+ pet.getStatus());
 
             // Criação do Pagamento
             paymentServices.addPayment(1, "Cartao", 1000.00);
@@ -158,7 +158,7 @@ public class Main {
 
             attendantServices.deactivatePet(1);
 
-            System.out.println("\n" + "Status do PET desativado : "+ pet.informPetStautus());
+            System.out.println("\n" + "Status do PET desativado : "+ pet.getStatus());
 
             attendantServices.processPayment(1);
 

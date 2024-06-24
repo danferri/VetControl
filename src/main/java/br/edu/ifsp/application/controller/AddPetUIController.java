@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 
 public class AddPetUIController {
+
     @FXML private TextField txtName;
     @FXML private TextField txtBreed;
     @FXML private TextField txtSpecies;
@@ -35,7 +36,7 @@ public class AddPetUIController {
     public void init(AddPetView addPetView) {
         this.addPetView = addPetView;
         this.addPetUseCase = new AddPetUseCase(petRepository);
-                
+
         ObservableList<Client> clients = FXCollections.observableArrayList(clientRepository.findAll());
 
         cbClient.setItems(clients);
@@ -57,7 +58,6 @@ public class AddPetUIController {
     public void saveOrUpdate(ActionEvent actionEvent) {
         String name = txtName.getText();
         String breed = txtBreed.getText();
-        //int id = Integer.parseInt(txtId.getId());
         String species = txtSpecies.getText();
         Client client = cbClient.getValue();
         //String status = txtStatus.getText().getStatus().toString();

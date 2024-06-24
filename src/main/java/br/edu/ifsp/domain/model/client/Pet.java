@@ -6,7 +6,7 @@ public class Pet {
     private String breed;
     private String species;
     private Client owner;
-    private PetStatus status;
+    private PetStatus status = PetStatus.ACTIVE;
 
     public Pet(int id, String name, String breed, String species, Client owner,PetStatus status) {
         this.id = id;
@@ -37,6 +37,10 @@ public class Pet {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -71,9 +75,14 @@ public class Pet {
         this.status = status;
     }
 
-    public PetStatus informPetStautus() {
+    public PetStatus getStatus() {
         return status;
     }
+
+    public String getStatusString() {
+        return status.getStatus();
+    }
+
 
     @Override
     public String toString() {

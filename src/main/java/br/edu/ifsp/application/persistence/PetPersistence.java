@@ -12,6 +12,8 @@ public class PetPersistence implements PetRepository {
 
     @Override
     public boolean save(Pet animal) {
+        animal.setId(currentId++);
+
         animais.add(animal);
         return true;
     }

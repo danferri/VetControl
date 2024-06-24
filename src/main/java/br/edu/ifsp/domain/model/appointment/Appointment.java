@@ -57,7 +57,7 @@ public class Appointment {
         if (veterinarian.informVeterinarianStatus()!= VeterinarianStatus.ACTIVE) {
             throw new IllegalArgumentException("Veterinarian is not active.");
         }
-        if (pet.informPetStautus() != PetStatus.ACTIVE) {
+        if (pet.getStatus() != PetStatus.ACTIVE) {
             throw new IllegalArgumentException("Pet is not active.");
         }
     }
