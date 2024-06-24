@@ -13,13 +13,18 @@ public class UpdateClientUseCase {
 
     public void updateClient(CPF cpf, String novoNome, String novoEndereco) {
        FindClientUseCase findClient = new FindClientUseCase(clientRepository);
+
         Client client = findClient.FindClientByCPF(cpf);
+
         if (client != null) {
             if (novoNome != null && !novoNome.isEmpty()) {
                 client.setName(novoNome);
             }
             if (novoEndereco != null && !novoEndereco.isEmpty()) {
                 client.setAddress(novoEndereco);
+            }
+            else {
+                throw new IllegalArgumentException("Novos dados inválidos. As informações antigas foram mantidas.");
             }
             clientRepository.update(client);
         } else {

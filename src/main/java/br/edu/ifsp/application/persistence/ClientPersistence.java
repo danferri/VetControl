@@ -17,11 +17,10 @@ public class ClientPersistence implements ClientRepository {
     }
 
     @Override
-    public Client findByCPF(CPF cpf) {
-        Optional<Client> cliente = clients.stream()
+    public Optional<Client> findByCPF(CPF cpf) {
+        return clients.stream()
                 .filter(c -> c.getCpf().equals(cpf))
                 .findFirst();
-        return cliente.orElse(null);
     }
 
     @Override

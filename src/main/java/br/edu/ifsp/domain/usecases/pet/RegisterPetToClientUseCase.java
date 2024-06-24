@@ -12,12 +12,12 @@ public class RegisterPetToClientUseCase {
     }
 
     public void cadastrarPet( CPF clientCpf, Pet pet) {
-        Client owner = clientRepository.findByCPF(clientCpf);
-        if (owner == null) {
-            throw new IllegalArgumentException("Cliente não encontrado com o CPF fornecido.");
+        if (clientRepository.findByCPF(clientCpf).isPresent()) {
+            Client owner = clientRepository.findByCPF(clientCpf).get();
+            owner.addPet(pet);
+            clientRepository.update(owner);
+            petRepository.save(pet);
         }
-        owner.addPet(pet);
-        clientRepository.update(owner);
-        petRepository.save(pet);
+        throw new IllegalArgumentException("Cliente não encontrado com o CPF fornecido.");
     }
 }
