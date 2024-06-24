@@ -46,7 +46,7 @@ public class AddAppointmentUIController {
         this.addAppointmentView = addAppointmentView;
         this.addAppointmentUseCase = new AddAppointmentUseCase(appointmentRepository);
 
-        ObservableList<Veterinarian> veterinarians = FXCollections.observableArrayList(veterinarianRepository.findAll());
+        ObservableList<Veterinarian> veterinarians = FXCollections.observableArrayList(veterinarianRepository.findAllActive());
         ObservableList<Pet> pets = FXCollections.observableArrayList(petRepository.findAll());
 
         //debug
