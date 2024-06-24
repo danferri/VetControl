@@ -92,7 +92,7 @@ public class Main {
             System.out.println("Status do PET: "+ pet.getStatus());
 
             // Criação do Pagamento
-            paymentServices.addPayment(1, "Cartao", 1000.00);
+            //paymentServices.addPayment(1, "Cartao", 1000.00);
             Payment payment = attendantServices.findPayment(1);
 
             // Teste UseCasesPagamento
@@ -195,7 +195,7 @@ public class Main {
 
             attendantServices.addPetToCLient(petTest, cpf);
 
-            paymentServices.addPayment(2, "Dinheiro", 3500.00);
+            //paymentServices.addPayment(2, "Dinheiro", 3500.00);
             Payment paymentTest = attendantServices.findPayment(2);
 
             System.out.println(clientTest.getPets());
