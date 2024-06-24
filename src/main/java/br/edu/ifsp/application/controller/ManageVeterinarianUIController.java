@@ -118,8 +118,8 @@ public class ManageVeterinarianUIController {
                     selectedVeterinarian.getSpecialty(),
                     selectedVeterinarian.getCrmv(),
                     selectedVeterinarian.getContact(),
-                    selectedVeterinarian.getPhone());
-                    //selectedVeterinarian.getStatusString();
+                    selectedVeterinarian.getPhone(),
+                    selectedVeterinarian.getStatusString());
             detailsAlert.setContentText(content);
             detailsAlert.showAndWait();
         } else {

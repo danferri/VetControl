@@ -11,6 +11,8 @@
                 <TableColumn fx:id="colName" prefWidth="128.0" text="Nome" />
                 <TableColumn fx:id="colBreed" prefWidth="127.0" text="Raça" />
                 <TableColumn fx:id="colSpecies" prefWidth="93.0" text="Espécie" />
+                <TableColumn fx:id="colClient" prefWidth="93.0" text="Tutor" />
+                <TableColumn fx:id="colStatus" prefWidth="93.0" text="Status" />
 
             </columns>
         </TableView>

@@ -17,10 +17,11 @@ public class Pet {
         this.status = status;
     }
 
-    public Pet(String name, String breed, String species) {
+    public Pet(String name, String breed, String species, Client owner) {
         this.name = name;
         this.breed = breed;
         this.species = species;
+        this.owner = owner;
     }
 
     public Pet(int id, String name, String breed, String species) {

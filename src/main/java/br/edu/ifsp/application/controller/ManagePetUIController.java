@@ -1,9 +1,13 @@
 package br.edu.ifsp.application.controller;
+
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.view.AddPetView;
 import br.edu.ifsp.application.view.ManagePetView;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.client.PetRepository;
+import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.usecases.pet.DeactivatePetUseCase;
+import br.edu.ifsp.domain.usecases.veterinarian.DeactivateVeterinarianUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +27,7 @@ public class ManagePetUIController {
     @FXML TableColumn<Pet, String> colName;
     @FXML TableColumn<Pet, String> colBreed;
     @FXML TableColumn<Pet, String> colSpecies;
+    @FXML TableColumn<Pet, String> colClient;
 
     public void init(ManagePetView managePetView) {
         this.managePetView = managePetView;
@@ -40,11 +45,13 @@ public class ManagePetUIController {
         loadData();
     }
 
+
     private void setupColumns() {
         //colId.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.valueOf(data.getValue().getId())));
         colName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
         colBreed.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBreed()));
         colSpecies.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getSpecies()));
+        colClient.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getOwner().getName()));
     }
 
     private void insertData() {
@@ -64,7 +71,13 @@ public class ManagePetUIController {
     }
 
     public void deactivate(ActionEvent actionEvent) {
-        //DeactivatePetUseCase deactivatePetUseCase = new DeactivatePetUseCase(petPersistence);
-        //deactivatePetUseCase.deactivatePet();
+        Pet selectedPet = tablePet.getSelectionModel().getSelectedItem();
+
+        DeactivatePetUseCase deactivatePetnUseCase = new DeactivatePetUseCase(petRepository);
+        deactivatePetnUseCase.inativarPet(selectedPet.getId());
+
+        loadData();
+
+
     }
 }

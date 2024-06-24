@@ -17,8 +17,8 @@ public class AddPetUseCase {
         return petRepository.save(pet);
     }
 
-    public boolean cadastrarPet(String name, String breed, String species) {
-        Pet pet = new Pet(name, breed, species);
+    public boolean cadastrarPet(String name, String breed, String species, Client owner) {
+        Pet pet = new Pet(name, breed, species, owner);
         return petRepository.save(pet);
     }
 

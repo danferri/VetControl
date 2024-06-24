@@ -1,30 +1,56 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.view.AddPetView;
+import br.edu.ifsp.domain.model.client.Client;
+import br.edu.ifsp.domain.model.client.ClientRepository;
+import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.client.PetRepository;
+import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.pet.AddPetUseCase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 
 public class AddPetUIController {
     @FXML private TextField txtName;
     @FXML private TextField txtBreed;
-    //@FXML private TextField txtId;
     @FXML private TextField txtSpecies;
-    //@FXML private TextField txtOwner;
+    @FXML private ComboBox<Client> cbClient;
     //@FXML private TextField txtStatus;
 
     private AddPetView addPetView;
     private AddPetUseCase addPetUseCase;
 
     private final PetRepository petRepository = new PetPersistence();
+    private final ClientRepository clientRepository = new ClientPersistence();
+
 
     public void init(AddPetView addPetView) {
         this.addPetView = addPetView;
         this.addPetUseCase = new AddPetUseCase(petRepository);
+                
+        ObservableList<Client> clients = FXCollections.observableArrayList(clientRepository.findAll());
+
+        cbClient.setItems(clients);
+
+        cbClient.setConverter(new StringConverter<Client>() {
+            @Override
+            public String toString(Client client) {
+                return client != null ? client.getName() : "";
+            }
+
+            @Override
+            public Client fromString(String s) {
+                return null;
+            }
+        });
 
     }
 
@@ -33,11 +59,11 @@ public class AddPetUIController {
         String breed = txtBreed.getText();
         //int id = Integer.parseInt(txtId.getId());
         String species = txtSpecies.getText();
-        //String owner = txtOwner.getText().getOwner().toString();
+        Client client = cbClient.getValue();
         //String status = txtStatus.getText().getStatus().toString();
 
         try {
-            boolean retorno = addPetUseCase.cadastrarPet(name, breed, species);
+            boolean retorno = addPetUseCase.cadastrarPet(name, breed, species, client);
             if (retorno) {
                 if (addPetView != null) {
                     alertSuccessCadastro();
