@@ -11,11 +11,9 @@ import javafx.stage.Stage;
 public class ManagePaymentView {
 
     private Stage stage;
-    private PaymentPersistence paymentPersistence;
 
-    public ManagePaymentView(PaymentPersistence paymentPersistence) {
+    public ManagePaymentView() {
         this.stage = new Stage();
-        this.paymentPersistence = paymentPersistence;
     }
 
     public void showAndWait() {
@@ -24,7 +22,7 @@ public class ManagePaymentView {
             Parent root = loader.load();
 
             ManagePaymentUIController controller = loader.getController();
-            controller.init(this, paymentPersistence);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Gerenciamento de Pagamentos");

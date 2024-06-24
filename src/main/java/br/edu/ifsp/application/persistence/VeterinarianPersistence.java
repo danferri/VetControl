@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VeterinarianPersistence implements VeterinarianRepository {
-    private List<Veterinarian> veterinarians = new ArrayList<>();
+    private static List<Veterinarian> veterinarians = new ArrayList<>();
 
     @Override
     public boolean save(Veterinarian veterinarian) {

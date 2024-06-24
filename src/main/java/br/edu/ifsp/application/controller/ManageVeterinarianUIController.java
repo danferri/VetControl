@@ -20,7 +20,7 @@ import javafx.scene.control.TableView;
 
 public class ManageVeterinarianUIController {
     public static ObservableList<Veterinarian> veterinarians;
-    private VeterinarianRepository veterinarianRepository;
+    private final VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
     private ManageVeterinarianView manageVeterinarianView;
     private UpdateVeterinarianView updateVeterinarianView;
 
@@ -34,11 +34,8 @@ public class ManageVeterinarianUIController {
 
     @FXML private Button btnEditar;
 
-
-
-    public void init(ManageVeterinarianView manageVeterinarianView, VeterinarianRepository veterinarianRepository) {
+    public void init(ManageVeterinarianView manageVeterinarianView) {
         this.manageVeterinarianView = manageVeterinarianView;
-        this.veterinarianRepository = veterinarianRepository;
 
         setupColumns();
         insertData();
@@ -47,7 +44,7 @@ public class ManageVeterinarianUIController {
 
     @FXML
     private void addVeterinarianButton(ActionEvent actionEvent) {
-        AddVeterinarianView addVeterinarianView = new AddVeterinarianView(veterinarianRepository);
+        AddVeterinarianView addVeterinarianView = new AddVeterinarianView();
         addVeterinarianView.showAndWait();
 
         loadData();
@@ -81,8 +78,12 @@ public class ManageVeterinarianUIController {
     }
 
     public void deactive(ActionEvent actionEvent) {
+        Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();
+
         DeactivateVeterinarianUseCase deactivateVeterinarianUseCase = new DeactivateVeterinarianUseCase(veterinarianRepository);
-        //deactivateVeterinarianUseCase.inativarVeterinario();
+        deactivateVeterinarianUseCase.inativarVeterinario(selectedVeterinarian.getCrmv());
+
+        loadData();
     }
 
     public void editVeterinarian(ActionEvent actionEvent) {
@@ -100,7 +101,6 @@ public class ManageVeterinarianUIController {
             alert.setContentText("Por favor, selecione um veterinário para editar.");
             alert.showAndWait();
         }
-
     }
 
     @FXML

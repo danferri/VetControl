@@ -16,7 +16,7 @@ public class Appointment {
     private String description;
     private Veterinarian veterinarian;
     private Pet pet;
-    private AppointmentStatus status;
+    private AppointmentStatus status = AppointmentStatus.SCHEDULED;
     private double cost;
     private Payment payment;
 
@@ -60,6 +60,10 @@ public class Appointment {
         if (pet.informPetStautus() != PetStatus.ACTIVE) {
             throw new IllegalArgumentException("Pet is not active.");
         }
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {

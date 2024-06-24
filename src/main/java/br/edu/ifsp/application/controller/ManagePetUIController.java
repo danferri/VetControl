@@ -3,6 +3,7 @@ import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.view.AddPetView;
 import br.edu.ifsp.application.view.ManagePetView;
 import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.client.PetRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +15,7 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 
 public class ManagePetUIController {
     public static ObservableList<Pet> pets;
-    private PetPersistence petPersistence;
+    private PetRepository petRepository = new PetPersistence();
     private ManagePetView managePetView;
 
     @FXML TableView<Pet> tablePet;
@@ -23,9 +24,8 @@ public class ManagePetUIController {
     @FXML TableColumn<Pet, String> colBreed;
     @FXML TableColumn<Pet, String> colSpecies;
 
-    public void init(ManagePetView managePetView, PetPersistence petPersistence) {
+    public void init(ManagePetView managePetView) {
         this.managePetView = managePetView;
-        this.petPersistence = petPersistence;
 
         setupColumns();
         insertData();
@@ -34,7 +34,7 @@ public class ManagePetUIController {
 
     @FXML
     private void addPetButton(ActionEvent actionEvent) {
-        AddPetView addPetView = new AddPetView(petPersistence);
+        AddPetView addPetView = new AddPetView();
         addPetView.showAndWait();
 
         loadData();
@@ -54,7 +54,7 @@ public class ManagePetUIController {
 
     private void loadData() {
         pets.clear();
-        pets.addAll(this.petPersistence.findAll());
+        pets.addAll(this.petRepository.findAll());
         tablePet.refresh();
     }
 

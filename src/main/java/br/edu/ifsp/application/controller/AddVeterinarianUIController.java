@@ -23,7 +23,9 @@ public class AddVeterinarianUIController {
     private AddVeterinarianView addVeterinarianView;
     private AddVeterinarianUseCase addVeterinarianUseCase;
 
-    public void init(AddVeterinarianView addVeterinarianView, VeterinarianRepository veterinarianRepository) {
+    private final VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
+
+    public void init(AddVeterinarianView addVeterinarianView) {
         this.addVeterinarianView = addVeterinarianView;
         this.addVeterinarianUseCase = new AddVeterinarianUseCase(veterinarianRepository);
     }

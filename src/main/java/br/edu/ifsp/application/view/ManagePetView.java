@@ -11,11 +11,9 @@ import javafx.fxml.FXMLLoader;
 public class ManagePetView {
 
     private Stage stage;
-    private PetPersistence petPersistence;
 
-    public ManagePetView(PetPersistence petPersistence) {
+    public ManagePetView() {
         this.stage = new Stage();
-        this.petPersistence = petPersistence;
     }
 
     public void showAndWait() {
@@ -24,7 +22,7 @@ public class ManagePetView {
             Parent root = loader.load();
 
             ManagePetUIController controller = loader.getController();
-            controller.init(this, petPersistence);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Gerenciamento de Pets");

@@ -5,6 +5,7 @@ package br.edu.ifsp.application.controller;
 import br.edu.ifsp.application.persistence.PaymentPersistence;
 import br.edu.ifsp.application.view.ManagePaymentView;
 import br.edu.ifsp.domain.model.payment.Payment;
+import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +19,7 @@ import javafx.scene.control.TableView;
 public class ManagePaymentUIController {
 
     public static ObservableList<Payment> payments;
-    private PaymentPersistence paymentPersistence;
+    private PaymentRepository paymentRepository = new PaymentPersistence();
     private ManagePaymentView managePaymentView;
 
     @FXML TableView<Payment> tablePayments;
@@ -31,9 +32,8 @@ public class ManagePaymentUIController {
     @FXML private Button btnViewDetails;
     @FXML private Button btnProcessPayment;
 
-    public void init(ManagePaymentView managePaymentView, PaymentPersistence paymentPersistence) {
+    public void init(ManagePaymentView managePaymentView) {
         this.managePaymentView = managePaymentView;
-        this.paymentPersistence = paymentPersistence;
 
         setupColumns();
         insertData();
@@ -55,7 +55,7 @@ public class ManagePaymentUIController {
 
     private void loadData() {
         payments.clear();
-        payments.addAll(paymentPersistence.findAll());
+        payments.addAll(paymentRepository.findAll());
         tablePayments.refresh();
     }
 

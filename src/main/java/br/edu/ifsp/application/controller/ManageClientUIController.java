@@ -4,6 +4,7 @@ import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.view.AddClientView;
 import br.edu.ifsp.application.view.ManageClientView;
 import br.edu.ifsp.domain.model.client.Client;
+import br.edu.ifsp.domain.model.client.ClientRepository;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -16,7 +17,8 @@ import javafx.scene.control.TableView;
 
 public class ManageClientUIController {
     public static ObservableList<Client> clients;
-    private ClientPersistence clientPersistence;
+    private final ClientRepository clientRepository = new ClientPersistence();
+
     private ManageClientView manageClientView;
 
     @FXML TableView<Client> tableClient;
@@ -24,9 +26,8 @@ public class ManageClientUIController {
     @FXML TableColumn<Client, String> colAddress;
     @FXML TableColumn<Client, String> colCPF;
 
-    public void init(ManageClientView manageClientView, ClientPersistence clientPersistence) {
+    public void init(ManageClientView manageClientView) {
         this.manageClientView = manageClientView;
-        this.clientPersistence = clientPersistence;
 
         setupColumns();
         insertData();
@@ -35,7 +36,7 @@ public class ManageClientUIController {
 
     @FXML
     private void addClientButton(ActionEvent actionEvent) {
-        AddClientView addClientView = new AddClientView(clientPersistence);
+        AddClientView addClientView = new AddClientView();
         addClientView.showAndWait();
 
         loadData();
@@ -55,7 +56,7 @@ public class ManageClientUIController {
 
     private void loadData() {
         clients.clear();
-        clients.addAll(this.clientPersistence.findAll());
+        clients.addAll(this.clientRepository.findAll());
 
         tableClient.refresh();
     }

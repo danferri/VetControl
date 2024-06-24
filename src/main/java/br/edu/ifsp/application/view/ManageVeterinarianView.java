@@ -15,11 +15,9 @@ import javafx.stage.Stage;
 public class ManageVeterinarianView {
 
     private Stage stage;
-    private VeterinarianRepository veterinarianRepository;
 
-    public ManageVeterinarianView(VeterinarianRepository veterinarianRepository) {
+    public ManageVeterinarianView() {
         this.stage = new Stage();
-        this.veterinarianRepository = veterinarianRepository;
     }
 
     public void showAndWait() {
@@ -28,7 +26,7 @@ public class ManageVeterinarianView {
             Parent root = loader.load();
 
             ManageVeterinarianUIController controller = loader.getController();
-            controller.init(this, veterinarianRepository);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Gerenciamento de Veterinário");

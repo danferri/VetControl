@@ -2,6 +2,7 @@ package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.view.AddPetView;
+import br.edu.ifsp.domain.model.client.PetRepository;
 import br.edu.ifsp.domain.usecases.pet.AddPetUseCase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,9 +20,11 @@ public class AddPetUIController {
     private AddPetView addPetView;
     private AddPetUseCase addPetUseCase;
 
-    public void init(AddPetView addPetView, PetPersistence petPersistence) {
+    private final PetRepository petRepository = new PetPersistence();
+
+    public void init(AddPetView addPetView) {
         this.addPetView = addPetView;
-        this.addPetUseCase = new AddPetUseCase(petPersistence);
+        this.addPetUseCase = new AddPetUseCase(petRepository);
 
     }
 

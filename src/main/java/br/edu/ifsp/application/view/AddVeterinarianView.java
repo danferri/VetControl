@@ -12,11 +12,9 @@ import javafx.stage.Stage;
 public class AddVeterinarianView {
 
     private Stage stage;
-    private VeterinarianRepository veterinarianRepository;
 
-    public AddVeterinarianView(VeterinarianRepository veterinarianRepository) {
+    public AddVeterinarianView() {
         this.stage = new Stage();
-        this.veterinarianRepository = veterinarianRepository;
     }
 
     public void showAndWait() {
@@ -25,7 +23,7 @@ public class AddVeterinarianView {
             Parent root = loader.load();
 
             AddVeterinarianUIController controller = loader.getController();
-            controller.init(this, veterinarianRepository);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Cadastro de Veterinário");

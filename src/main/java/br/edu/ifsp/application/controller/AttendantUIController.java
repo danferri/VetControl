@@ -8,31 +8,26 @@ import javafx.fxml.FXML;
 
 public class AttendantUIController {
     private AttendantView attendantView;
-    private VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
-    private ClientPersistence clientPersistence = new ClientPersistence();
-    private PetPersistence petPersistence = new PetPersistence();
-    private AppointmentPersistence appointmentPersistence = new AppointmentPersistence();
-    private PaymentPersistence paymentPersistence = new PaymentPersistence();
 
     @FXML
     public void ManageVeterinarians(ActionEvent actionEvent) {
-        ManageVeterinarianView manageVeterinarianView = new ManageVeterinarianView(veterinarianRepository);
+        ManageVeterinarianView manageVeterinarianView = new ManageVeterinarianView();
         manageVeterinarianView.showAndWait();
     }
 
     @FXML
     public void ManageClients(ActionEvent actionEvent) {
-        ManageClientView clientView = new ManageClientView(clientPersistence);
+        ManageClientView clientView = new ManageClientView();
         clientView.showAndWait();
     }
 
     public void ManageAnimals(ActionEvent actionEvent) {
-        ManagePetView petView = new ManagePetView(petPersistence);
+        ManagePetView petView = new ManagePetView();
         petView.showAndWait();
     }
 
     public void ManageAppointments(ActionEvent actionEvent) {
-        ManageAppointmentView appointmentView = new ManageAppointmentView(appointmentPersistence);
+        ManageAppointmentView appointmentView = new ManageAppointmentView();
         appointmentView.showAndWait();
     }
 
@@ -41,7 +36,7 @@ public class AttendantUIController {
     }
 
     public void ManagePayments(ActionEvent actionEvent) {
-        ManagePaymentView managePaymentView = new ManagePaymentView(paymentPersistence);
+        ManagePaymentView managePaymentView = new ManagePaymentView();
         managePaymentView.showAndWait();
     }
 

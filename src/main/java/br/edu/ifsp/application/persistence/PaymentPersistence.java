@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentPersistence implements PaymentRepository {
-    private List<Payment> payments = new ArrayList<>();
+    private static List<Payment> payments = new ArrayList<>();
 
     @Override
     public void save(Payment payment) {
