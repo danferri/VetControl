@@ -41,7 +41,7 @@ public class ManagePaymentUIController {
     }
 
     private void setupColumns() {
-        //colID.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getId().toString()));
+        colID.setCellValueFactory(data -> new ReadOnlyStringWrapper(Integer.toString(data.getValue().getAppointment().getId())));
         colAmount.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.format("%.2f", data.getValue().getAmount()))); //colAmount.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAmount()));
         colMethod.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getMethod()));
         colStatus.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getStatus().toString()));

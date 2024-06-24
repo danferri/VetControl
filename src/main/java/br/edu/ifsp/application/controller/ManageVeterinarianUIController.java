@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 
 public class ManageVeterinarianUIController {
     public static ObservableList<Veterinarian> veterinarians;
+
     private final VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
     private ManageVeterinarianView manageVeterinarianView;
     private UpdateVeterinarianView updateVeterinarianView;
@@ -81,9 +82,16 @@ public class ManageVeterinarianUIController {
 
     public void deactive(ActionEvent actionEvent) {
         Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();
-
-        DeactivateVeterinarianUseCase deactivateVeterinarianUseCase = new DeactivateVeterinarianUseCase(veterinarianRepository);
-        deactivateVeterinarianUseCase.inativarVeterinario(selectedVeterinarian.getCrmv());
+        if (selectedVeterinarian!= null) {
+            DeactivateVeterinarianUseCase deactivateVeterinarianUseCase = new DeactivateVeterinarianUseCase(veterinarianRepository);
+            deactivateVeterinarianUseCase.inativarVeterinario(selectedVeterinarian.getCrmv());
+        }else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Veterinário");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um veterinário para desativá-lo.");
+            alert.showAndWait();
+        }
 
         loadData();
     }

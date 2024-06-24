@@ -8,9 +8,12 @@ import java.util.List;
 
 public class PaymentPersistence implements PaymentRepository {
     private static List<Payment> payments = new ArrayList<>();
+    private static int currentId = 1;
 
     @Override
     public void save(Payment payment) {
+        payment.setId(currentId++);
+
         payments.add(payment);
     }
 
