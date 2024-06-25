@@ -13,8 +13,8 @@
 
             </columns>
         </TableView>
-        <Button fx:id="btnLocalizar" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
-        <TextField layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
+        <Button fx:id="btnLocalizar" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" onAction="#localizar" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
+        <TextField fx:id="txtSearch" layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
         <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addClientButton" prefHeight="25.0" prefWidth="128.0" text="Cadastrar Cliente" />
         <Button layoutX="14.0" layoutY="137.0" mnemonicParsing="false" onAction="#editClient" prefHeight="25.0" prefWidth="128.0" text="Editar Cliente" />
 

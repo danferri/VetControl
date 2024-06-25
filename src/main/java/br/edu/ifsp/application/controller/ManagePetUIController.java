@@ -4,6 +4,7 @@ import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.view.AddPetView;
 import br.edu.ifsp.application.view.ManagePetView;
 import br.edu.ifsp.application.view.UpdatePetView;
+import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.client.PetRepository;
 import br.edu.ifsp.domain.model.client.PetStatus;
@@ -17,6 +18,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ManagePetUIController {
@@ -32,13 +37,14 @@ public class ManagePetUIController {
     @FXML TableColumn<Pet, String> colSpecies;
     @FXML TableColumn<Pet, String> colClient;
     @FXML TableColumn<Pet, String> colStatus;
+    @FXML private TextField txtSearch;
 
     public void init(ManagePetView managePetView) {
         this.managePetView = managePetView;
 
         setupColumns();
         insertData();
-        loadData();
+        loadData(this.petRepository.findAll());
     }
 
     @FXML
@@ -46,7 +52,7 @@ public class ManagePetUIController {
         AddPetView addPetView = new AddPetView();
         addPetView.showAndWait();
 
-        loadData();
+        loadData(this.petRepository.findAll());
     }
 
     private void setupColumns() {
@@ -63,11 +69,24 @@ public class ManagePetUIController {
         tablePet.setItems(pets);
     }
 
-    private void loadData() {
+    private void loadData(  List<Pet> petList) {
         pets.clear();
-        pets.addAll(this.petRepository.findAll());
+        pets.addAll(petList);
         tablePet.refresh();
     }
+
+    public void localizar() {
+        String nome = txtSearch.getText();
+        List<Pet> pets = new ArrayList<>();
+
+        for(Pet pet : this.petRepository.findAll()) {
+            if(pet.getName().contains(nome)){
+                pets.add(pet);
+            }
+        }
+        loadData(pets);
+    }
+
 
     @FXML
     public void close() {
@@ -87,7 +106,7 @@ public class ManagePetUIController {
             alert.showAndWait();
         }
 
-        loadData();
+        loadData(this.petRepository.findAll());
     }
 
     public void editPet(ActionEvent actionEvent) {
@@ -97,7 +116,7 @@ public class ManagePetUIController {
                 updatePetView = new UpdatePetView(new UpdatePetUseCase(petRepository));
             }
             updatePetView.showAndWait(selectedPet);
-            loadData();//loadData(this.petRepository.findAll());
+            loadData(this.petRepository.findAll());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Seleção de Animal");
