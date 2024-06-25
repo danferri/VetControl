@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="520.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AddAppointmentUIController">
     <children>
-        <Label layoutX="184.0" layoutY="14.0" style="-fx-font-size: 18;" text="Agendamento de Consulta" />
+        <Label layoutX="214.0" layoutY="14.0" style="-fx-font-size: 18;" text="Agendamento de Consulta" />
         <Label layoutX="20" layoutY="60" text="Data:" />
         <DatePicker fx:id="dpDate" layoutX="120" layoutY="56" prefWidth="200" />
         <Label layoutX="20" layoutY="100" text="Hora:" />
@@ -16,9 +16,12 @@
         <ComboBox fx:id="cbVeterinarian" layoutX="120" layoutY="176" prefWidth="440" />
         <Label layoutX="20" layoutY="220" text="Pet:" />
         <ComboBox fx:id="cbPet" layoutX="120" layoutY="216" prefWidth="440" />
-        <Label layoutX="20" layoutY="260" text="Custo:" />
-        <TextField fx:id="txtCost" layoutX="120" layoutY="256" prefWidth="200" promptText="Valor em reais" />
+        <Label layoutX="23.0" layoutY="323.0" text="Custo:" />
+        <TextField fx:id="txtCost" layoutX="120.0" layoutY="319.0" prefWidth="200" promptText="Valor em reais" />
         <Button layoutX="483" layoutY="480" mnemonicParsing="false" onAction="#saveOrUpdate" text="Salvar" />
         <Button layoutX="403" layoutY="480" mnemonicParsing="false" onAction="#backToPreviousScene" text="Voltar" />
+      <Label layoutX="227.0" layoutY="268.0" style="-fx-font-size: 18;" text="Dados para pagamento" />
+      <Label layoutX="26.0" layoutY="366.0" text="Método:" />
+      <TextField layoutX="120.0" layoutY="362.0" prefHeight="25.0" prefWidth="200.0" />
     </children>
 </AnchorPane>
