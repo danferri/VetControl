@@ -4,6 +4,7 @@ package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.PaymentPersistence;
 import br.edu.ifsp.application.view.ManagePaymentView;
+import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -11,10 +12,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManagePaymentUIController {
 
@@ -31,13 +32,14 @@ public class ManagePaymentUIController {
 
     @FXML private Button btnViewDetails;
     @FXML private Button btnProcessPayment;
+    @FXML private TextField txtSearch;
 
     public void init(ManagePaymentView managePaymentView) {
         this.managePaymentView = managePaymentView;
 
         setupColumns();
         insertData();
-        loadData();
+        loadData(this.paymentRepository.findAll());
     }
 
     private void setupColumns() {
@@ -53,10 +55,23 @@ public class ManagePaymentUIController {
         tablePayments.setItems(payments);
     }
 
-    private void loadData() {
+    private void loadData( List<Payment> paymentList) {
         payments.clear();
-        payments.addAll(paymentRepository.findAll());
+        payments.addAll(paymentList);
         tablePayments.refresh();
+    }
+
+    public void searchPayments() {
+        String id = txtSearch.getText();
+        Integer idToNumbert = Integer.parseInt(id);
+        List<Payment> payments = new ArrayList<>();
+
+        for(Payment payment : this.paymentRepository.findAll()) {
+            if(payment.getAppointment().getId() == idToNumbert)
+                payments.add(payment);
+            }
+
+        loadData(payments);
     }
 
     @FXML
@@ -107,10 +122,7 @@ public class ManagePaymentUIController {
         managePaymentView.close();
     }
 
-    @FXML
-    public void searchPayments(ActionEvent actionEvent) {
 
-    }
 }
 
 
