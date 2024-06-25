@@ -1,22 +1,20 @@
 package br.edu.ifsp.application.controller;
 
-import br.edu.ifsp.application.persistence.PetPersistence;
-import br.edu.ifsp.application.persistence.VeterinarianPersistence;
-import br.edu.ifsp.application.view.AddAppointmentView;
-import br.edu.ifsp.application.view.App;
+import br.edu.ifsp.application.view.*;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
-import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.usecases.appointment.CancelAppointmentUseCase;
+import br.edu.ifsp.domain.usecases.appointment.UpdateAppointmentUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.beans.property.ReadOnlyStringWrapper;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
-import br.edu.ifsp.application.view.ManageAppointmentView;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
@@ -28,6 +26,7 @@ public class ManageAppointmentUIController {
 
     private final AppointmentRepository appointmentRepository = new AppointmentPersistence();
     private ManageAppointmentView manageAppointmentView;
+    private UpdateAppointmentView updateAppointmentView;
 
     @FXML TableView<Appointment> tableAppointment;
     @FXML TableColumn<Appointment, String> colId;
@@ -99,7 +98,37 @@ public class ManageAppointmentUIController {
     }
 
     public void cancelAppointment(ActionEvent actionEvent) {
+        Appointment selectedAppointment = tableAppointment.getSelectionModel().getSelectedItem();
+        if (selectedAppointment != null) {
+            CancelAppointmentUseCase cancelAppointmentUseCase = new CancelAppointmentUseCase(appointmentRepository);
+            cancelAppointmentUseCase.cancelarConsulta(selectedAppointment.getId());
+        }else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Veterinário");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um veterinário para desativá-lo.");
+            alert.showAndWait();
+        }
 
+        loadData(this.appointmentRepository.findAll());
+
+    }
+
+    public void editAppointment(ActionEvent actionEvent) {
+        Appointment selectedAppointment = tableAppointment.getSelectionModel().getSelectedItem();
+        if (selectedAppointment != null) {
+            if (updateAppointmentView == null) {
+                updateAppointmentView = new UpdateAppointmentView(new UpdateAppointmentUseCase(appointmentRepository));
+            }
+            updateAppointmentView.showAndWait(selectedAppointment);
+            loadData(this.appointmentRepository.findAll());
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Consultas");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione uma consulta para editar.");
+            alert.showAndWait();
+        }
     }
 }
 
