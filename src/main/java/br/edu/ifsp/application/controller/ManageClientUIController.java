@@ -6,6 +6,7 @@ import br.edu.ifsp.application.view.ManageClientView;
 import br.edu.ifsp.application.view.UpdateClientView;
 import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.ClientRepository;
+import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.client.UpdateClientUseCase;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -15,6 +16,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ManageClientUIController {
     public static ObservableList<Client> clients;
@@ -27,13 +32,14 @@ public class ManageClientUIController {
     @FXML TableColumn<Client, String> colNome;
     @FXML TableColumn<Client, String> colAddress;
     @FXML TableColumn<Client, String> colCPF;
+    @FXML private TextField txtSearch;
 
     public void init(ManageClientView manageClientView) {
         this.manageClientView = manageClientView;
 
         setupColumns();
         insertData();
-        loadData();
+        loadData(this.clientRepository.findAll());
     }
 
     @FXML
@@ -41,7 +47,7 @@ public class ManageClientUIController {
         AddClientView addClientView = new AddClientView();
         addClientView.showAndWait();
 
-        loadData();
+        loadData(this.clientRepository.findAll());
     }
 
     private void setupColumns() {
@@ -56,9 +62,25 @@ public class ManageClientUIController {
         tableClient.setItems(clients);
     }
 
-    private void loadData() {
+
+    public void localizar() {
+        String nome = txtSearch.getText();
+        List<Client> clients = new ArrayList<>();
+
+        for(Client client : this.clientRepository.findAll()) {
+            if(client.getName().contains(nome)){
+                clients.add(client);
+            }
+        }
+
+        loadData(clients);
+        }
+
+
+
+    private void loadData(List<Client> clientList) {
         clients.clear();
-        clients.addAll(this.clientRepository.findAll());
+        clients.addAll(clientList);
 
         tableClient.refresh();
     }
@@ -97,7 +119,7 @@ public class ManageClientUIController {
                 updateClientView = new UpdateClientView(new UpdateClientUseCase(clientRepository));
             }
             updateClientView.showAndWait(selectedClient);
-            loadData(); // loadData(this.clientRepository.findAll());
+             loadData(this.clientRepository.findAll());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Seleção de Cliente");
