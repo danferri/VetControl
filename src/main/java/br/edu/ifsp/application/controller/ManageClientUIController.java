@@ -72,7 +72,6 @@ public class ManageClientUIController {
                 clients.add(client);
             }
         }
-
         loadData(clients);
         }
 
