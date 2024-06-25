@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AppointmentPersistence implements AppointmentRepository {
-    private List<Appointment> appointments = new ArrayList<>();
-    private int currentId = 1;
+    private static List<Appointment> appointments = new ArrayList<>();
+    private static int currentId = 1;
 
     @Override
-    public void save(Appointment appointment) {
+    public boolean save(Appointment appointment) {
+        appointment.setId(currentId++);
+
         appointments.add(appointment);
+        return true;
     }
 
     @Override

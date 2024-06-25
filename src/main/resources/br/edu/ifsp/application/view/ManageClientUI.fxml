@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="520.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManageClientUIController">
+    <children>
+        <TableView fx:id="tableClient" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="525.0">
+            <columns>
+                <TableColumn fx:id="colNome" prefWidth="108.0" text="Nome" />
+                <TableColumn fx:id="colAddress" prefWidth="74.0" text="Endereço" />
+                <TableColumn fx:id="colCPF" prefWidth="55.0" text="CPF" />
+
+            </columns>
+        </TableView>
+        <Button fx:id="btnLocalizar" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
+        <TextField layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
+        <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addClientButton" prefHeight="25.0" prefWidth="128.0" text="Cadastrar Cliente" />
+        <Button layoutX="14.0" layoutY="137.0" mnemonicParsing="false" onAction="#editClient" prefHeight="25.0" prefWidth="128.0" text="Editar Cliente" />
+
+        <Button fx:id="voltar" layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
+      <Button layoutX="14.0" layoutY="101.0" mnemonicParsing="false" onAction="#showClient" prefHeight="25.0" prefWidth="128.0" text="Detalhes do Cliente" />
+    </children>
+
+</AnchorPane>

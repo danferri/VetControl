@@ -16,7 +16,7 @@ public class Appointment {
     private String description;
     private Veterinarian veterinarian;
     private Pet pet;
-    private AppointmentStatus status;
+    private AppointmentStatus status = AppointmentStatus.SCHEDULED;
     private double cost;
     private Payment payment;
 
@@ -34,13 +34,36 @@ public class Appointment {
         this.payment = payment;
     }
 
+    public Appointment(LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, AppointmentStatus status, double cost) {
+        this.date = date;
+        this.hour = hour;
+        this.description = description;
+        this.veterinarian = veterinarian;
+        this.pet = pet;
+        this.status = status;
+        this.cost = cost;
+    }
+
+    public Appointment(LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost) {
+        this.date = date;
+        this.hour = hour;
+        this.description = description;
+        this.veterinarian = veterinarian;
+        this.pet = pet;
+        this.cost = cost;
+    }
+
     private void validateEntities(Veterinarian veterinarian, Pet pet) {
         if (veterinarian.informVeterinarianStatus()!= VeterinarianStatus.ACTIVE) {
             throw new IllegalArgumentException("Veterinarian is not active.");
         }
-        if (pet.informPetStautus() != PetStatus.ACTIVE) {
+        if (pet.getStatus() != PetStatus.ACTIVE) {
             throw new IllegalArgumentException("Pet is not active.");
         }
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {

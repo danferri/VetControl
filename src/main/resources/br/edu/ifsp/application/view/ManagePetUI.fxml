@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="520.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManagePetUIController">
+    <children>
+        <TableView fx:id="tablePet" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="525.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="128.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="128.0" text="Nome" />
+                <TableColumn fx:id="colBreed" prefWidth="127.0" text="Raça" />
+                <TableColumn fx:id="colSpecies" prefWidth="93.0" text="Espécie" />
+                <TableColumn fx:id="colClient" prefWidth="93.0" text="Tutor" />
+                <TableColumn fx:id="colStatus" prefWidth="93.0" text="Status" />
+
+            </columns>
+        </TableView>
+        <Button fx:id="btnLocalizar" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
+        <TextField layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
+        <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addPetButton" prefHeight="25.0" prefWidth="128.0" text="Cadastrar Animal" />
+        <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" onAction="#editPet" prefHeight="25.0" prefWidth="128.0" text="Editar Animal" />
+        <Button fx:id="btnInativar" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#deactivate" prefHeight="25.0" prefWidth="128.0" text="Inativar Animal" />
+        <Button fx:id="voltar" layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
+    </children>
+
+</AnchorPane>

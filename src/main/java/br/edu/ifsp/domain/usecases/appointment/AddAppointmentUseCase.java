@@ -1,10 +1,13 @@
 package br.edu.ifsp.domain.usecases.appointment;
 
+import br.edu.ifsp.application.persistence.PaymentPersistence;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.payment.Payment;
+import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.usecases.payment.CreatePaymentUseCase;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,5 +23,12 @@ public class AddAppointmentUseCase {
         Appointment appointment = new Appointment(id, date, hour, description, veterinarian, pet, cost, payment);
         appointmentRepository.save(appointment);
         return appointment;
+    }
+
+    public Appointment cadastrarConsulta(LocalDate date, LocalTime hour, String description, Veterinarian veterinarian, Pet pet, double cost) {
+        Appointment appointment = new Appointment(date, hour, description, veterinarian, pet, cost);
+        boolean resultAppointment = appointmentRepository.save(appointment);
+
+        return resultAppointment? appointment : null;
     }
 }

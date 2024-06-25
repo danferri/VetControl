@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AttendantUIController">
+    <children>
+        <Text layoutX="253.0" layoutY="40.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Tela Principal - Atendente" />
+
+        <VBox layoutX="14.0" layoutY="131.0" prefWidth="180.0" spacing="10.0">
+            <children>
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManageVeterinarians" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Veterinários" />
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManageClients" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Clientes" />
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManageAnimals" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Animais" />
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManageAppointments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Consultas" />
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManagePayments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Pagamentos" />
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#GenerateReports" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Relatórios" />
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#Logout" prefHeight="40.0" prefWidth="140.0" text="Sair" />
+            </children>
+        </VBox>
+
+        <Pane layoutX="206.0" layoutY="66.0" prefHeight="520.0" prefWidth="580.0">
+
+        </Pane>
+    </children>
+</AnchorPane>

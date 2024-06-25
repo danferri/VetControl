@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="520.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManageAppointmentUIController">
+    <children>
+        <TableView fx:id="tableAppointment" layoutX="160.0" layoutY="66.0" prefHeight="440.0" prefWidth="673.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="colDate" prefWidth="90.0" text="Data" />
+                <TableColumn fx:id="colHour" prefWidth="70.0" text="Hora" />
+                <TableColumn fx:id="colDescription" prefWidth="110.0" text="Descrição" />
+                <TableColumn fx:id="colVeterinarian" prefWidth="90.0" text="Veterinário" />
+                <TableColumn fx:id="colPet" prefWidth="75.0" text="Pet" />
+                <TableColumn fx:id="colStatus" prefWidth="80.0" text="Status" />
+                <TableColumn fx:id="colCost" prefWidth="60.0" text="Custo" />
+            </columns>
+        </TableView>
+        <Button fx:id="btnFind" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
+        <TextField layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
+        <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addAppointmentButton" prefHeight="25.0" prefWidth="128.0" text="Agendar Consulta" />
+        <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Editar Consulta" />
+        <Button fx:id="btnCancel" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="25.0" prefWidth="128.0" text="Cancelar Consulta" />
+        <Button fx:id="btnBack" layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
+    </children>
+
+</AnchorPane>

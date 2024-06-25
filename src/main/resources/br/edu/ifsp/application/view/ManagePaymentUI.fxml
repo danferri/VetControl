@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="520" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.ManagePaymentUIController">
+
+    <children>
+        <TableView fx:id="tablePayments" layoutX="160.0" layoutY="110.0" prefHeight="396.0" prefWidth="525.0">
+            <columns>
+                <TableColumn fx:id="colID" prefWidth="100.0" text="ID" />
+                <TableColumn fx:id="colAmount" prefWidth="100.0" text="Valor" />
+                <TableColumn fx:id="colMethod" prefWidth="100.0" text="Método" />
+                <TableColumn fx:id="colStatus" prefWidth="100.0" text="Status" />
+                <TableColumn fx:id="colAppointment" prefWidth="125.0" text="Consulta" />
+            </columns>
+        </TableView>
+        <Button fx:id="btnViewDetails" layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onAction="#viewPaymentDetails" prefHeight="25.0" prefWidth="128.0" text="Visualizar Detalhes" />
+        <Button fx:id="btnProcessPayment" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#processPayment" prefHeight="25.0" prefWidth="128.0" text="Concluir Pagamento" />
+        <Button layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
+
+        <TextField fx:id="txtSearch" layoutX="160.0" layoutY="66.0" prefHeight="25.0" prefWidth="318.0" />
+        <Button fx:id="btnBuscar" layoutX="487.0" layoutY="66.0" mnemonicParsing="false" onAction="#searchPayments" prefHeight="25.0" prefWidth="79.0" text="Buscar" />
+      <Label layoutX="204.0" layoutY="14.0" text="Gerenciamento de Pagamento">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+    </children>
+
+</AnchorPane>
