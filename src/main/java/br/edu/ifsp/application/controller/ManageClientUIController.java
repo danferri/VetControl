@@ -3,9 +3,10 @@ package br.edu.ifsp.application.controller;
 import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.view.AddClientView;
 import br.edu.ifsp.application.view.ManageClientView;
+import br.edu.ifsp.application.view.UpdateClientView;
 import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.ClientRepository;
-import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.usecases.client.UpdateClientUseCase;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,8 +18,9 @@ import javafx.scene.control.TableView;
 
 public class ManageClientUIController {
     public static ObservableList<Client> clients;
-    private final ClientRepository clientRepository = new ClientPersistence();
 
+    private final ClientRepository clientRepository = new ClientPersistence();
+    private UpdateClientView updateClientView;
     private ManageClientView manageClientView;
 
     @FXML TableView<Client> tableClient;
@@ -84,6 +86,23 @@ public class ManageClientUIController {
             alert.setTitle("Seleção de Cliente");
             alert.setHeaderText(null);
             alert.setContentText("Por favor, selecione um cliente para ver os detalhes.");
+            alert.showAndWait();
+        }
+    }
+
+    public void editClient(ActionEvent actionEvent) {
+        Client selectedClient = tableClient.getSelectionModel().getSelectedItem();
+        if (selectedClient != null) {
+            if (updateClientView == null) {
+                updateClientView = new UpdateClientView(new UpdateClientUseCase(clientRepository));
+            }
+            updateClientView.showAndWait(selectedClient);
+            loadData(); // loadData(this.clientRepository.findAll());
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Cliente");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um cliente para editar.");
             alert.showAndWait();
         }
     }

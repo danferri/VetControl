@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.EditVeterinarianUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.UpdateVeterinarianUIController">
 
     <children>
         <Label layoutX="231.0" layoutY="14.0" style="-fx-font-size: 18;" text="Editar Veterinário">
@@ -24,7 +24,7 @@
         <TextField fx:id="txtContact" layoutX="120" layoutY="216" prefWidth="260" promptText="Digite o e-mail" />
         <Label layoutX="400" layoutY="220" text="Telefone:" />
         <TextField fx:id="txtPhone" layoutX="460" layoutY="216" prefWidth="100" promptText="Digite o telefone" />
-        <Button layoutX="486.0" layoutY="347.0" mnemonicParsing="false" onAction="#saveOrUpdate" text="Salvar" />
+        <Button layoutX="486.0" layoutY="347.0" mnemonicParsing="false" onAction="#saveChanges" text="Salvar" />
         <Button layoutX="401.0" layoutY="347.0" mnemonicParsing="false" onAction="#backToPreviousScene" text="Voltar" />
     </children>
 
