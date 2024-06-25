@@ -3,10 +3,12 @@ package br.edu.ifsp.application.controller;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.view.AddPetView;
 import br.edu.ifsp.application.view.ManagePetView;
+import br.edu.ifsp.application.view.UpdatePetView;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.client.PetRepository;
 import br.edu.ifsp.domain.model.client.PetStatus;
 import br.edu.ifsp.domain.usecases.pet.DeactivatePetUseCase;
+import br.edu.ifsp.domain.usecases.pet.UpdatePetUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +23,7 @@ public class ManagePetUIController {
     public static ObservableList<Pet> pets;
     private final PetRepository petRepository = new PetPersistence();
     private ManagePetView managePetView;
+    private UpdatePetView updatePetView;
 
     @FXML TableView<Pet> tablePet;
     @FXML TableColumn<Pet, String> colId;
@@ -86,4 +89,22 @@ public class ManagePetUIController {
 
         loadData();
     }
+
+    public void editPet(ActionEvent actionEvent) {
+        Pet selectedPet = tablePet.getSelectionModel().getSelectedItem();
+        if (selectedPet != null) {
+            if (updatePetView == null) {
+                updatePetView = new UpdatePetView(new UpdatePetUseCase(petRepository));
+            }
+            updatePetView.showAndWait(selectedPet);
+            loadData();//loadData(this.petRepository.findAll());
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Animal");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um animal para editar.");
+            alert.showAndWait();
+        }
+    }
+
 }

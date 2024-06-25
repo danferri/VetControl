@@ -19,7 +19,7 @@
         <Button fx:id="btnLocalizar" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Localizar" />
         <TextField layoutX="160.0" layoutY="27.0" prefHeight="25.0" prefWidth="318.0" />
         <Button layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#addPetButton" prefHeight="25.0" prefWidth="128.0" text="Cadastrar Animal" />
-        <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Editar Animal" />
+        <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" onAction="#editPet" prefHeight="25.0" prefWidth="128.0" text="Editar Animal" />
         <Button fx:id="btnInativar" layoutX="14.0" layoutY="143.0" mnemonicParsing="false" onAction="#deactivate" prefHeight="25.0" prefWidth="128.0" text="Inativar Animal" />
         <Button fx:id="voltar" layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="128.0" text="Voltar" />
     </children>
