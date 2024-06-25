@@ -11,5 +11,6 @@
       <Label layoutX="73.0" layoutY="128.0" text="Pet" />
       <DatePicker layoutX="126.0" layoutY="179.0" />
       <Label layoutX="36.0" layoutY="183.0" text="Data de início" />
+      <Label layoutX="276.0" layoutY="30.0" text="Emitir  Relatório" />
    </children>
 </AnchorPane>
