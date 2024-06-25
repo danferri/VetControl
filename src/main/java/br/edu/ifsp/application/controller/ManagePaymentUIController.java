@@ -27,7 +27,7 @@ public class ManagePaymentUIController {
     @FXML TableColumn<Payment, String> colAmount;
     @FXML TableColumn<Payment, String> colMethod;
     @FXML TableColumn<Payment, String> colStatus;
-    @FXML TableColumn<Payment, String> colDate;
+    @FXML TableColumn<Payment, String> colAppointment;
 
     @FXML private Button btnViewDetails;
     @FXML private Button btnProcessPayment;
@@ -45,7 +45,7 @@ public class ManagePaymentUIController {
         colAmount.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.format("%.2f", data.getValue().getAmount()))); //colAmount.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAmount()));
         colMethod.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getMethod()));
         colStatus.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getStatus().toString()));
-        //colDate.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getDate()));
+        colAppointment.setCellValueFactory(data -> new ReadOnlyStringWrapper(Integer.toString(data.getValue().getAppointment().getId())));
     }
 
     private void insertData() {

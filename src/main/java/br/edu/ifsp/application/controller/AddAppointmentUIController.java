@@ -1,15 +1,19 @@
 package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
+import br.edu.ifsp.application.persistence.PaymentPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddAppointmentView;
+import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.client.PetRepository;
+import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import br.edu.ifsp.domain.usecases.appointment.AddAppointmentUseCase;
+import br.edu.ifsp.domain.usecases.payment.CreatePaymentUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,18 +37,22 @@ public class AddAppointmentUIController {
     @FXML private ComboBox<Veterinarian> cbVeterinarian;
     @FXML private ComboBox<Pet> cbPet;
     @FXML private TextField txtCost;
+    @FXML private TextField txtMethod;
 
     private AddAppointmentView addAppointmentView;
 
     private final AppointmentRepository appointmentRepository = new AppointmentPersistence();
     private final VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
+    private final PaymentRepository paymentRepository = new PaymentPersistence();
     private final PetRepository petRepository = new PetPersistence();
 
     private AddAppointmentUseCase addAppointmentUseCase;
+    private CreatePaymentUseCase createPaymentUseCase;
 
     public void init(AddAppointmentView addAppointmentView) {
         this.addAppointmentView = addAppointmentView;
         this.addAppointmentUseCase = new AddAppointmentUseCase(appointmentRepository);
+        this.createPaymentUseCase = new CreatePaymentUseCase(paymentRepository);
 
         ObservableList<Veterinarian> veterinarians = FXCollections.observableArrayList(veterinarianRepository.findAllActive());
         ObservableList<Pet> pets = FXCollections.observableArrayList(petRepository.findAll());
@@ -87,11 +95,15 @@ public class AddAppointmentUIController {
         String description = txtDescription.getText();
         Veterinarian veterinarian = cbVeterinarian.getValue();
         Pet pet = cbPet.getValue();
+
+        String method = txtMethod.getText();
         double cost = Double.parseDouble(txtCost.getText());
 
         try {
-            boolean result = addAppointmentUseCase.cadastrarConsulta(date, LocalTime.parse(hour), description, veterinarian, pet, cost);
-            if (result) {
+            Appointment result = addAppointmentUseCase.cadastrarConsulta(date, LocalTime.parse(hour), description, veterinarian, pet, cost);
+            if (result != null) {
+                createPaymentUseCase.cadastrarPagamento(result, method, cost);
+
                 alertSuccessCadastro();
                 addAppointmentView.close();
             } else {

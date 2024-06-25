@@ -13,7 +13,7 @@
                 <TableColumn fx:id="colAmount" prefWidth="100.0" text="Valor" />
                 <TableColumn fx:id="colMethod" prefWidth="100.0" text="Método" />
                 <TableColumn fx:id="colStatus" prefWidth="100.0" text="Status" />
-                <TableColumn fx:id="colApointment" prefWidth="125.0" text="Consulta" />
+                <TableColumn fx:id="colAppointment" prefWidth="125.0" text="Consulta" />
             </columns>
         </TableView>
         <Button fx:id="btnViewDetails" layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onAction="#viewPaymentDetails" prefHeight="25.0" prefWidth="128.0" text="Visualizar Detalhes" />
