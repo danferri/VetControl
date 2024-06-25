@@ -23,9 +23,6 @@ public class UpdateClientUseCase {
             if (novoEndereco != null && !novoEndereco.isEmpty()) {
                 client.setAddress(novoEndereco);
             }
-            else {
-                throw new IllegalArgumentException("Novos dados inválidos. As informações antigas foram mantidas.");
-            }
             clientRepository.update(client);
         } else {
             throw new IllegalArgumentException("Cliente não encontrado com o CPF fornecido.");

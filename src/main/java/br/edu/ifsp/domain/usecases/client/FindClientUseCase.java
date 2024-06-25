@@ -16,6 +16,9 @@ public class FindClientUseCase {
 
     public Client FindClientByCPF(CPF cpf) {
 
+        if(cpf == null)
+            throw new IllegalArgumentException("CPF Não pode ser nulo.");
+
         if(clientRepository.findByCPF(cpf).isPresent())
             return clientRepository.findByCPF(cpf).get();
         throw new EntityNotFoundException("CPF não encontrado.");
