@@ -1,12 +1,14 @@
 package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
+import br.edu.ifsp.application.persistence.PaymentPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddAppointmentView;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.client.PetRepository;
+import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import br.edu.ifsp.domain.usecases.appointment.AddAppointmentUseCase;
@@ -39,12 +41,13 @@ public class AddAppointmentUIController {
     private final AppointmentRepository appointmentRepository = new AppointmentPersistence();
     private final VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
     private final PetRepository petRepository = new PetPersistence();
+    private final PaymentRepository paymentRepository = new PaymentPersistence();
 
     private AddAppointmentUseCase addAppointmentUseCase;
 
     public void init(AddAppointmentView addAppointmentView) {
         this.addAppointmentView = addAppointmentView;
-        this.addAppointmentUseCase = new AddAppointmentUseCase(appointmentRepository);
+        this.addAppointmentUseCase = new AddAppointmentUseCase(appointmentRepository, paymentRepository);
 
         ObservableList<Veterinarian> veterinarians = FXCollections.observableArrayList(veterinarianRepository.findAllActive());
         ObservableList<Pet> pets = FXCollections.observableArrayList(petRepository.findAll());

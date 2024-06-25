@@ -122,6 +122,8 @@ public class Appointment {
         return payment;
     }
 
+    public void setPayment(Payment payment) {this.payment = payment;}
+
     @Override
     public String toString() {
         return "Appointment{" +

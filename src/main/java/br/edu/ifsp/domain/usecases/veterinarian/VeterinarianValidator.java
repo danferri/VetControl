@@ -1,5 +1,6 @@
 package br.edu.ifsp.domain.usecases.veterinarian;
 
+import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.utils.Notification;
 import br.edu.ifsp.domain.usecases.utils.Validator;
@@ -22,7 +23,8 @@ public class VeterinarianValidator extends Validator<Veterinarian> {
             notification.addError("Veterinarian specialty is empty!");
         if(nullOrEmpty(veterinarian.getPhone()))
             notification.addError("Veterinarian phone is empty!");
-
+        if(nullOrEmpty(veterinarian.getCrmv()))
+            notification.addError("Veterinarian CRMV is empty!");
         if(nullOrEmpty(veterinarian.getContact()))
             notification.addError("Veterinarian contact is empty!");
 

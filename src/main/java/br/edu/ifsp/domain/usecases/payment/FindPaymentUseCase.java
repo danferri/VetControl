@@ -14,6 +14,10 @@ public class FindPaymentUseCase {
 
     public Payment visualizarPagamento(int id) {
 
-        return paymentRepository.findById(id);
+        Payment payment = paymentRepository.findById(id);
+        if (payment == null) {
+            throw new IllegalArgumentException("Pagamento não encontrado com o ID fornecido.");
+        }
+        return payment;
     }
 }

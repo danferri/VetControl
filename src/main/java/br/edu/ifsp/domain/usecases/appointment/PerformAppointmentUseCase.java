@@ -15,7 +15,7 @@ public class PerformAppointmentUseCase {
         Appointment appointment = appointmentRepository.findById(id);
         if (appointment != null && appointment.getStatus() != AppointmentStatus.CANCELED) {
             appointment.setStatus(AppointmentStatus.COMPLETED);
-            appointmentRepository.save(appointment);
+            appointmentRepository.update(appointment);
         } else {
             throw new IllegalArgumentException("Appointment not found or cannot be marked as completed.");
         }

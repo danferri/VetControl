@@ -22,9 +22,9 @@ public class AddPetUseCase {
         return petRepository.save(pet);
     }
 
-    public boolean cadastrarPet(int id, String name, String breed, String species) {
-        Pet pet = new Pet(id, name, breed, species);
-        return petRepository.save(pet);
-    }
+//    public boolean cadastrarPet(int id, String name, String breed, String species) {
+//        Pet pet = new Pet(id, name, breed, species);
+//        return petRepository.save(pet);
+//    }
 
 }

@@ -11,6 +11,10 @@ public class FindPetUseCase {
     }
 
     public Pet visualizarPet(int id) {
-        return petRepository.findById(id);
+        Pet pet = petRepository.findById(id);
+        if (pet == null) {
+            throw new IllegalArgumentException("Pet não encontrado com o ID fornecido.");
+        }
+        return pet;
     }
 }

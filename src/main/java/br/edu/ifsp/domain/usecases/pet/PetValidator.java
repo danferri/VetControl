@@ -22,7 +22,7 @@ public class PetValidator extends Validator<Pet> {
             notification.addError("Pet species is null or empty");
         if(!pet.getOwner().getPets().isEmpty())
             notification.addError("Pet already has an owner");
-        if(pet.informPetStautus() == PetStatus.INACTIVE)
+        if(pet.getStatus() == PetStatus.INACTIVE)
             notification.addError("Pet is no longer avilable");
 
         return notification;

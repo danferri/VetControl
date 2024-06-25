@@ -78,7 +78,12 @@ public class AttendantServices {
     // Gerencia Pets
     public void addPet(int id, String name, String breed, String species, Client owner) {
         AddPetUseCase addPetUseCase = new AddPetUseCase(petRepository);
+
+        //Cadastro com ID passado, falta funcionalidade auto-increment do banco
         addPetUseCase.cadastrarPet(id, name, breed, species, owner, PetStatus.ACTIVE);
+
+        // UseCase correto com banco implementado (sem id nem PetStatus)
+        //addPetUseCase.cadastrarPet(name, breed, species, owner);
     }
 
     public void addPetToCLient(Pet pet, CPF cpf){
@@ -103,7 +108,7 @@ public class AttendantServices {
 
     // Gerencia Consultas
     public void addAppointment(Integer id , LocalDate data, LocalTime hora, String historico, Veterinarian veterinario, Pet pet, Payment payment, double value) {
-        AddAppointmentUseCase addApointment = new AddAppointmentUseCase(appointmentRepository);
+        AddAppointmentUseCase addApointment = new AddAppointmentUseCase(appointmentRepository, paymentRepository);
         addApointment.cadastrarConsulta(id, data, hora, historico, veterinario, pet,value, payment);
     }
 
