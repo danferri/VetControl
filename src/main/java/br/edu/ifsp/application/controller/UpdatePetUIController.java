@@ -62,7 +62,7 @@ public class UpdatePetUIController {
     @FXML
     public void savechanges(ActionEvent actionEvent) {
         try {
-            updatePetUseCase.alterarPet(currentPet.getId(), txtName.getText(), txtBreed.getText(), txtSpecies.getText());
+            updatePetUseCase.alterarPet(currentPet.getId(), txtName.getText(), txtBreed.getText(), txtSpecies.getText(), cbClient.getValue());
             updatePetView.showSuccess();
             updatePetView.close();
         } catch (IllegalArgumentException e) {

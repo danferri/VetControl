@@ -79,7 +79,7 @@ public class Main {
             System.out.println("\n" + "Teste dos Métodos de Pet" + "\n");
             System.out.println("Pet cadastrado: " + pet);
 
-            attendantServices.updatePet(1, "", "", "Girafa");
+            //attendantServices.updatePet(1, "", "", "Girafa");
 
             System.out.println("Pet editado: " + pet);
 
@@ -110,8 +110,8 @@ public class Main {
             System.out.println("\n" + "Teste dos Métodos de Consulta" + "\n");
             System.out.println("Consulta cadastrada: " + appointment+ "\n");
 
-            attendantServices.updateAppointment(1, null, null,
-                    "Consulta de ferramentas");
+            //attendantServices.updateAppointment(1, null, null,
+                   // "Consulta de ferramentas");
 
             System.out.println("Consulta editada: " + appointment + "\n");
 
