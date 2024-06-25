@@ -1,48 +1,93 @@
 package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
+import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddAppointmentView;
+import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.client.PetRepository;
 import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import br.edu.ifsp.domain.usecases.appointment.AddAppointmentUseCase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+
 
 public class AddAppointmentUIController {
     @FXML private DatePicker dpDate;
     @FXML private TextField txtHour;
     @FXML private TextField txtDescription;
-    @FXML private TextField txtVeterinarian;
-    @FXML private TextField txtPet;
+    //@FXML private TextField txtVeterinarian;
+    //@FXML private TextField txtPet;
+    @FXML private ComboBox<Veterinarian> cbVeterinarian;
+    @FXML private ComboBox<Pet> cbPet;
     @FXML private TextField txtCost;
 
     private AddAppointmentView addAppointmentView;
+
+    private final AppointmentRepository appointmentRepository = new AppointmentPersistence();
+    private final VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
+    private final PetRepository petRepository = new PetPersistence();
+
     private AddAppointmentUseCase addAppointmentUseCase;
 
-    public void init(AddAppointmentView addAppointmentView, AppointmentPersistence appointmentPersistence) {
+    public void init(AddAppointmentView addAppointmentView) {
         this.addAppointmentView = addAppointmentView;
-        this.addAppointmentUseCase = new AddAppointmentUseCase(appointmentPersistence);
+        this.addAppointmentUseCase = new AddAppointmentUseCase(appointmentRepository);
+
+        ObservableList<Veterinarian> veterinarians = FXCollections.observableArrayList(veterinarianRepository.findAllActive());
+        ObservableList<Pet> pets = FXCollections.observableArrayList(petRepository.findAll());
+
+        //debug
+        System.out.println("Veterinarians: " + veterinarianRepository.findAll().size());
+        System.out.println("Pets: " + pets.size());
+
+        cbVeterinarian.setItems(veterinarians);
+        cbPet.setItems(pets);
+
+        cbVeterinarian.setConverter(new StringConverter<Veterinarian>() {
+            @Override
+            public String toString(Veterinarian veterinarian) {
+                return veterinarian != null ? veterinarian.getName() : "";
+            }
+
+            @Override
+            public Veterinarian fromString(String s) {
+                return null;
+            }
+        });
+
+        cbPet.setConverter(new StringConverter<Pet>() {
+            @Override
+            public String toString(Pet pet) {
+                return pet != null ? pet.getName() : "";
+            }
+
+            @Override
+            public Pet fromString(String s) {
+                return null;
+            }
+        });
     }
 
     public void saveOrUpdate(ActionEvent actionEvent) {
         LocalDate date = dpDate.getValue();
-        //LocalTime hour = LocalTime.parse(txtHour.getText(), DateTimeFormatter.ofPattern("HH:mm"));
         String hour = txtHour.getText();
         String description = txtDescription.getText();
-        String textVeterinarian = txtVeterinarian.getText();
-        String textPet = txtPet.getText();
+        Veterinarian veterinarian = cbVeterinarian.getValue();
+        Pet pet = cbPet.getValue();
         double cost = Double.parseDouble(txtCost.getText());
-
-        Pet pet = new Pet(textPet);
-        Veterinarian veterinarian = new Veterinarian(textVeterinarian);
 
         try {
             boolean result = addAppointmentUseCase.cadastrarConsulta(date, LocalTime.parse(hour), description, veterinarian, pet, cost);

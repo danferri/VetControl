@@ -11,11 +11,9 @@ import javafx.fxml.FXMLLoader;
 public class ManageAppointmentView {
 
     private Stage stage;
-    private AppointmentPersistence appointmentPersistence;
 
-    public ManageAppointmentView(AppointmentPersistence appointmentPersistence) {
+    public ManageAppointmentView() {
         this.stage = new Stage();
-        this.appointmentPersistence = appointmentPersistence;
     }
 
     public void showAndWait() {
@@ -24,7 +22,7 @@ public class ManageAppointmentView {
             Parent root = loader.load();
 
             ManageAppointmentUIController controller = loader.getController();
-            controller.init(this, appointmentPersistence);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Agendar Consulta");

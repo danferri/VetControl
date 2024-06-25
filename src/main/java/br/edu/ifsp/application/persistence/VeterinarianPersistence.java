@@ -6,9 +6,10 @@ import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VeterinarianPersistence implements VeterinarianRepository {
-    private List<Veterinarian> veterinarians = new ArrayList<>();
+    private static List<Veterinarian> veterinarians = new ArrayList<>();
 
     @Override
     public boolean save(Veterinarian veterinarian) {
@@ -41,4 +42,16 @@ public class VeterinarianPersistence implements VeterinarianRepository {
     public List<Veterinarian> findAll() {
         return new ArrayList<>(veterinarians);
     }
+
+    @Override
+    public  List<Veterinarian> findAllActive(){
+        List<Veterinarian> activeVeterinarians = new ArrayList<>();
+        for (Veterinarian vet : veterinarians) {
+            if (vet.getStatusString() == "Active") {
+                activeVeterinarians.add(vet);
+            }
+        }
+        return activeVeterinarians;
+}
+
 }

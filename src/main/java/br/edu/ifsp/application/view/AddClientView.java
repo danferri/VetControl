@@ -11,11 +11,9 @@ import javafx.stage.Stage;
 
 public class AddClientView {
     private Stage stage;
-    private ClientPersistence clientPersistence;
 
-    public AddClientView(ClientPersistence clientPersistence) {
+    public AddClientView() {
         this.stage = new Stage();
-        this.clientPersistence = clientPersistence;
     }
 
     public void showAndWait() {
@@ -24,7 +22,7 @@ public class AddClientView {
             Parent root = loader.load();
 
             AddClientUIController controller = loader.getController();
-            controller.init(this, clientPersistence);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Cadastro de Veterinário");

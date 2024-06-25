@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PetPersistence implements PetRepository {
-    private List<Pet> animais = new ArrayList<>();
-    private int currentId = 1;
+    private static List<Pet> animais = new ArrayList<>();
+    private static int currentId = 1;
 
     @Override
     public boolean save(Pet animal) {
+        animal.setId(currentId++);
+
         animais.add(animal);
-        return false;
+        return true;
     }
 
     @Override

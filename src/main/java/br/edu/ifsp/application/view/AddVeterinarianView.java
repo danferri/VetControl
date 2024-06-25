@@ -2,6 +2,7 @@ package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.AddVeterinarianUIController;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,11 +12,9 @@ import javafx.stage.Stage;
 public class AddVeterinarianView {
 
     private Stage stage;
-    private VeterinarianPersistence veterinarianPersistence;
 
-    public AddVeterinarianView(VeterinarianPersistence veterinarianPersistence) {
+    public AddVeterinarianView() {
         this.stage = new Stage();
-        this.veterinarianPersistence = veterinarianPersistence;
     }
 
     public void showAndWait() {
@@ -24,7 +23,7 @@ public class AddVeterinarianView {
             Parent root = loader.load();
 
             AddVeterinarianUIController controller = loader.getController();
-            controller.init(this, veterinarianPersistence);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Cadastro de Veterinário");

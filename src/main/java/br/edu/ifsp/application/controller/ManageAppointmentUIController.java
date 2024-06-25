@@ -1,7 +1,11 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddAppointmentView;
+import br.edu.ifsp.application.view.App;
 import br.edu.ifsp.domain.model.appointment.Appointment;
+import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +21,8 @@ import br.edu.ifsp.application.view.ManageAppointmentView;
 
 public class ManageAppointmentUIController {
     public static ObservableList<Appointment> appointments;
-    private AppointmentPersistence appointmentPersistence;
+
+    private final AppointmentRepository appointmentRepository = new AppointmentPersistence();
     private ManageAppointmentView manageAppointmentView;
 
     @FXML TableView<Appointment> tableAppointment;
@@ -30,9 +35,8 @@ public class ManageAppointmentUIController {
     @FXML TableColumn<Appointment, String> colStatus;
     @FXML TableColumn<Appointment, String> colCost;
 
-    public void init(ManageAppointmentView manageAppointmentView, AppointmentPersistence appointmentPersistence) {
+    public void init(ManageAppointmentView manageAppointmentView) {
         this.manageAppointmentView = manageAppointmentView;
-        this.appointmentPersistence = appointmentPersistence;
 
         setupColumns();
         insertData();
@@ -41,7 +45,7 @@ public class ManageAppointmentUIController {
 
     @FXML
     private void addAppointmentButton(ActionEvent actionEvent) {
-        AddAppointmentView addAppointmentView = new AddAppointmentView(appointmentPersistence);
+        AddAppointmentView addAppointmentView = new AddAppointmentView();
         addAppointmentView.showAndWait();
 
         loadData();
@@ -66,7 +70,7 @@ public class ManageAppointmentUIController {
 
     private void loadData() {
         appointments.clear();
-        appointments.addAll(this.appointmentPersistence.findAll());
+        appointments.addAll(this.appointmentRepository.findAll());
 
         tableAppointment.refresh();
     }

@@ -1,12 +1,17 @@
 package br.edu.ifsp.application.controller;
+
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.view.AddPetView;
 import br.edu.ifsp.application.view.ManagePetView;
 import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.client.PetRepository;
+import br.edu.ifsp.domain.model.client.PetStatus;
+import br.edu.ifsp.domain.usecases.pet.DeactivatePetUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -14,18 +19,19 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 
 public class ManagePetUIController {
     public static ObservableList<Pet> pets;
-    private PetPersistence petPersistence;
+    private final PetRepository petRepository = new PetPersistence();
     private ManagePetView managePetView;
 
     @FXML TableView<Pet> tablePet;
-    //@FXML TableColumn<Pet, String> colId;
+    @FXML TableColumn<Pet, String> colId;
     @FXML TableColumn<Pet, String> colName;
     @FXML TableColumn<Pet, String> colBreed;
     @FXML TableColumn<Pet, String> colSpecies;
+    @FXML TableColumn<Pet, String> colClient;
+    @FXML TableColumn<Pet, String> colStatus;
 
-    public void init(ManagePetView managePetView, PetPersistence petPersistence) {
+    public void init(ManagePetView managePetView) {
         this.managePetView = managePetView;
-        this.petPersistence = petPersistence;
 
         setupColumns();
         insertData();
@@ -34,17 +40,19 @@ public class ManagePetUIController {
 
     @FXML
     private void addPetButton(ActionEvent actionEvent) {
-        AddPetView addPetView = new AddPetView(petPersistence);
+        AddPetView addPetView = new AddPetView();
         addPetView.showAndWait();
 
         loadData();
     }
 
     private void setupColumns() {
-        //colId.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.valueOf(data.getValue().getId())));
+        colId.setCellValueFactory(data -> new ReadOnlyStringWrapper(String.valueOf(data.getValue().getId())));
         colName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
         colBreed.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBreed()));
         colSpecies.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getSpecies()));
+        colClient.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getOwner().getName()));
+        colStatus.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getStatusString()));
     }
 
     private void insertData() {
@@ -54,7 +62,7 @@ public class ManagePetUIController {
 
     private void loadData() {
         pets.clear();
-        pets.addAll(this.petPersistence.findAll());
+        pets.addAll(this.petRepository.findAll());
         tablePet.refresh();
     }
 
@@ -64,7 +72,18 @@ public class ManagePetUIController {
     }
 
     public void deactivate(ActionEvent actionEvent) {
-        //DeactivatePetUseCase deactivatePetUseCase = new DeactivatePetUseCase(petPersistence);
-        //deactivatePetUseCase.deactivatePet();
+        Pet selectedPet = tablePet.getSelectionModel().getSelectedItem();
+        if(selectedPet != null) {
+            DeactivatePetUseCase deactivatePetUseCase = new DeactivatePetUseCase(petRepository);
+            deactivatePetUseCase.inativarPet(selectedPet.getId());
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Pet");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um pet para desativá-lo.");
+            alert.showAndWait();
+        }
+
+        loadData();
     }
 }

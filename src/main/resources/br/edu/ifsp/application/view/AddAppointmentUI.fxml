@@ -2,15 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="520.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AddAppointmentUIController">
     <children>
-        <Label layoutX="20" layoutY="20" style="-fx-font-size: 18;" text="Cadastro de Consulta">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
+        <Label layoutX="184.0" layoutY="14.0" style="-fx-font-size: 18;" text="Agendamento de Consulta" />
         <Label layoutX="20" layoutY="60" text="Data:" />
         <DatePicker fx:id="dpDate" layoutX="120" layoutY="56" prefWidth="200" />
         <Label layoutX="20" layoutY="100" text="Hora:" />
@@ -18,14 +13,12 @@
         <Label layoutX="20" layoutY="140" text="Descrição:" />
         <TextField fx:id="txtDescription" layoutX="120" layoutY="136" prefWidth="440" promptText="Descreva a consulta" />
         <Label layoutX="20" layoutY="180" text="Veterinário:" />
-        <TextField fx:id="txtVeterinarian" layoutX="120.0" layoutY="176.0" prefHeight="25.0" prefWidth="440.0" promptText="nome do veterinário" />
+        <ComboBox fx:id="cbVeterinarian" layoutX="120" layoutY="176" prefWidth="440" />
         <Label layoutX="20" layoutY="220" text="Pet:" />
-        <TextField fx:id="txtPet" layoutX="120.0" layoutY="216.0" prefHeight="25.0" prefWidth="440.0" promptText="nome do pet" />
-        <Label layoutX="23.0" layoutY="260.0" text="Custo:" />
-        <TextField fx:id="txtCost" layoutX="120.0" layoutY="256.0" prefWidth="200" promptText="Valor em reais" />
+        <ComboBox fx:id="cbPet" layoutX="120" layoutY="216" prefWidth="440" />
+        <Label layoutX="20" layoutY="260" text="Custo:" />
+        <TextField fx:id="txtCost" layoutX="120" layoutY="256" prefWidth="200" promptText="Valor em reais" />
         <Button layoutX="483" layoutY="480" mnemonicParsing="false" onAction="#saveOrUpdate" text="Salvar" />
         <Button layoutX="403" layoutY="480" mnemonicParsing="false" onAction="#backToPreviousScene" text="Voltar" />
-
-
     </children>
 </AnchorPane>

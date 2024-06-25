@@ -3,6 +3,7 @@ package br.edu.ifsp.application.controller;
 import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.view.AddClientView;
 import br.edu.ifsp.domain.model.client.CPF;
+import br.edu.ifsp.domain.model.client.ClientRepository;
 import br.edu.ifsp.domain.usecases.client.AddClientUseCase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,13 +15,14 @@ public class AddClientUIController {
     @FXML private TextField txtAddress;
     @FXML private TextField txtCPF;
 
-
     private AddClientView addClientView;
     private AddClientUseCase addClientUseCase;
 
-    public void init(AddClientView addClientView, ClientPersistence clientPersistence) {
+    private final ClientRepository clientRepository = new ClientPersistence();
+
+    public void init(AddClientView addClientView) {
         this.addClientView = addClientView;
-        this.addClientUseCase = new AddClientUseCase(clientPersistence);
+        this.addClientUseCase = new AddClientUseCase(clientRepository);
     }
 
     public void saveOrUpdate(ActionEvent actionEvent) {

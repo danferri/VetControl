@@ -2,6 +2,8 @@ package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.AddAppointmentUIController;
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
+import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,11 +13,9 @@ import javafx.stage.Stage;
 public class AddAppointmentView {
 
     private Stage stage;
-    private AppointmentPersistence appointmentPersistence;
 
-    public AddAppointmentView(AppointmentPersistence appointmentPersistence) {
+    public AddAppointmentView() {
         this.stage = new Stage();
-        this.appointmentPersistence = appointmentPersistence;
     }
 
     public void showAndWait() {
@@ -24,7 +24,7 @@ public class AddAppointmentView {
             Parent root = loader.load();
 
             AddAppointmentUIController controller = loader.getController();
-            controller.init(this, appointmentPersistence);
+            controller.init(this);
 
             Scene scene = new Scene(root);
             stage.setTitle("Cadastro de Consulta");

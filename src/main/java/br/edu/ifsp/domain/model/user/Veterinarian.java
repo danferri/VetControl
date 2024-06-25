@@ -90,6 +90,14 @@ public class Veterinarian implements User {
         return crmv;
     }
 
+    public VeterinarianStatus getStatus() {
+        return this.status;
+    }
+
+    public String getStatusString() {
+        return this.status.getStatus();
+    }
+
     public void setStatus(VeterinarianStatus status) {
         this.status = status;
     }

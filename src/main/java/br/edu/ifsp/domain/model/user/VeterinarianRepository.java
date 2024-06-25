@@ -8,4 +8,5 @@ public interface VeterinarianRepository {
     void update(Veterinarian veterinarian);
 
     List<Veterinarian> findAll();
+    List<Veterinarian> findAllActive();
 }

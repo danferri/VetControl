@@ -7,7 +7,7 @@
 <AnchorPane prefHeight="520.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AddClientUIController">
 
     <children>
-        <Label layoutX="20" layoutY="24.0" prefHeight="33.0" prefWidth="208.0" style="-fx-font-size: 24px;" text="Cadastro de Cliente">
+        <Label layoutX="186.0" layoutY="14.0" prefHeight="33.0" prefWidth="208.0" style="-fx-font-size: 24px;" text="Cadastro de Cliente">
          <font>
             <Font size="10.0" />
          </font></Label>
@@ -19,12 +19,7 @@
 
         <Label layoutX="20" layoutY="170" text="CPF:" />
         <TextField fx:id="txtCPF" layoutX="124.0" layoutY="166.0" prefHeight="25.0" prefWidth="413.0" />
-
-        <Label layoutX="20" layoutY="220" text="Pets Associados:" />
-        <ListView fx:id="listPets" layoutX="124.0" layoutY="220.0" prefHeight="163.0" prefWidth="413.0" />
-
-        <Button layoutX="125.0" layoutY="430.0" onAction="#addPet" text="Adicionar Pet" />
-        <Button layoutX="228.0" layoutY="430.0" onAction="#saveOrUpdate" prefHeight="25.0" prefWidth="87.0" text="Salvar" />
+        <Button layoutX="185.0" layoutY="430.0" onAction="#saveOrUpdate" prefHeight="25.0" prefWidth="87.0" text="Salvar" />
         <Button layoutX="331.0" layoutY="430.0" onAction="#backToPreviousScene" prefHeight="25.0" prefWidth="87.0" text="Cancelar" />
     </children>
 
