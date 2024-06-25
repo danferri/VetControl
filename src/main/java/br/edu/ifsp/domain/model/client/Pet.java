@@ -31,6 +31,10 @@ public class Pet {
         this.species = species;
     }
 
+    public void setOwner(Client owner) {
+        this.owner = owner;
+    }
+
     public Pet(String name) {
         this.name = name;
     }

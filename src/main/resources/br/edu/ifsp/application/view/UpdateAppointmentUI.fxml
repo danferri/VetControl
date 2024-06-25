@@ -3,13 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AddAppointmentUIController">
+<AnchorPane prefHeight="520.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.UpdateAppointmentUIController">
+
     <children>
-        <Label layoutX="214.0" layoutY="14.0" style="-fx-font-size: 18;" text="Agendamento de Consulta" />
+        <Label layoutX="214.0" layoutY="14.0" style="-fx-font-size: 18;" text="Atualizar Consulta" />
         <Label layoutX="20" layoutY="60" text="Data:" />
         <DatePicker fx:id="dpDate" layoutX="120" layoutY="56" prefWidth="200" />
         <Label layoutX="20" layoutY="100" text="Hora:" />
-        <TextField fx:id="txtHour" layoutX="120" layoutY="96" prefWidth="200" promptText="HH:mm" />
+        <TextField fx:id="txtTime" layoutX="120" layoutY="96" prefWidth="200" promptText="HH:mm" />
         <Label layoutX="20" layoutY="140" text="Descrição:" />
         <TextField fx:id="txtDescription" layoutX="120" layoutY="136" prefWidth="440" promptText="Descreva a consulta" />
         <Label layoutX="20" layoutY="180" text="Veterinário:" />
@@ -17,11 +18,12 @@
         <Label layoutX="20" layoutY="220" text="Pet:" />
         <ComboBox fx:id="cbPet" layoutX="120" layoutY="216" prefWidth="440" />
         <Label layoutX="23.0" layoutY="323.0" text="Custo:" />
-        <TextField fx:id="txtCost" layoutX="120.0" layoutY="319.0" prefWidth="200" promptText="Valor em reais" />
-        <Button layoutX="483" layoutY="480" mnemonicParsing="false" onAction="#saveOrUpdate" text="Salvar" />
+        <TextField fx:id="txtCost" disable="true" layoutX="120.0" layoutY="319.0" prefWidth="200" promptText="Valor em reais" />
+        <Button layoutX="483" layoutY="480" mnemonicParsing="false" onAction="#saveChanges" text="Atualizar Dados" />
         <Button layoutX="403" layoutY="480" mnemonicParsing="false" onAction="#backToPreviousScene" text="Voltar" />
-      <Label layoutX="227.0" layoutY="268.0" style="-fx-font-size: 18;" text="Dados para pagamento" />
-      <Label layoutX="26.0" layoutY="366.0" text="Método:" />
-      <TextField fx:id="txtMethod" layoutX="120.0" layoutY="362.0" prefHeight="25.0" prefWidth="200.0" promptText="cartão, dinheiro etc..." />
+        <Label layoutX="227.0" layoutY="268.0" style="-fx-font-size: 18;" text="Dados para pagamento" />
+        <Label layoutX="26.0" layoutY="366.0" text="Método:" />
+        <TextField fx:id="txtMethod" disable="true" layoutX="120.0" layoutY="362.0" prefHeight="25.0" prefWidth="200.0" promptText="cartão, dinheiro etc..." />
     </children>
+
 </AnchorPane>

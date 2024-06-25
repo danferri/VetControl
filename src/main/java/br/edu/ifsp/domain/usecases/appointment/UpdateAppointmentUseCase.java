@@ -2,6 +2,8 @@ package br.edu.ifsp.domain.usecases.appointment;
 
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
+import br.edu.ifsp.domain.model.client.Pet;
+import br.edu.ifsp.domain.model.user.Veterinarian;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,7 +15,7 @@ public class UpdateAppointmentUseCase {
         this.appointmentRepository = appointmentRepository;
     }
 
-    public void alterarConsulta(int id, LocalDate newDate, LocalTime newHour, String newDescription) {
+    public void alterarConsulta(int id, LocalDate newDate, LocalTime newHour, String newDescription, Veterinarian newVeterinarian, Pet newPet) {
         Appointment appointment = appointmentRepository.findById(id);
         if (appointment == null) {
             throw new IllegalArgumentException("Consulta não encontrada com o ID fornecido.");
