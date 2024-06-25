@@ -15,8 +15,7 @@
                 <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManageAnimals" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Animais" />
                 <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManageAppointments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Consultas" />
                 <Button maxWidth="Infinity" minHeight="40.0" onAction="#ManagePayments" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Pagamentos" />
-                <Button maxWidth="Infinity" minHeight="40.0" onAction="#GenerateReports" prefHeight="40.0" prefWidth="140.0" text="Emitir Relatórios" />
-                <Button maxWidth="Infinity" minHeight="40.0" prefHeight="40.0" prefWidth="140.0" text="Exportar Relatórios" />
+                <Button maxWidth="Infinity" minHeight="40.0" onAction="#GenerateReports" prefHeight="40.0" prefWidth="140.0" text="Gerenciar Relatórios" />
                 <Button maxWidth="Infinity" minHeight="40.0" onAction="#Logout" prefHeight="40.0" prefWidth="140.0" text="Sair" />
             </children>
         </VBox>
