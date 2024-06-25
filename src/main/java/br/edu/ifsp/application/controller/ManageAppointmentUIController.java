@@ -6,6 +6,7 @@ import br.edu.ifsp.application.view.AddAppointmentView;
 import br.edu.ifsp.application.view.App;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
+import br.edu.ifsp.domain.model.client.Pet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +17,10 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.application.view.ManageAppointmentView;
+import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ManageAppointmentUIController {
@@ -34,13 +38,14 @@ public class ManageAppointmentUIController {
     @FXML TableColumn<Appointment, String> colPet;
     @FXML TableColumn<Appointment, String> colStatus;
     @FXML TableColumn<Appointment, String> colCost;
+    @FXML private TextField txtSearch;
 
     public void init(ManageAppointmentView manageAppointmentView) {
         this.manageAppointmentView = manageAppointmentView;
 
         setupColumns();
         insertData();
-        loadData();
+        loadData(this.appointmentRepository.findAll());
     }
 
     @FXML
@@ -48,7 +53,7 @@ public class ManageAppointmentUIController {
         AddAppointmentView addAppointmentView = new AddAppointmentView();
         addAppointmentView.showAndWait();
 
-        loadData();
+        loadData(this.appointmentRepository.findAll());
     }
 
     private void setupColumns() {
@@ -68,11 +73,24 @@ public class ManageAppointmentUIController {
         tableAppointment.setItems(appointments);
     }
 
-    private void loadData() {
+    private void loadData( List<Appointment> appointmentList) {
         appointments.clear();
-        appointments.addAll(this.appointmentRepository.findAll());
+        appointments.addAll(appointmentList);
 
         tableAppointment.refresh();
+    }
+
+    public void localizar() {
+        String nome = txtSearch.getText();
+        List<Appointment> appointments = new ArrayList<>();
+
+        for(Appointment appointment : this.appointmentRepository.findAll()) {
+            if(appointment.getPet().getName().contains(nome) ||
+                    appointment.getVeterinarian().getName().contains(nome)){
+                appointments.add(appointment);
+            }
+        }
+        loadData(appointments);
     }
 
     @FXML
