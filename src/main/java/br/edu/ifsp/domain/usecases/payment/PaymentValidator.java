@@ -16,6 +16,8 @@ public class PaymentValidator extends Validator<Payment> {
 
         if(nullOrEmpty(payment.getMethod()))
             notification.addError("Method is null or empty");
+        if(nullOrEmpty(payment.getAmount()))
+            notification.addError("Amount has an invalid value");
         return notification;
     }
 }

@@ -23,4 +23,7 @@ public abstract class Validator<T> {
     public static boolean nullOrEmpty(CPF cpf) {
         return cpf == null || !cpf.isValid(cpf);
     }
+
+    public static boolean nullOrEmpty(Double number) {
+        return number.isNaN() || number <= 0;}
 }

@@ -13,6 +13,7 @@ public class FindPaymentUseCase {
     }
 
     public Payment visualizarPagamento(int id) {
+
         return paymentRepository.findById(id);
     }
 }
