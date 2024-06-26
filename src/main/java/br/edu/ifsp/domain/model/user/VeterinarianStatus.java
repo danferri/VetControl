@@ -1,5 +1,7 @@
 package br.edu.ifsp.domain.model.user;
 
+import java.util.Arrays;
+
 public enum VeterinarianStatus {
     ACTIVE("Active"),
     INACTIVE("Inactive");
@@ -23,6 +25,13 @@ public enum VeterinarianStatus {
         return "VeterinarianStatus{" +
                 "status='" + status + '\'' +
                 '}';
+    }
+
+    public static VeterinarianStatus toEnum(String value){
+        return Arrays.stream(VeterinarianStatus.values())
+                .filter(v -> value.equals(v.toString()))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
 

@@ -1,6 +1,7 @@
 package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.SQLite.SQLVeterinarianPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.UpdateAppointmentView;
 import br.edu.ifsp.domain.model.appointment.Appointment;

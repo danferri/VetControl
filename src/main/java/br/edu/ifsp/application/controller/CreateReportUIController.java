@@ -2,8 +2,8 @@ package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.SQLite.SQLVeterinarianPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
-import br.edu.ifsp.application.view.App;
 import br.edu.ifsp.application.view.CreateReportView;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
@@ -23,7 +23,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.util.StringConverter;
 
 import java.io.File;

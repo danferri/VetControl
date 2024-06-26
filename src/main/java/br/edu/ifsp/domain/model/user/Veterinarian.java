@@ -2,7 +2,7 @@ package br.edu.ifsp.domain.model.user;
 
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
-import br.edu.ifsp.application.persistence.VeterinarianPersistence;
+import br.edu.ifsp.application.persistence.SQLite.SQLVeterinarianPersistence;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.PetRepository;
 
@@ -24,9 +24,9 @@ public class Veterinarian implements User {
         if (crmv == null || !crmv.isValid(crmv)) {
             throw new IllegalArgumentException("CRMV inválido.");
         }
-        if (isCrmvAlreadyRegistered(crmv)!= null ) {
-            throw new IllegalArgumentException("CRMV já cadastrado em outro veterinário.");
-        }
+//        if (isCrmvAlreadyRegistered(crmv)!= null ) {
+//            throw new IllegalArgumentException("CRMV já cadastrado em outro veterinário.");
+//        }
         this.name = name;
         this.address = address;
         this.specialty = specialty;
@@ -37,18 +37,39 @@ public class Veterinarian implements User {
         registeredVeterinarians.add(this);
     }
 
+    public Veterinarian(String id, String name, String address, String specialty, String phone, CRMV crmv, String contact, VeterinarianStatus status) {
+        if (crmv == null || !crmv.isValid(crmv)) {
+            throw new IllegalArgumentException("CRMV inválido.");
+        }
+//        if (isCrmvAlreadyRegistered(crmv)!= null ) {
+//            throw new IllegalArgumentException("CRMV já cadastrado em outro veterinário.");
+//        }
+        this.name = name;
+        this.address = address;
+        this.specialty = specialty;
+        this.phone = phone;
+        this.crmv = crmv;
+        this.status = status;
+        this.contact = contact;
+        registeredVeterinarians.add(this);
+    }
+
     public Veterinarian(String name) {
         this.name = name;
     }
 
-    private Veterinarian isCrmvAlreadyRegistered(CRMV crmv) {
-        VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
-        PetRepository petRepository  = new PetPersistence();
-        AppointmentRepository appointmentRepository = new AppointmentPersistence();
+//    private Veterinarian isCrmvAlreadyRegistered(CRMV crmv) {
+//        VeterinarianRepository veterinarianRepository = new SQLVeterinarianPersistence();
+//        PetRepository petRepository  = new PetPersistence();
+//        AppointmentRepository appointmentRepository = new AppointmentPersistence();
+//
+//        VeterinarianServices vetServices = new VeterinarianServices(petRepository, appointmentRepository,
+//                veterinarianRepository);
+//        return vetServices.findVeterinarian(crmv);
+//    }
 
-        VeterinarianServices vetServices = new VeterinarianServices(petRepository, appointmentRepository,
-                veterinarianRepository);
-        return vetServices.findVeterinarian(crmv);
+    public String getId() {
+        return id;
     }
 
     public String getName() {

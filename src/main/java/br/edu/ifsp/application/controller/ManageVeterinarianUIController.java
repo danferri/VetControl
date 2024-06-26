@@ -1,5 +1,6 @@
 package br.edu.ifsp.application.controller;
 
+import br.edu.ifsp.application.persistence.SQLite.SQLVeterinarianPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddVeterinarianView;
 import br.edu.ifsp.application.view.ManageVeterinarianView;

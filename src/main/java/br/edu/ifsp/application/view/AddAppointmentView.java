@@ -1,9 +1,6 @@
 package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.AddAppointmentUIController;
-import br.edu.ifsp.application.persistence.AppointmentPersistence;
-import br.edu.ifsp.application.persistence.PetPersistence;
-import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

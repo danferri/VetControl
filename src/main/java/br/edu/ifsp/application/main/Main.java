@@ -2,6 +2,7 @@ package br.edu.ifsp.application.main;
 
 import br.edu.ifsp.application.persistence.*;
 import br.edu.ifsp.application.persistence.SQLite.SQLClientPersistence;
+import br.edu.ifsp.application.persistence.SQLite.SQLVeterinarianPersistence;
 import br.edu.ifsp.domain.model.appointment.*;
 import br.edu.ifsp.domain.model.client.*;
 import br.edu.ifsp.domain.model.payment.Payment;
