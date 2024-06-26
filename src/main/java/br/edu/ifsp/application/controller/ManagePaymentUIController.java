@@ -7,6 +7,7 @@ import br.edu.ifsp.application.view.ManagePaymentView;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
+import br.edu.ifsp.domain.usecases.payment.ProcessPaymentUseCase;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,7 +56,7 @@ public class ManagePaymentUIController {
         tablePayments.setItems(payments);
     }
 
-    private void loadData( List<Payment> paymentList) {
+    private void loadData(List<Payment> paymentList) {
         payments.clear();
         payments.addAll(paymentList);
         tablePayments.refresh();
@@ -75,11 +76,6 @@ public class ManagePaymentUIController {
     }
 
     @FXML
-    public void registerPayment(ActionEvent actionEvent) {
-
-    }
-
-    @FXML
     public void viewPaymentDetails(ActionEvent actionEvent) {
         Payment selectedPayment = tablePayments.getSelectionModel().getSelectedItem();
         if (selectedPayment != null) {
@@ -90,8 +86,8 @@ public class ManagePaymentUIController {
                     selectedPayment.getId(),
                     selectedPayment.getAmount(),
                     selectedPayment.getMethod(),
-                    selectedPayment.getStatus());
-                    //selectedPayment.getDate());
+                    selectedPayment.getStatus(),
+                    selectedPayment.getAppointment().getDate().toString());
             detailsAlert.setContentText(content);
             detailsAlert.showAndWait();
         } else {
@@ -107,6 +103,8 @@ public class ManagePaymentUIController {
     public void processPayment(ActionEvent actionEvent) {
         Payment selectedPayment = tablePayments.getSelectionModel().getSelectedItem();
         if (selectedPayment != null) {
+            ProcessPaymentUseCase processPaymentUseCase = new ProcessPaymentUseCase(paymentRepository);
+            processPaymentUseCase.processarPagamento(selectedPayment.getId());
 
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -115,6 +113,8 @@ public class ManagePaymentUIController {
             alert.setContentText("Por favor, selecione um pagamento para processar.");
             alert.showAndWait();
         }
+
+        loadData(paymentRepository.findAll());
     }
 
     @FXML

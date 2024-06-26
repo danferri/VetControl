@@ -5,6 +5,7 @@ import br.edu.ifsp.application.persistence.PaymentPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddAppointmentView;
+import br.edu.ifsp.application.view.CreateRecordView;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
@@ -145,6 +146,11 @@ public class AddAppointmentUIController {
         if (addAppointmentView != null) {
             addAppointmentView.close();
         }
+    }
+
+    public void gerarProtuario(ActionEvent actionEvent) {
+        CreateRecordView createRecordView = new CreateRecordView(txtDescription.getText(), txtDescription);
+        createRecordView.showAndWait();
     }
 }
 

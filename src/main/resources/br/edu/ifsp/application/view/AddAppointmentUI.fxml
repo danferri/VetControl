@@ -16,12 +16,13 @@
         <ComboBox fx:id="cbVeterinarian" layoutX="120" layoutY="176" prefWidth="440" />
         <Label layoutX="20" layoutY="220" text="Pet:" />
         <ComboBox fx:id="cbPet" layoutX="120" layoutY="216" prefWidth="440" />
-        <Label layoutX="23.0" layoutY="323.0" text="Custo:" />
-        <TextField fx:id="txtCost" layoutX="120.0" layoutY="319.0" prefWidth="200" promptText="Valor em reais" />
+        <Label layoutX="30.0" layoutY="373.0" text="Custo:" />
+        <TextField fx:id="txtCost" layoutX="114.0" layoutY="369.0" prefWidth="200" promptText="Valor em reais" />
         <Button layoutX="483" layoutY="480" mnemonicParsing="false" onAction="#saveOrUpdate" text="Salvar" />
         <Button layoutX="403" layoutY="480" mnemonicParsing="false" onAction="#backToPreviousScene" text="Voltar" />
-      <Label layoutX="227.0" layoutY="268.0" style="-fx-font-size: 18;" text="Dados para pagamento" />
-      <Label layoutX="26.0" layoutY="366.0" text="Método:" />
-      <TextField fx:id="txtMethod" layoutX="120.0" layoutY="362.0" prefHeight="25.0" prefWidth="200.0" promptText="cartão, dinheiro etc..." />
+      <Label layoutX="221.0" layoutY="318.0" style="-fx-font-size: 18;" text="Dados para pagamento" />
+      <Label layoutX="25.0" layoutY="412.0" text="Método:" />
+      <TextField fx:id="txtMethod" layoutX="114.0" layoutY="408.0" prefHeight="25.0" prefWidth="200.0" promptText="cartão, dinheiro etc..." />
+      <Button layoutX="443.0" layoutY="260.0" mnemonicParsing="false" onAction="#gerarProtuario" prefHeight="25.0" prefWidth="114.0" text="Gerar prontuário" />
     </children>
 </AnchorPane>
