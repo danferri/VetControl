@@ -32,7 +32,8 @@ public class AttendantUIController {
     }
 
     public void GenerateReports(ActionEvent actionEvent) {
-        
+        CreateReportView createReportView = new CreateReportView();
+        createReportView.showAndWait();
     }
 
     public void ManagePayments(ActionEvent actionEvent) {

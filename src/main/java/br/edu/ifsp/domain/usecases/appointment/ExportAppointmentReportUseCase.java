@@ -31,6 +31,7 @@ public class ExportAppointmentReportUseCase {
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(path));
             document.open();
+            document.add(new Paragraph("Appointment report:"));
             for (Appointment appointment : report) {
                 document.add(new Paragraph(appointment.toString()));
                 document.add(new Paragraph());
