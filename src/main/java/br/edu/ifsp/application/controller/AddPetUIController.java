@@ -20,7 +20,7 @@ public class AddPetUIController {
 
     @FXML private TextField txtName;
     @FXML private TextField txtBreed;
-    @FXML private TextField txtSpecies;
+    @FXML private ComboBox<String> cbSpecies;
     @FXML private ComboBox<Client> cbClient;
     //@FXML private TextField txtStatus;
 
@@ -36,8 +36,10 @@ public class AddPetUIController {
         this.addPetUseCase = new AddPetUseCase(petRepository);
 
         ObservableList<Client> clients = FXCollections.observableArrayList(clientRepository.findAll());
+        ObservableList<String> speciesOptions = FXCollections.observableArrayList("cão", "gato", "réptil", "roedor", "ave", "outro");
 
         cbClient.setItems(clients);
+        cbSpecies.setItems(speciesOptions);
 
         cbClient.setConverter(new StringConverter<Client>() {
             @Override
@@ -56,7 +58,7 @@ public class AddPetUIController {
     public void saveOrUpdate(ActionEvent actionEvent) {
         String name = txtName.getText();
         String breed = txtBreed.getText();
-        String species = txtSpecies.getText();
+        String species = cbSpecies.getValue();
         Client client = cbClient.getValue();
         //String status = txtStatus.getText().getStatus().toString();
 
