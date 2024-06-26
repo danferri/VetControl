@@ -1,7 +1,6 @@
 package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.UpdateAppointmentUIController;
-
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.usecases.appointment.UpdateAppointmentUseCase;
 import javafx.fxml.FXMLLoader;

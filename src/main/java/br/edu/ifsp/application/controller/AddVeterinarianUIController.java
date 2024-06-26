@@ -2,7 +2,6 @@ package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import br.edu.ifsp.application.view.AddVeterinarianView;
-
 import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import br.edu.ifsp.domain.usecases.veterinarian.AddVeterinarianUseCase;

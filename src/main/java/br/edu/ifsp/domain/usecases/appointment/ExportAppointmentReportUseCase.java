@@ -1,7 +1,5 @@
 package br.edu.ifsp.domain.usecases.appointment;
 
-
-
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -9,7 +7,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
-
 import java.io.*;
 import java.util.ArrayList;
 

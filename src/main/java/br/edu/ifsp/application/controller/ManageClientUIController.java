@@ -6,7 +6,6 @@ import br.edu.ifsp.application.view.ManageClientView;
 import br.edu.ifsp.application.view.UpdateClientView;
 import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.ClientRepository;
-import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.usecases.client.UpdateClientUseCase;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;

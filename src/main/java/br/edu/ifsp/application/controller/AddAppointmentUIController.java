@@ -33,8 +33,6 @@ public class AddAppointmentUIController {
     @FXML private DatePicker dpDate;
     @FXML private TextField txtHour;
     @FXML private TextField txtDescription;
-    //@FXML private TextField txtVeterinarian;
-    //@FXML private TextField txtPet;
     @FXML private ComboBox<Veterinarian> cbVeterinarian;
     @FXML private ComboBox<Pet> cbPet;
     @FXML private TextField txtCost;

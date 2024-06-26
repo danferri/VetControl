@@ -1,7 +1,6 @@
 package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.ManagePaymentUIController;
-import br.edu.ifsp.application.persistence.PaymentPersistence;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

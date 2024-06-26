@@ -3,7 +3,6 @@ package br.edu.ifsp.application.controller;
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
 import br.edu.ifsp.application.persistence.VeterinarianPersistence;
-import br.edu.ifsp.application.view.App;
 import br.edu.ifsp.application.view.CreateReportView;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;

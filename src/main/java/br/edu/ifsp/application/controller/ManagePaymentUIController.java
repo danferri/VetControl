@@ -4,7 +4,6 @@ package br.edu.ifsp.application.controller;
 
 import br.edu.ifsp.application.persistence.PaymentPersistence;
 import br.edu.ifsp.application.view.ManagePaymentView;
-import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import br.edu.ifsp.domain.usecases.payment.ProcessPaymentUseCase;

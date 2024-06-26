@@ -22,7 +22,6 @@ public class AddPetUIController {
     @FXML private TextField txtBreed;
     @FXML private ComboBox<String> cbSpecies;
     @FXML private ComboBox<Client> cbClient;
-    //@FXML private TextField txtStatus;
 
     private AddPetView addPetView;
     private AddPetUseCase addPetUseCase;
@@ -60,7 +59,6 @@ public class AddPetUIController {
         String breed = txtBreed.getText();
         String species = cbSpecies.getValue();
         Client client = cbClient.getValue();
-        //String status = txtStatus.getText().getStatus().toString();
 
         try {
             boolean retorno = addPetUseCase.cadastrarPet(name, breed, species, client);

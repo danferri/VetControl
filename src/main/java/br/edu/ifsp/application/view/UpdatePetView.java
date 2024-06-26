@@ -1,7 +1,6 @@
 package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.UpdatePetUIController;
-
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.usecases.pet.UpdatePetUseCase;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +37,7 @@ public class UpdatePetView {
     public void showSuccess() {
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Atualização bem-sucedida");
-        successAlert.setHeaderText(null); // Sem cabeçalho
+        successAlert.setHeaderText(null);
         successAlert.setContentText("Os dados do animal foram atualizados com sucesso!");
         successAlert.showAndWait();
     }

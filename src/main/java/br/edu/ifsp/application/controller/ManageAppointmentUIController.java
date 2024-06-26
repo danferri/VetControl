@@ -13,10 +13,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.beans.property.ReadOnlyStringWrapper;
-
 import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import javafx.scene.control.TextField;
-
 import java.util.ArrayList;
 import java.util.List;
 

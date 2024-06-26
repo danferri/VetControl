@@ -3,10 +3,8 @@ package br.edu.ifsp.application.persistence;
 import br.edu.ifsp.domain.model.user.CRMV;
 import br.edu.ifsp.domain.model.user.Veterinarian;
 import br.edu.ifsp.domain.model.user.VeterinarianRepository;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class VeterinarianPersistence implements VeterinarianRepository {
     private static List<Veterinarian> veterinarians = new ArrayList<>();
@@ -44,7 +42,7 @@ public class VeterinarianPersistence implements VeterinarianRepository {
     }
 
     @Override
-    public  List<Veterinarian> findAllActive(){
+    public List<Veterinarian> findAllActive() {
         List<Veterinarian> activeVeterinarians = new ArrayList<>();
         for (Veterinarian vet : veterinarians) {
             if (vet.getStatusString() == "Active") {
@@ -52,6 +50,6 @@ public class VeterinarianPersistence implements VeterinarianRepository {
             }
         }
         return activeVeterinarians;
-}
+    }
 
 }

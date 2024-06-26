@@ -1,9 +1,6 @@
 package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.ManageClientUIController;
-import br.edu.ifsp.application.controller.ManageVeterinarianUIController;
-import br.edu.ifsp.application.persistence.ClientPersistence;
-import br.edu.ifsp.application.persistence.VeterinarianPersistence;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

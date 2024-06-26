@@ -80,7 +80,4 @@ public class AddClientUIController {
         }
     }
 
-
-    public void addPet(ActionEvent actionEvent) {
-    }
 }
