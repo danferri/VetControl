@@ -36,7 +36,7 @@ public class AddPetUIController {
         this.addPetUseCase = new AddPetUseCase(petRepository);
 
         ObservableList<Client> clients = FXCollections.observableArrayList(clientRepository.findAll());
-        ObservableList<String> speciesOptions = FXCollections.observableArrayList("cão", "gato", "réptil", "roedor", "ave", "outro");
+        ObservableList<String> speciesOptions = FXCollections.observableArrayList("Ave", "Cão", "Gato", "Réptil", "Roedor", "Outro");
 
         cbClient.setItems(clients);
         cbSpecies.setItems(speciesOptions);
