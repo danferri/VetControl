@@ -15,12 +15,7 @@ public class FindVeterinarianUseCase {
 
         if(!crmv.isValid(crmv))
             throw new IllegalArgumentException("Invalid CRMV informed");
-
-        Veterinarian veterinarian = veterinarianRepository.findByCrmv(crmv);
-        if (veterinarian == null) {
-            throw new IllegalArgumentException("Veterinário não encontrado com o CRMV fornecido.");
-        }
-        return veterinarian;
+        return veterinarianRepository.findByCrmv(crmv);
 
     }
 }
