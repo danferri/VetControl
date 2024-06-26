@@ -4,7 +4,6 @@ import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.payment.Payment;
 import br.edu.ifsp.domain.model.payment.PaymentRepository;
 
-
 public class CreatePaymentUseCase {
     private PaymentRepository paymentRepository;
 

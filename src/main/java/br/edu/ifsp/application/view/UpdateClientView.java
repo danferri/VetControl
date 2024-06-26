@@ -1,7 +1,6 @@
 package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.UpdateClientUIController;
-
 import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.usecases.client.UpdateClientUseCase;
 import javafx.fxml.FXMLLoader;

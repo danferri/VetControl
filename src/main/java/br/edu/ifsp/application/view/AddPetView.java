@@ -1,7 +1,6 @@
 package br.edu.ifsp.application.view;
 
 import br.edu.ifsp.application.controller.AddPetUIController;
-import br.edu.ifsp.application.persistence.PetPersistence;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
 import javafx.scene.Scene;

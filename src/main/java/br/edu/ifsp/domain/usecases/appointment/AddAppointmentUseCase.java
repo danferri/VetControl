@@ -1,14 +1,11 @@
 package br.edu.ifsp.domain.usecases.appointment;
 
-import br.edu.ifsp.application.persistence.PaymentPersistence;
+
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.payment.Payment;
-import br.edu.ifsp.domain.model.payment.PaymentRepository;
 import br.edu.ifsp.domain.model.user.Veterinarian;
-import br.edu.ifsp.domain.usecases.payment.CreatePaymentUseCase;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 

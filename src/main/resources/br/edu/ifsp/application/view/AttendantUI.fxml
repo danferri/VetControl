@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AttendantUIController">
     <children>
-        <Text layoutX="324.0" layoutY="40.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Tela Principal" />
+        <Text layoutX="347.0" layoutY="40.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="VetControl - Tela Principal" />
 
         <VBox layoutX="14.0" layoutY="131.0" prefWidth="180.0" spacing="10.0">
             <children>
@@ -20,8 +21,12 @@
             </children>
         </VBox>
 
-        <Pane layoutX="206.0" layoutY="66.0" prefHeight="520.0" prefWidth="580.0">
+        <Pane fx:id="imagePane" layoutX="206.0" layoutY="66.0" prefHeight="520.0" prefWidth="580.0">
+            <ImageView fitHeight="520.0" fitWidth="580.0">
 
+                    <Image url="@/Tela_inicial.png" />
+
+            </ImageView>
         </Pane>
     </children>
 </AnchorPane>

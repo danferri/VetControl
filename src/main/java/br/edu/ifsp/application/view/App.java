@@ -3,12 +3,9 @@ package br.edu.ifsp.application.view;
 import br.edu.ifsp.application.persistence.SQLite.DatabaseBuilder;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
-
 public class App extends Application {
-
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -17,8 +14,6 @@ public class App extends Application {
         //LoginView loginView = new LoginView();
         //loginView.show();
     }
-
-
 
     public static void main(String[] args) {
         setUpDatabase();

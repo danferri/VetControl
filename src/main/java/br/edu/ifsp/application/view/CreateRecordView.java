@@ -1,8 +1,5 @@
 package br.edu.ifsp.application.view;
 
-
-
-
 import br.edu.ifsp.application.controller.CreateRecordUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
