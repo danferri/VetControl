@@ -1,6 +1,6 @@
 package br.edu.ifsp.application.controller;
 
-import br.edu.ifsp.application.persistence.ClientPersistence;
+import br.edu.ifsp.application.persistence.SQLite.SQLClientPersistence;
 import br.edu.ifsp.application.view.AddClientView;
 import br.edu.ifsp.domain.model.client.CPF;
 import br.edu.ifsp.domain.model.client.ClientRepository;
@@ -18,7 +18,7 @@ public class AddClientUIController {
     private AddClientView addClientView;
     private AddClientUseCase addClientUseCase;
 
-    private final ClientRepository clientRepository = new ClientPersistence();
+    private final ClientRepository clientRepository = new SQLClientPersistence();
 
     public void init(AddClientView addClientView) {
         this.addClientView = addClientView;

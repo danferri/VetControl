@@ -1,7 +1,7 @@
 package br.edu.ifsp.application.controller;
 
-import br.edu.ifsp.application.persistence.ClientPersistence;
 import br.edu.ifsp.application.persistence.PetPersistence;
+import br.edu.ifsp.application.persistence.SQLite.SQLClientPersistence;
 import br.edu.ifsp.application.view.AddPetView;
 import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.ClientRepository;
@@ -28,7 +28,7 @@ public class AddPetUIController {
     private AddPetUseCase addPetUseCase;
 
     private final PetRepository petRepository = new PetPersistence();
-    private final ClientRepository clientRepository = new ClientPersistence();
+    private final ClientRepository clientRepository = new SQLClientPersistence();
 
 
     public void init(AddPetView addPetView) {

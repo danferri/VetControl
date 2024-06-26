@@ -5,6 +5,7 @@ package br.edu.ifsp.domain.usecases.client;
 import br.edu.ifsp.domain.model.client.CPF;
 import br.edu.ifsp.domain.model.client.Client;
 import br.edu.ifsp.domain.model.client.ClientRepository;
+import br.edu.ifsp.domain.usecases.utils.EntityNotFoundException;
 
 public class FindClientUseCase {
     ClientRepository clientRepository;
@@ -14,7 +15,13 @@ public class FindClientUseCase {
     }
 
     public Client FindClientByCPF(CPF cpf) {
-        return clientRepository.findByCPF(cpf);
+
+        if(cpf == null)
+            throw new IllegalArgumentException("CPF Não pode ser nulo.");
+
+        if(clientRepository.findByCPF(cpf) != null)
+            return clientRepository.findByCPF(cpf);
+        throw new EntityNotFoundException("CPF não encontrado.");
     }
 
 }

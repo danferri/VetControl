@@ -1,6 +1,6 @@
 package br.edu.ifsp.application.controller;
 
-import br.edu.ifsp.application.persistence.ClientPersistence;
+import br.edu.ifsp.application.persistence.SQLite.SQLClientPersistence;
 import br.edu.ifsp.application.view.AddClientView;
 import br.edu.ifsp.application.view.ManageClientView;
 import br.edu.ifsp.application.view.UpdateClientView;
@@ -24,7 +24,7 @@ import java.util.List;
 public class ManageClientUIController {
     public static ObservableList<Client> clients;
 
-    private final ClientRepository clientRepository = new ClientPersistence();
+    private final ClientRepository clientRepository = new SQLClientPersistence();
     private UpdateClientView updateClientView;
     private ManageClientView manageClientView;
 

@@ -12,8 +12,10 @@ public class UpdateClientUseCase {
     }
 
     public void updateClient(CPF cpf, String novoNome, String novoEndereco) {
-       FindClientUseCase findClient = new FindClientUseCase(clientRepository);
+        FindClientUseCase findClient = new FindClientUseCase(clientRepository);
+
         Client client = findClient.FindClientByCPF(cpf);
+
         if (client != null) {
             if (novoNome != null && !novoNome.isEmpty()) {
                 client.setName(novoNome);

@@ -1,9 +1,7 @@
 package br.edu.ifsp.application.view;
 
+import br.edu.ifsp.application.persistence.SQLite.DatabaseBuilder;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +21,13 @@ public class App extends Application {
 
 
     public static void main(String[] args) {
+        setUpDatabase();
         launch();
+    }
+
+    private static void setUpDatabase() {
+        DatabaseBuilder databaseBuilder = new DatabaseBuilder();
+        databaseBuilder.buildDatabaseIfMissing();
     }
 
 }

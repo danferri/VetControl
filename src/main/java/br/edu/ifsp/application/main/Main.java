@@ -1,6 +1,7 @@
 package br.edu.ifsp.application.main;
 
 import br.edu.ifsp.application.persistence.*;
+import br.edu.ifsp.application.persistence.SQLite.SQLClientPersistence;
 import br.edu.ifsp.domain.model.appointment.*;
 import br.edu.ifsp.domain.model.client.*;
 import br.edu.ifsp.domain.model.payment.Payment;
@@ -16,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Inicializando repositórios e serviços
-        ClientRepository clientRepository = new ClientPersistence();
+        ClientRepository clientRepository = new SQLClientPersistence();
         PetRepository petRepository = new PetPersistence();
         AppointmentRepository appointmentRepository = new AppointmentPersistence();
         VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();

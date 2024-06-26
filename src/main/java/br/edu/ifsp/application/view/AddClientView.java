@@ -2,7 +2,6 @@ package br.edu.ifsp.application.view;
 
 
 import br.edu.ifsp.application.controller.AddClientUIController;
-import br.edu.ifsp.application.persistence.ClientPersistence;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

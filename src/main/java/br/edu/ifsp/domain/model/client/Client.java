@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
+    private int id;
     private String name;
     private String address;
     private CPF cpf;
@@ -14,6 +15,18 @@ public class Client {
         this.address = address;
         this.cpf = cpf;
         this.pets = new ArrayList<>();
+    }
+
+    public Client(int id, String name, String address, CPF cpf) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.cpf = cpf;
+        this.pets = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
