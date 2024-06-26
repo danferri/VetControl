@@ -1,13 +1,17 @@
 package br.edu.ifsp.application.controller;
 
-import br.edu.ifsp.application.persistence.*;
 import br.edu.ifsp.application.view.*;
-import br.edu.ifsp.domain.model.user.VeterinarianRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 public class AttendantUIController {
     private AttendantView attendantView;
+
+    @FXML
+    private Pane imagePane;
 
     @FXML
     public void ManageVeterinarians(ActionEvent actionEvent) {
@@ -46,6 +50,15 @@ public class AttendantUIController {
 
     public void init(AttendantView attendantView) {
         this.attendantView = attendantView;
+        addImageToPane();
+    }
+
+    private void addImageToPane() {
+        Image image = new Image("/Tela_inicial.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(580);
+        imageView.setFitHeight(520);
+        imagePane.getChildren().add(imageView);
     }
 
 
