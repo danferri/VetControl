@@ -1,6 +1,10 @@
 # VetControl 🐾
 
-Projeto acadêmico de um sistema de gerenciamento de clínica veterinária, desenvolvido para a disciplina de Desenvolvimento Orientado a Objeto. O foco principal é a aplicação prática de conceitos de POO, padrões de design e a construção de um sistema coeso.
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![JavaFX](https://img.shields.io/badge/JavaFX-0975C5?style=for-the-badge&logo=java&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+
+Projeto acadêmico de um sistema de gerenciamento de clínica veterinária, desenvolvido para a disciplina de Desenvolvimento Orientado a Objeto. O foco principal é a aplicação prática de conceitos de POO, DOO, padrões de design e a construção de um sistema coeso.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -15,7 +19,7 @@ Projeto acadêmico de um sistema de gerenciamento de clínica veterinária, dese
 
 1.  Clone este repositório:
     ```bash
-    git clone [https://github.com/SEU_USUARIO/VetControl.git](https://github.com/SEU_USUARIO/VetControl.git)
+    git clone https://github.com/danferri/VetControl.git
     ```
 2.  Navegue até a pasta do projeto e instale as dependências com o Maven:
     ```bash
@@ -134,3 +138,28 @@ A classe `Main` demonstra como as diferentes partes do sistema interagem:
 * **Gerenciamento de Consulta:**
     * A consulta é cancelada usando `ConsultaService.cancelarConsulta`.
     * A consulta é marcada como realizada usando `ConsultaService.marcarConsultaComoRealizada`.
+
+---
+
+## 💡 Funcionalidades
+
+Uma lista das principais funcionalidades que o sistema oferece ao usuário:
+
+* [x] Gerenciamento de Clientes (Cadastro, Edição, Busca e Remoção)
+* [x] Gerenciamento de Animais (Cadastro, Edição, Busca e Remoção)
+* [x] Gerenciamento de Veterinários (Cadastro, Edição, Busca e Remoção)
+* [x] Agendamento de Consultas
+* [x] Cancelamento de Consultas
+* [x] Marcar Consultas como Realizadas
+
+---
+
+## 👨‍💻 Autoria
+
+Este projeto foi desenvolvido em grupo pelos colaboradores deste repositório.
+
+---
+
+## 📜 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE.md` (se houver) para mais detalhes.
