@@ -2,12 +2,10 @@ package br.edu.ifsp.domain.usecases.appointment;
 
 //CDU023
 
-import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.Pet;
 import br.edu.ifsp.domain.model.user.Veterinarian;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

@@ -9,10 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class ClientPersistence implements ClientRepository {
-    private List<Client> clients = new ArrayList<>();
+    private static List<Client> clients = new ArrayList<>();
+
     @Override
-    public void save(Client cliente) {
+    public boolean save(Client cliente) {
         clients.add(cliente);
+        return true;
     }
 
     @Override

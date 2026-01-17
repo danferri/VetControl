@@ -6,7 +6,7 @@ import br.edu.ifsp.domain.model.user.Veterinarian;
 import java.util.List;
 
 public interface AppointmentRepository {
-    void save(Appointment appointment);
+    boolean save(Appointment appointment);
     Appointment findById(int id);
     List<Appointment> findAll();
 

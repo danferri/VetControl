@@ -1,7 +1,5 @@
 package br.edu.ifsp.domain.model.user;
 
-import br.edu.ifsp.App;
-import br.edu.ifsp.application.persistence.AppointmentPersistence;
 import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.model.appointment.AppointmentRepository;
 import br.edu.ifsp.domain.model.client.*;
@@ -88,9 +86,9 @@ public class AttendantServices {
         petToCliente.cadastrarPet(cpf, pet);
     }
 
-    public void updatePet(int id, String newName, String newBreed, String newSpecies) {
+    public void updatePet(int id, String newName, String newBreed, String newSpecies, Client newOwner) {
         UpdatePetUseCase updatePetUseCase = new UpdatePetUseCase(petRepository);
-        updatePetUseCase.alterarPet(id, newName, newBreed, newSpecies);
+        updatePetUseCase.alterarPet(id, newName, newBreed, newSpecies, newOwner);
     }
 
     public Pet findPet(int id) {
@@ -109,9 +107,9 @@ public class AttendantServices {
         addApointment.cadastrarConsulta(id, data, hora, historico, veterinario, pet,value, payment);
     }
 
-    public void updateAppointment(int id, LocalDate newDate, LocalTime newHour, String newDescription) {
+    public void updateAppointment(int id, LocalDate newDate, LocalTime newHour, String newDescription, Veterinarian newVeterinarian, Pet newPet) {
         UpdateAppointmentUseCase updateAppointmentUseCase = new UpdateAppointmentUseCase(appointmentRepository);
-        updateAppointmentUseCase.alterarConsulta(id, newDate, newHour, newDescription);
+        updateAppointmentUseCase.alterarConsulta(id, newDate, newHour, newDescription, newVeterinarian, newPet);
     }
 
     public Appointment findOneAppointment(int id) {

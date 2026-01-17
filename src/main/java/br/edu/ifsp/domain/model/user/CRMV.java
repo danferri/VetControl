@@ -33,10 +33,7 @@ public final class CRMV {
 
     @Override
     public String toString() {
-        return "CRM{" +
-                "number='" + number + '\'' +
-                ", valid=" + valid +
-                '}';
+        return number;
     }
 
     public String getNumber() {

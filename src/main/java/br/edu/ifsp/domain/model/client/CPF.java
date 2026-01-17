@@ -46,10 +46,7 @@ public final class CPF {
 
     @Override
     public String toString() {
-        return "CPF{" +
-                "number='" + number + '\'' +
-                ", valid=" + valid +
-                '}';
+        return number;
     }
 
     public String getNumber() {

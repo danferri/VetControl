@@ -1,5 +1,6 @@
 package br.edu.ifsp.domain.model.payment;
 
+import br.edu.ifsp.domain.model.appointment.Appointment;
 import br.edu.ifsp.domain.usecases.payment.*;
 
 public class PaymentServices {
@@ -9,8 +10,8 @@ public class PaymentServices {
         this.paymentRepository = paymentRepository;
     }
 
-    public void addPayment(int id, String method, double amount) {
+    public void addPayment(Appointment appointment, String method, double amount) {
         CreatePaymentUseCase addPaymentUseCase = new CreatePaymentUseCase(paymentRepository);
-        addPaymentUseCase.cadastrarPagamento(id, method,  amount);
+        addPaymentUseCase.cadastrarPagamento(appointment, method,  amount);
     }
 }

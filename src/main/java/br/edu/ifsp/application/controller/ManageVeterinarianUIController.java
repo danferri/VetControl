@@ -1,0 +1,155 @@
+package br.edu.ifsp.application.controller;
+
+import br.edu.ifsp.application.persistence.VeterinarianPersistence;
+import br.edu.ifsp.application.view.AddVeterinarianView;
+import br.edu.ifsp.application.view.ManageVeterinarianView;
+import br.edu.ifsp.application.view.UpdateVeterinarianView;
+import br.edu.ifsp.domain.model.user.Veterinarian;
+import br.edu.ifsp.domain.model.user.VeterinarianRepository;
+import br.edu.ifsp.domain.usecases.veterinarian.DeactivateVeterinarianUseCase;
+import br.edu.ifsp.domain.usecases.veterinarian.UpdateVeterinarianUseCase;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ManageVeterinarianUIController {
+    public static ObservableList<Veterinarian> veterinarians;
+
+    private final VeterinarianRepository veterinarianRepository = new VeterinarianPersistence();
+    private ManageVeterinarianView manageVeterinarianView;
+    private UpdateVeterinarianView updateVeterinarianView;
+
+    @FXML TableView<Veterinarian> tableVeterinarian;
+    @FXML TableColumn<Veterinarian, String> colNome;
+    @FXML TableColumn<Veterinarian, String> colAddress;
+    @FXML TableColumn<Veterinarian, String> colSpecialty;
+    @FXML TableColumn<Veterinarian, String> colCRMV;
+    @FXML TableColumn<Veterinarian, String> colContact;
+    @FXML TableColumn<Veterinarian, String> colPhone;
+    @FXML TableColumn<Veterinarian, String> colStatus;
+
+    @FXML private Button btnEditar;
+    @FXML private TextField txtSearch;
+
+    public void init(ManageVeterinarianView manageVeterinarianView) {
+        this.manageVeterinarianView = manageVeterinarianView;
+
+        setupColumns();
+        insertData();
+        loadData(this.veterinarianRepository.findAll());
+    }
+
+    @FXML
+    private void addVeterinarianButton(ActionEvent actionEvent) {
+        AddVeterinarianView addVeterinarianView = new AddVeterinarianView();
+        addVeterinarianView.showAndWait();
+
+        loadData(this.veterinarianRepository.findAll());
+    }
+
+    private void setupColumns() {
+        colNome.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
+        colAddress.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAddress()));
+        colSpecialty.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getSpecialty()));
+        colCRMV.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getCrmv().toString()));
+        colContact.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getContact()));
+        colPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
+        colStatus.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getStatusString()));
+    }
+
+    private void insertData() {
+        veterinarians = FXCollections.observableArrayList();
+
+        tableVeterinarian.setItems(veterinarians);
+    }
+
+    private void loadData(List<Veterinarian> veterinarianList) {
+        veterinarians.clear();
+        veterinarians.addAll(veterinarianList);
+
+        tableVeterinarian.refresh();
+    }
+
+    public void localizar() {
+        String nome = txtSearch.getText();
+        List<Veterinarian> veterinarianList = new ArrayList<>();
+
+        for(Veterinarian veterinarian : this.veterinarianRepository.findAll()) {
+            if(veterinarian.getName().contains(nome)){
+                veterinarianList.add(veterinarian);
+            }
+        }
+
+        loadData(veterinarianList);
+    }
+
+    @FXML
+    public void close() {
+        manageVeterinarianView.close();
+    }
+
+    public void deactive(ActionEvent actionEvent) {
+        Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();
+        if (selectedVeterinarian!= null) {
+            DeactivateVeterinarianUseCase deactivateVeterinarianUseCase = new DeactivateVeterinarianUseCase(veterinarianRepository);
+            deactivateVeterinarianUseCase.inativarVeterinario(selectedVeterinarian.getCrmv());
+        }else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Veterinário");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um veterinário para desativá-lo.");
+            alert.showAndWait();
+        }
+
+        loadData(this.veterinarianRepository.findAll());
+    }
+
+    public void editVeterinarian(ActionEvent actionEvent) {
+        Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();
+        if (selectedVeterinarian != null) {
+            if (updateVeterinarianView == null) {
+                updateVeterinarianView = new UpdateVeterinarianView(new UpdateVeterinarianUseCase(veterinarianRepository));
+            }
+            updateVeterinarianView.showAndWait(selectedVeterinarian);
+            loadData(this.veterinarianRepository.findAll());
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Veterinário");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um veterinário para editar.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    public void ShowVeterinarian(ActionEvent actionEvent) {
+        Veterinarian selectedVeterinarian = tableVeterinarian.getSelectionModel().getSelectedItem();
+        if (selectedVeterinarian != null) {
+            Alert detailsAlert = new Alert(Alert.AlertType.INFORMATION);
+            detailsAlert.setTitle("Detalhes do Veterinário");
+            detailsAlert.setHeaderText("Informações do Veterinário");
+            String content = String.format("Nome: %s\nEndereço: %s\nEspecialidade: %s\nCRMV: %s\nContato: %s\nTelefone: %s\nStatus: %s",
+                    selectedVeterinarian.getName(),
+                    selectedVeterinarian.getAddress(),
+                    selectedVeterinarian.getSpecialty(),
+                    selectedVeterinarian.getCrmv(),
+                    selectedVeterinarian.getContact(),
+                    selectedVeterinarian.getPhone(),
+                    selectedVeterinarian.getStatusString());
+            detailsAlert.setContentText(content);
+            detailsAlert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção de Veterinário");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecione um veterinário para ver os detalhes.");
+            alert.showAndWait();
+        }
+    }
+}

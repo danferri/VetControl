@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentPersistence implements PaymentRepository {
-    private List<Payment> payments = new ArrayList<>();
+    private static List<Payment> payments = new ArrayList<>();
+    private static int currentId = 1;
 
     @Override
     public void save(Payment payment) {
+        payment.setId(currentId++);
+
         payments.add(payment);
     }
 
@@ -22,6 +25,11 @@ public class PaymentPersistence implements PaymentRepository {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Payment> findAll() {
+        return new ArrayList<>(payments);
     }
 
     @Override

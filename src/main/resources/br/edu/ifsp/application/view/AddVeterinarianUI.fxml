@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsp.application.controller.AddVeterinarianUIController" prefHeight="520.0" prefWidth="580.0">
+    <children>
+        <Label layoutX="20" layoutY="20" text="Cadastro de Veterinário" style="-fx-font-size: 18;">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="20" layoutY="60" text="Nome:" />
+        <TextField fx:id="txtName" layoutX="120" layoutY="56" prefWidth="440" promptText="Digite o nome do veterinário" />
+        <Label layoutX="20" layoutY="100" text="Endereço:" />
+        <TextField fx:id="txtAddress" layoutX="120" layoutY="96" prefWidth="440" promptText="Digite o endereço" />
+        <Label layoutX="20" layoutY="140" text="Especialidade:" />
+        <TextField fx:id="txtSpecialty" layoutX="120" layoutY="136" prefWidth="260" promptText="Digite a especialidade" />
+        <Label layoutX="20" layoutY="180" text="CRMV:" />
+        <TextField fx:id="txtCRMV" layoutX="120" layoutY="176" prefWidth="260" promptText="Digite o CRMV" />
+        <Label layoutX="20" layoutY="220" text="Contato:" />
+        <TextField fx:id="txtContact" layoutX="120" layoutY="216" prefWidth="260" promptText="Digite o e-mail" />
+        <Label layoutX="400" layoutY="220" text="Telefone:" />
+        <TextField fx:id="txtPhone" layoutX="460" layoutY="216" prefWidth="100" promptText="Digite o telefone" />
+        <Button layoutX="483" layoutY="480" mnemonicParsing="false" onAction="#saveOrUpdate" text="Salvar" />
+        <Button layoutX="403" layoutY="480" mnemonicParsing="false" onAction="#backToPreviousScene" text="Voltar" />
+    </children>
+</AnchorPane>
